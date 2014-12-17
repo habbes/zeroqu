@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="ca.key" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="encrypt.crt" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="ca.crt" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="encrypt.key" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="encrypt.p12" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="encrypt2.crt" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="encrypt2.key" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="sign.crt" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="sign.csr" server="31.170.166.133" local="130159496660000000" remote="130413346800000000" Dst="0" />
+<file name="sign.key" server="31.170.166.133" local="130159496660000000" remote="130413347400000000" Dst="0" />
+<file name="sign.p12" server="31.170.166.133" local="130159496660000000" remote="130413347400000000" Dst="0" />
+<file name="ca.crt" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="ca.key" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="encrypt.crt" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="encrypt.key" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="encrypt.p12" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="encrypt2.crt" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="encrypt2.key" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="sign.crt" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="sign.csr" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="sign.key" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+<file name="sign.p12" server="ftp.mediashoppe.co.ke" local="130159496660000000" remote="130421530200000000" Dst="0" />
+</dwsync>

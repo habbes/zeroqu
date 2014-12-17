@@ -1,0 +1,232 @@
+@CHARSET "ISO-8859-1";
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+
+body {
+	margin:0px;
+	font-family: 'PT Sans', segoe ui, sans-serif;
+	color:rgb(108,96,98);
+}
+
+a {
+	text-decoration:none;
+	font-weight:bold;
+	
+}
+
+.bold {
+	font-weight:bold;
+}
+
+.float-left {
+	float:left;
+}
+
+.clear-both {
+	clear:both;
+}
+
+.center-text {
+	text-align:center;
+}
+
+#top-wrapper, #top-wrapper a {
+	color:rgb(230,230,230);
+	text-decoration:none;
+}
+
+
+header {
+	margin:0px 200px;
+	padding:10px 0px;
+	position:relative;
+	font-size:15px;
+}
+
+header .title {
+	
+	
+}
+
+#usercontrol {
+	position:absolute;
+	right:0px;
+	display:inline-block;
+}
+
+#usercontrol a {
+	
+}
+
+#top-wrapper a:hover {
+	color:white;
+}
+
+#bottom-wrapper {
+	position:relative;
+	margin:20px 10px;
+}
+
+#left-col {
+	position:fixed;
+	width:260px;
+	
+	float:left;
+	padding:0px;
+	
+}
+
+#right-col {
+	margin-left:262px;
+	height:100px;
+	padding:20px;
+}
+
+#menu-wrapper {
+	/*border-right:1px solid;*/
+	padding:20px;
+	padding-left:30px;
+	
+}
+
+#content-wrapper {
+	position:relative;
+	margin-bottom:20px;
+}
+
+
+#content-center {
+	margin-right:355px;
+}
+
+#content-right {
+	position:fixed;
+	right:35px;
+	top:65px;
+	width:315px;
+}
+
+.menu-header {
+	display:inline-block;
+}
+
+.menu-header a {
+	text-decoration:none;
+	display:inline-block;
+}
+
+.menu-header a:hover {
+	text-decoration:underline;
+}
+
+.menu-list {
+	list-style:none;
+	padding:0px;
+}
+
+.menu-list a{
+	display:block;
+	padding:5px;
+	color:white;
+	text-decoration: none;
+}
+
+.submenu {
+	list-style:none;
+}
+
+#content-wrapper h2 {
+	margin:0px;
+	margin-bottom:20px;
+}
+
+.form-result {
+	font-weight:bold;
+	color:red;
+}
+
+form label {
+	display:block;
+	width:100px;
+	font-weight:bold;
+}
+
+form input, form textarea, form select {
+	padding:5px;
+	color:inherit;
+	font-family:inherit;
+	width:300px;
+}
+
+form select {
+	width:312px;
+}
+
+form textarea {
+	min-height:50px;
+}
+
+button {
+	color:white;
+	padding:5px;
+	min-width:100px;
+	border:none;
+	font-weight:bold;
+	font-family:inherit;
+	cursor:pointer;
+}
+
+.form-row {
+	margin-bottom:3px;
+}
+
+.candidate-wrapper {
+	margin:20px 20px;
+}
+
+.candidate-wrapper-large {
+	margin:20px auto;
+	margin-right:40px;
+}
+
+.position-wrapper {
+	margin-bottom:30px;
+}
+
+.position-wrapper .title {
+	border-bottom:1px solid
+}
+
+.candidate-name {
+	text-align:center;
+}
+
+.candidate-img-wrapper {
+	text-align:center;
+}
+
+.candidate-img {
+	width:92px;
+}
+
+.candidate-img-large {
+	width:150px;
+}
+
+.candidate-img-small {
+	width:60px;
+	display:inline-block;
+	vertical-align:bottom;
+}
+
+.candidate-wrapper-small .candidate-name,
+.candidate-wrapper-small .candidate-img-wrapper {
+	text-align:initial;
+}
+
+.vote-count {
+	display:inline-block;
+	padding:10px 20px;
+	color:white;
+	font-size:2em;
+	font-weight:bold;
+}

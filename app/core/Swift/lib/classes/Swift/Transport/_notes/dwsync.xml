@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="EsmtpTransport.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317084600000000" Dst="0" />
+<file name="AbstractSmtpTransport.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317084600000000" Dst="0" />
+<file name="SmtpAgent.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317084600000000" Dst="0" />
+<file name="IoBuffer.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317084600000000" Dst="0" />
+<file name="StreamBuffer.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317084600000000" Dst="0" />
+<file name="EsmtpHandler.php" server="aercopss.oo3.co" local="130159496650000000" remote="130317085200000000" Dst="0" />
+<file name="AbstractSmtpTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="EsmtpHandler.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="EsmtpTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="FailoverTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="IoBuffer.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="LoadBalancedTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="MailInvoker.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="MailTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="NullTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="SendmailTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="SimpleMailInvoker.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="SmtpAgent.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="SpoolTransport.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="StreamBuffer.php" server="31.170.166.133" local="130159496650000000" remote="130413339000000000" Dst="0" />
+<file name="AbstractSmtpTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526000000000" Dst="0" />
+<file name="EsmtpHandler.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526000000000" Dst="0" />
+<file name="EsmtpTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526000000000" Dst="0" />
+<file name="FailoverTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526000000000" Dst="0" />
+<file name="IoBuffer.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="LoadBalancedTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="MailInvoker.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="MailTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="NullTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="SendmailTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="SimpleMailInvoker.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="SmtpAgent.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="SpoolTransport.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+<file name="StreamBuffer.php" server="ftp.mediashoppe.co.ke" local="130159496650000000" remote="130421526600000000" Dst="0" />
+</dwsync>

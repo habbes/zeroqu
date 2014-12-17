@@ -1,0 +1,78 @@
+@CHARSET "ISO-8859-1";
+
+.table {
+	display:table;
+}
+
+.tr {
+	display:table-row;
+}
+
+.td {
+	display:table-cell;
+}
+
+.table, .td {
+	border:none;
+	border-collapse:collapse;
+}
+
+.tr {
+	border-bottom:1px solid rgb(212,228,217);
+}
+
+.td {
+	height:24px;
+	max-height:32px;
+}
+
+.td {
+	min-width:30px;
+}
+
+.email-column {
+	padding:auto 10px;
+	margin:0px;
+}
+
+.email-not-sent {
+	background-color:rgba(181,119,74,0.51);
+	
+}
+
+.icon {
+	width:20px;
+	display:inline-block;
+}
+
+.table button, .table button:hover {
+	background-color:transparent;
+	
+	min-width:0px;
+}
+
+.icon-wrapper {
+	padding:0px;
+	position:relative;
+	height:24px;
+	display:inline-block;
+}
+
+.icon-wrapper .icon {
+	position:absolute;
+	top:6px;
+}
+
+.table button:hover .icon {
+	top:4px;
+	width:24px;
+}
+
+.table input {
+	color:inherit;
+	border:none;
+	background-color:transparent;
+	font-family:inherit;
+	font-size:inherit;
+	width:585px;
+}

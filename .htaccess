@@ -1,0 +1,10 @@
+Options -MultiViews
+Options -Indexes
+RewriteEngine On
+
+RewriteBase /elections
+
+RewriteRule ^public/(.+)$ static/$1 [END]
+RewriteRule ^index.php index.php [END]
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+

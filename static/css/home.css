@@ -1,0 +1,141 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+body {
+	background-color:rgb(44,26,36);
+	font-family: 'PT Sans', sans-serif;
+}
+
+@font-face {
+	font-family:quicksand;
+	src:url(quicksand.otf);
+}
+
+#menu-container {
+	position:relative;
+	width:1000px;
+	margin:auto;
+	margin-top:100px;
+}
+
+.menu {
+	position:absolute;
+	width:438px;
+	color:rgb(210,210,210);
+}
+
+#voter-menu {
+	left:0px;
+}
+
+#admin-menu {
+	right:0px;
+}
+
+.menu .head {
+	height:63px;
+	padding:13px;
+	text-align:center;
+	color:rgb(210,210,210);
+}
+
+.head h2 {
+	border-bottom:2px solid rgb(210,210,210);
+	width:80%;
+	margin:auto;
+	padding:19px;
+}
+
+.menu .content {
+	height:370px;
+}
+
+#voter-menu .content, #voter-menu .head {
+	background-color:rgb(68, 114, 119);
+}
+
+#admin-menu .content, #admin-menu .head {
+	background-color:rgb(25, 127, 108);
+}
+
+.menu:hover .content, .menu:hover .head {
+	color:white;
+}
+
+.menu .description {
+	text-align:center;
+	padding:38px;
+	font-size:34px;
+	cursor:pointer;
+}
+
+.menu .form {
+	display:none;
+	padding:38px;
+	
+}
+
+.form-row {
+	margin-bottom:2px;
+}
+
+label {
+	display:inline-block;
+	width:100px;
+	font-size:15px;
+}
+
+.field{
+	font-family:inherit;
+	border-radius:3px;
+	border:1px solid rgb(210,210,210);
+	padding:9px 13px;
+	display:inline-block;
+	margin:0px;
+	background-color:rgba(0,0,0,0);
+	width:230px;
+	color:rgb(210,210,210);
+}
+
+
+.form-buttons {
+	margin-top:13px;
+	margin-left:102px;
+}
+
+.menu .button {
+	padding:7px;
+	font-family:inherit;
+	min-width:100px;
+	border-radius:2px;
+	border:none;
+	background-color:rgb(63,94,116);
+	color:rgb(188,218,219);
+	font-weight:bold;
+}
+
+#admin-menu .button {
+	background-color:rgb(59,110,79);
+}
+
+#admin-menu .button:hover {
+	background-color:rgb(62,114,83);
+}
+
+
+.menu .button:hover {
+	background-color:rgb(66,98,121);
+	cursor:pointer;
+}
+
+.form-select {
+
+	cursor:pointer;
+}
+
+.form-select:hover {
+	color: rgb(207,207,218);
+}
+
+.form-select .or {
+	color:rgb(100, 100, 100);
+}
+

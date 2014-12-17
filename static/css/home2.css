@@ -1,0 +1,132 @@
+
+body {
+	background-color:rgb(23, 20, 20);
+}
+
+#menu-container {
+	position:relative;
+	width:800px;
+	margin:auto;
+	margin-top:100px;
+}
+
+.menu {
+	position:absolute;
+	width:350px;
+}
+
+#voter-menu {
+	left:0px;
+}
+
+#admin-menu {
+	right:0px;
+}
+
+.menu .head {
+	height:50px;
+	text-align:center;
+	border:2px solid black;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+#voter-menu .head {
+	background-color:rgb(106, 123, 101);
+}
+
+#voter-menu:hover .head {
+	background-color:rgb(186, 223, 176);
+}
+
+#admin-menu .head {
+	background-color:rgb(158, 141, 86);
+}
+
+#admin-menu:hover .head {
+	background-color:rgb(234, 209, 129);
+}
+
+.menu .content {
+	background-color:rgb(22, 16, 16);
+	height:296px;
+	box-shadow:0px 0px 4px black inset;
+	border:1px solid black;
+	border-top:none;
+	color:rgb(210,210,210);
+}
+
+.menu:hover .content {
+	background-color:rgb(42, 36, 36);
+	color:white;
+}
+
+.menu .description {
+	text-align:center;
+	padding:30px;
+	font-size:27px;
+	cursor:pointer;
+}
+
+.menu .form {
+	display:none;
+	padding:30px;
+	font-size:20px;
+}
+
+
+.field{
+	border:1px solid black;
+	border-bottom:none;
+	height:20px;
+	display:block;
+	padding:20px;
+	font-size:20px;
+	width:248px;
+	text-align:center;
+}
+
+.menu .field:first-child {
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+}
+
+.menu .field:last-child {
+	border-bottom-right-radius:5px;
+	border-bottom-left-radius:5px;
+}
+
+.form-buttons {
+	text-align:center;
+	margin-top:10px;
+}
+
+.menu input[type='submit'] {
+	padding:10px 15px;
+	min-width:120px;
+	font-size:20px;
+	font-weight:bold;
+	border-radius:3px;
+	border:1px solid black;
+	background-color:rgb(52, 46, 45);
+	cursor:pointer;
+	box-shadow:1px 1px 3px;
+}
+
+.menu input[type='submit']:active {
+	box-shadow:1px 1px 3px inset;
+}
+
+.form-select {
+
+	cursor:pointer;
+}
+
+.form-select:hover {
+	color: rgb(207,207,218);
+}
+
+.form-select .or {
+	color:rgb(100, 100, 100);
+}
+

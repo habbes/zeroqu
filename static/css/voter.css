@@ -1,0 +1,47 @@
+
+#top-wrapper {
+	background-color:rgb(68, 114, 119);
+	
+}
+
+#menu-wrapper {
+	border-color:rgb(68, 114, 119);
+}
+
+.menu-header, .menu-header a {
+	color:rgb(68, 114, 119);
+	font-weight:bold;
+}
+
+.menu-list li {
+	margin-bottom:2px;
+}
+
+.menu-list a {
+	background-color:rgb(68, 114, 119);
+}
+
+.submenu a{
+	color:rgb(68, 114, 119);
+	background-color:rgba(68, 114, 119,0.33);
+}
+
+button {
+	background-color:rgb(68, 114, 119);
+}
+
+button:hover {
+	background-color:rgb(54, 97, 102);
+}
+
+form input, form textarea, form select {
+	border:1px solid rgb(68, 114, 119);
+}
+
+element {
+	border-color:rgb(68, 114, 119);
+}
+
+.vote-count {
+	background-color:rgb(68, 114, 119);
+}
