@@ -2,7 +2,7 @@
 
 if($dbEnv = getenv('CLEARDB_DATABASE_URL')){
 	//production
-	$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$url = parse_url($dbEnv);
 
 	$hostname = $url["host"];
 	$username = $url["user"];
