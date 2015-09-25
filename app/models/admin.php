@@ -1,5 +1,5 @@
 <?php
-
+	
 class Admin extends DBModel
 {
 	
