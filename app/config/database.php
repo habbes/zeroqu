@@ -1,12 +1,33 @@
-<?php 
+<?php
+
+if($dbEnv = getenv('CLEARDB_DATABASE_URL')){
+	//production
+	$url = parse_url($dbEnv);
+
+	$hostname = $url["host"];
+	$username = $url["user"];
+	$password = $url["pass"];
+	$dbname = substr($url["path"], 1);
+
+}
+else {
+	//development
+	$hostname = 'localhost';
+	$username = 'root';
+	$password = '';
+	$dbname = 'elections';
+
+}
+
+
 /**
  * database configuration
  */
 $database = array(
-	"hostname" => "localhost",
-	"username" => "root",
-	"password" => "",
-	"dbname" => "elections"
+	"hostname" => $hostname,
+	"username" => $username,
+	"password" => $password,
+	"dbname" => $dbname
 );
 
 ?>

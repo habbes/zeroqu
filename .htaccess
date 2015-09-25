@@ -2,7 +2,7 @@ Options -MultiViews
 Options -Indexes
 RewriteEngine On
 
-RewriteBase /elections
+RewriteBase /
 
 RewriteRule ^public/(.+)$ static/$1 [END]
 RewriteRule ^index.php index.php [END]
