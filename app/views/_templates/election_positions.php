@@ -8,7 +8,7 @@
 	{
 ?>
 	<div class="position-wrapper panel panel-default" data-id="<?= $position->getId()?>">
-		<div class="panel-heading"><h3 class="panel-title"><?= $position->getTitle() ?></h3></div>
+		<div class="panel-heading title"><h3 class="panel-title"><?= $position->getTitle() ?></h3></div>
 		<div class="panel-body">
 			<p>This position has <b><?= $position->countCandidates() ?> candidates.</b></p>
 			<p class="description" data-empty="<?= $position->getDescription()? "false" : "true"?>">
