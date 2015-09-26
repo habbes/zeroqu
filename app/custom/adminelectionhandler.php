@@ -23,7 +23,7 @@ class AdminElectionHandler extends AdminHandler
 		$this->viewParams->election = $this->election;
 	}
 	
-	public function onCreate($electionName)
+	public function onCreate($electionName = null)
 	{
 		parent::onCreate($electionName);
 		$this->checkRights($electionName);

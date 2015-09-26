@@ -30,7 +30,7 @@ abstract class RequestHandler
 	 * the request is handled by the get/post method. It is passed the
 	 * same arguments that will be passed to the get/post methods.
 	 */
-	public function onCreate()
+	public function onCreate($electionName = null)
 	{
 		
 	}

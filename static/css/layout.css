@@ -1,3 +1,4 @@
+
 @CHARSET "ISO-8859-1";
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 
@@ -7,6 +8,7 @@ body {
 	color:rgb(108,96,98);
 }
 
+/*
 a {
 	text-decoration:none;
 	font-weight:bold;
@@ -82,7 +84,7 @@ header .title {
 }
 
 #menu-wrapper {
-	/*border-right:1px solid;*/
+	/*border-right:1px solid;*//*
 	padding:20px;
 	padding-left:30px;
 	
@@ -230,3 +232,4 @@ button {
 	font-size:2em;
 	font-weight:bold;
 }
+*/

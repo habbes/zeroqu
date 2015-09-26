@@ -11,9 +11,9 @@ foreach($positions as $position){
 			<?php 
 				foreach($candidates as $candidate) {
 			?>
-				<div class="candidate-wrapper-large float-left">
-					<div class="candidate-name bold"><?= $candidate->getName()?></div>
-					<div class="candidate-img-wrapper">
+				<div class="candidate-wrapper-large panel panel-default float-left">
+					<div class="candidate-name panel-heading"><?= $candidate->getName()?></div>
+					<div class="candidate-img-wrapper pannel-body">
 						<img alt="Candidate's picture" class="candidate-img-large" src="public/images/generic-user-96.png"/>
 					</div>
 				</div>

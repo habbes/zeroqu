@@ -66,5 +66,10 @@
 		-->
     	<!-- Custom Theme JavaScript -->
     	<script src="public/dist/js/sb-admin-2.js"></script>
+    	<script>
+		$(document).ready(function(){
+		    $('[data-toggle="popover"]').popover();   
+		});
+	</script>
 		</body>
 </html>

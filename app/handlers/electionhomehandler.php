@@ -23,7 +23,7 @@ class ElectionHomeHandler extends RequestHandler
 		}
 	}
 	
-	public function onCreate($electionName)
+	public function onCreate($electionName = null)
 	{
 		$access = false;
 		$election = Election::findByName($electionName);

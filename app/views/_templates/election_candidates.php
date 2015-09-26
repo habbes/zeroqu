@@ -1,5 +1,5 @@
 
-<div id="content-center">
+<div id="content-center" class="col-md-8">
 
 <?php 
 	$positions = $data->get("positions",[]);
@@ -10,26 +10,32 @@
 ?>
 	<div class="position-wrapper clear-both" data-id="<?= $position->getId()?>">
 		<h3 class="title"><?= $position->getTitle() ?></h3>
-		<div class="candidates-wrapper">
+		<div class="candidates-wrapper row">
 		<?php 
 			foreach($candidates as $candidate) {
 		?>
-			<div class="candidate-wrapper float-left" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
-				<div class="candidate-name bold"><?= $candidate->getName()?></div>
-				<div class="candidate-img-wrapper">
-					<img alt="Candidate's picture" class="candidate-img" src="public/images/generic-user-96.png"/>
+		<div class="col-md-3">
+			<div class="candidate-wrapper panel panel-default" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
+				<div class="candidate-name panel-heading"><?= $candidate->getName()?></div>
+				<div class="panel-body">
+					<img alt="Candidate's picture" class="img img-responsive col-md-12 col-xs-12" src="public/images/generic-user-96.png"/>
 				</div>
 				<?php 
 					if($allowEdit){
 				?>
-				<div>
-					<button class="btnEdit">Edit</button>
-					<button class="btnDelete">Remove</button>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="btn-group col-md-offset-2 col-md-10 col-xs-offset-3 col-xs-9" role="group" aria-label="...">
+						  <button type="button" class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+						  <button type="button" class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i></button>
+						</div>
+					</div>
 				</div>
 				<?php 
 					}
 				?>
 			</div>
+		</div>
 		
 		<?php
 			}
@@ -55,35 +61,35 @@
 ?>
 
 </div>
-<div id="content-right">
+<div id="content-right" class="col-md-4">
 
 <?php 
 	if($allowEdit) {
 ?>
 
 <h3 id="form-title">Add Candidate</h3>
-<form id="candidate-form" method="post" enctype="multipart/form-data">
+<form id="candidate-form" method="post" enctype="multipart/form-data" class="form">
 	<input type="hidden" name="action" value="create"/>
 	<input type="hidden" name="candidate" value="" />
-	<div class="form-row">
+	<div class="form-group">
 		<label>Position</label>
-		<select name="position">
+		<select name="position" class="form-control">
 		<?php foreach($positions as $position) {?>
 			<option value="<?= $position->getId()?>"><?= $position->getTitle() ?></option>
 		<?php }?>
 		</select>
 	</div>
-	<div class="form-row">
+	<div class="form-group">
 		<label>Name</label>
-		<input type="text" name="name" value=""/>
+		<input type="text" name="name" value="" class="form-control"/>
 	</div>
-	<div class="form-row">
+	<div class="form-group">
 		<label>Picture</label>
 		<input type="file" name="picture"/>
 	</div>
-	<div class="form-buttons">
-		<button name="actionBtn" >Add Candidate</button>
-		<button name="newBtn" style="display:none">Add New</button>
+	<div class="form-group">
+		<button name="actionBtn" class="btn btn-success">Add Candidate</button>
+		<button name="newBtn" style="display:none" class="btn btn-default">Add New</button>
 	</div>
 	<p><?= $data->formResult ?></p>
 </form>

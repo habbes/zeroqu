@@ -23,7 +23,7 @@ abstract class View
 	/**
 	 * display the view
 	 */
-	public function render()
+	public function render($options = null)
 	{
 		
 	}

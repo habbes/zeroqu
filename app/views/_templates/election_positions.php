@@ -1,5 +1,5 @@
 
-<div id="content-center">
+<div id="content-center" class="col-md-8">
 
 <?php 
 	$positions = $data->get("positions",[]);
@@ -7,23 +7,24 @@
 	foreach($positions as $position)
 	{
 ?>
-	<div class="position-wrapper" data-id="<?= $position->getId()?>">
-		<h3 class="title"><?= $position->getTitle() ?></h3>
-		<p>This position has <b><?= $position->countCandidates() ?> candidates.</b></p>
-		<p class="description" data-empty="<?= $position->getDescription()? "false" : "true"?>">
-			<?= $position->getDescription()? $position->getDescription() : "<i>No description available.</i>"?>
-		</p>
-		<?php 
-			if($allowEdit){
-		?>
-		<div>
-			<button class="btnEdit">Edit</button>
-			<button class="btnDelete">Delete</button>
+	<div class="position-wrapper panel panel-default" data-id="<?= $position->getId()?>">
+		<div class="panel-heading"><h3 class="panel-title"><?= $position->getTitle() ?></h3></div>
+		<div class="panel-body">
+			<p>This position has <b><?= $position->countCandidates() ?> candidates.</b></p>
+			<p class="description" data-empty="<?= $position->getDescription()? "false" : "true"?>">
+				<?= $position->getDescription()? $position->getDescription() : "<i>No description available.</i>"?>
+			</p>
+			<?php 
+				if($allowEdit){
+			?>
+			<div>
+				<button class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
+				<button class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
+			</div>
+			<?php 
+				}
+			?>
 		</div>
-		<?php 
-			}
-		?>
-		
 	</div>
 <?php 
 	}
@@ -37,27 +38,27 @@
 ?>
 
 </div>
-<div id="content-right">
+<div id="content-right" class="col-md-4">
 
 <?php 
 	if($allowEdit) {
 ?>
 
 <h3 id="form-title">Create Position</h3>
-<form id="position-form" method="post">
+<form id="position-form" method="post" class="form">
 	<input type="hidden" name="action" value="create"/>
 	<input type="hidden" name="position" value="" />
-	<div class="form-row">
+	<div class="form-group">
 		<label>Title</label>
-		<input type="text" name="title" value=""/>
+		<input type="text" name="title" value="" class="form-control"/>
 	</div>
-	<div class="form-row">
+	<div class="form-group">
 		<label>Description</label>
-		<textarea name="description"></textarea>
+		<textarea name="description" class="form-control"></textarea>
 	</div>
-	<div class="form-buttons">
-		<button name="actionBtn" >Save New Position</button>
-		<button name="newBtn" style="display:none">Create New</button>
+	<div class="form-group">
+		<button name="actionBtn" class="btn btn-success">Save New Position</button>
+		<button name="newBtn" style="display:none" class="btn btn-default">Create New</button>
 	</div>
 	<p><?= $data->formResult ?></p>
 </form>

@@ -2,7 +2,7 @@
 
 class AdminResultsView extends AdminView
 {
-	public function render($params)
+	public function render($params = null)
 	{
 		$this->data->election = $params->election;
 		$this->data->positions = $params->election->getPositions();

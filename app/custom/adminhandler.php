@@ -20,7 +20,7 @@ class AdminHandler extends RequestHandler
 		}
 	}
 	
-	public function onCreate()
+	public function onCreate($electionName = null)
 	{
 		$this->assertLogin();
 	}
