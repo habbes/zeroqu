@@ -1,7 +1,8 @@
 
 <div id="main-wrapper">
 	<div id="top-wrapper">
-		<header>
+	
+		<!--  <header>
 			<span class="title"><a href="home">Elections</a> | <?= Login::isAdminLoggedIn()? "admin" : "voter" ?></span>
 			<span id="usercontrol">
 			<?php 
@@ -12,7 +13,7 @@
 			?>
 				<span class="username"><?= $data->username.$electionTitle?> | <a href="logout" class="signout">sign out</a></span>
 			</span>
-		</header>
+		</header>-->
 	</div>
 	<div id="bottom-wrapper">
 		<div id="left-col">
