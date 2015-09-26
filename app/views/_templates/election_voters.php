@@ -68,7 +68,7 @@ $allowEdit = $data->election->isPending();
 
 <form method="post" class="form">
 	<h3>
-	<span data-toggle="popover" title="Add voters" data-placement="left" data-content="Enter the email addresses of the  voters below.Each voter will be assigned a unique Voter ID and a Password.You can optional set the string that will prefix each Voter ID.">Add voters
+	<span data-toggle="popover" title="Add voters" data-placement="bottom" data-content="Enter the email addresses of the  voters below.Each voter will be assigned a unique Voter ID and a Password.You can optional set the string that will prefix each Voter ID.">Add voters
 		<small class="fa-stack" style="font-size:small">
   			<i class="fa fa-circle fa-stack-2x"></i>
   			<i class="fa fa-question fa-stack-1x fa-inverse"></i>
