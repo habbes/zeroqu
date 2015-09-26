@@ -40,16 +40,16 @@ $allowEdit = $data->election->isPending();
 		
 			<form method="post" class="form-inline" action="<?= $data->election->getName()?>/voters#">
 				<input type="hidden" name="id" value="<?= $voter->getId() ?>"/>
-				<span class="col-md-9"   style="border-bottom: solid 1px #ddd" >
-				<input type="email" name="email" class="votersEmail" value="<?= $voter->getEmail() ?>"/></span>
-				<span class="col-md-1"   style="border-bottom: solid 1px #ddd" >
-					<span class="icon-wrapper" style="font-size: 26px" title="<?=$msg?>">
+				<span class="col-md-9 col-xs-7" style="border-bottom: solid 1px #ddd" >
+				<input type="email" name="email" class="votersEmail" value="<?= $voter->getEmail() ?>" required/></span>
+				<span class="col-md-1 col-xs-1" style="border-bottom: solid 1px #ddd" >
+					<span class="icon-wrapper" style="font-size: 21.4px" title="<?=$msg?>">
   							<i class="fa <?=$icon?>"></i>
 					</span>
 				</span>
 				<?php if($allowEdit) {?>
-				<span class="col-md-1"   style="border-bottom: solid 1px #ddd" ><button name="resend" class="icon-wrapper"><i class="fa fa-paper-plane" title="Resend Email"></i></button></span>
-				<span class="col-md-1"   style="border-bottom: solid 1px #ddd" ><button name="delete" class="icon-wrapper"><i class="fa fa-trash-o" title="Unregister user"></i></button></span>
+				<span class="col-md-1 col-xs-1"  style="border-bottom: solid 1px #ddd" ><button name="resend" class="icon-wrapper"><i class="fa fa-paper-plane" title="Resend Email"></i></button></span>
+				<span class="col-md-1 col-xs-1"  style="border-bottom: solid 1px #ddd" ><button name="delete" class="icon-wrapper"><i class="fa fa-trash-o" title="Unregister user"></i></button></span>
 				<?php } ?>
 			</form>
 		
