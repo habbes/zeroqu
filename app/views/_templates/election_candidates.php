@@ -14,7 +14,7 @@
 		<?php 
 			foreach($candidates as $candidate) {
 		?>
-		<div class="col-md-3">
+		<div class="col-md-4">
 			<div class="candidate-wrapper panel panel-default" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
 				<div class="candidate-name panel-heading"><?= $candidate->getName()?></div>
 				<div class="panel-body">
@@ -25,7 +25,7 @@
 				?>
 				<div class="panel-footer">
 					<div class="row">
-						<div class="btn-group col-md-offset-2 col-md-10 col-xs-offset-3 col-xs-9" role="group" aria-label="...">
+						<div class="btn-group col-md-offset-3 col-md-9 col-xs-offset-3 col-xs-9" role="group" aria-label="...">
 						  <button type="button" class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
 						  <button type="button" class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i></button>
 						</div>
