@@ -58,7 +58,7 @@ abstract class RequestHandler
 		$view = new $class($this->viewParams);
 		$args = func_get_args();
 		
-		$view->render();
+		$view->render($this->viewParams);
 		
 		
 		exit;
