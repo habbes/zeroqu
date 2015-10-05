@@ -16,15 +16,15 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8">
-			<div class="well">
-				<h3 style="text-align:center">ANU</h1>
-				<h4 style="text-align:center"><?= $data->election->getTitle() ?></h2>
-			</div>
+			
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Voter Login</h3>
 				</div>
 				<div class="panel-body">
+					<div class="well" style="text-align:center">
+						<b>Africa Nazarene</b> : <?= $data->election->getTitle() ?>
+					</div>
 					<form class="form" method="post">
 						<div class="form-group">
 							<label>Voter ID</label>
