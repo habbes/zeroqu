@@ -3,8 +3,9 @@
 class VoterLoginHandler extends ElectionHandler
 {
 	
-	public function get($election)
+	public function get($electionName)
 	{
+		$this->viewParams->voterId = $this->getVar('id');
 		$this->renderView('VoterLogin');
 	}
 	
