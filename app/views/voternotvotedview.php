@@ -2,7 +2,7 @@
 
 class VoterNotVotedView extends VoterView
 {
-	public function render($params)
+	public function render($params = null)
 	{
 		$this->data->position = $params->position;
 		$this->data->subtitle = "Your vote - ".$params->position->getTitle();

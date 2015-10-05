@@ -3,7 +3,7 @@
 class VoterRegEmailView extends EmailView
 {
 	
-	public function renderEmail($params)
+	public function renderEmail($params = null)
 	{
 		$this->data->election = $params->election;
 		$this->data->voterId = $params->voterId;

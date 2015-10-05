@@ -30,8 +30,8 @@ if($data->position->getDescription()){
 		}
 	?>
 	
-	<div class="form-buttons clear-both">
-		<button>Cast Vote</button>
+	<div class="form-group">
+		<button class="btn btn-success">Cast Vote</button>
 	</div>
 	<p><?= $data->formResult ?></p>
 </form>

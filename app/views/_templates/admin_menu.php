@@ -35,27 +35,34 @@
                             </div>
                             <!-- /input-group -->
                         </li>
-                        <li>
-                            <a href="/"><i class="fa fa-dashboard fa-fw"></i> Elections</a>
-                        </li>
-                        <li>
-                        	<a href="/new-election"><i class=""></i> New Election</a>
-                        </li>
-                        <?php foreach($data->elections as $election){
-                         $url = $election->getName();
-                        ?>
-                        <li>
-                            <a href="<?=$url?>"><i class="fa fa-bar-chart-o fa-fw"></i> <?=$election->getTitle()?><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="<?=$url?>/settings">Settings</a></li>
-								<li><a href="<?=$url?>/positions">Positions</a></li>
-								<li><a href="<?=$url?>/candidates">Candidates</a></li>
-								<li><a href="<?=$url?>/voters">Voters</a></li>
-								<li><a href="<?=$url?>/results">Results</a></li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <?php } ?>
+                        <?php if($data->election){ ?>
+	                        <li>
+	                            <a href="<?=$data->election->getName()?>"><i class="fa fa-dashboard fa-fw"></i> <strong><?=$data->election->getTitle() ?></strong></a>
+	                        </li>
+	                        <?php $url = $data->election->getName(); ?>
+	                        <li>
+	                        	<a href="<?=$url?>/settings"><i class="fa fa-cogs"></i> Settings</a>
+	                        </li>
+							<li>
+								<a href="<?=$url?>/positions"><i class="fa fa-users"></i> Positions</a>
+							</li>
+							<li
+								><a href="<?=$url?>/candidates"><i class="fa fa-users"></i> Candidates</a>
+							</li>
+							<li>
+								<a href="<?=$url?>/voters"><i class="fa fa-users"></i> Voters</a>
+							</li>
+							<li>
+								<a href="<?=$url?>/results"><i class="fa fa-line-chart"></i> Results</a>
+							</li>
+						<?php }else{ ?>
+							<div class="col-md-12 col-xs-12">
+								<p>This panel shows the detailed of the selected election
+							</div>
+							
+						<?php } ?>
+                    </ul>
+                      
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

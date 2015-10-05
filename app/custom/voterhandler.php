@@ -40,7 +40,7 @@ class VoterHandler extends RequestHandler
 		$this->election = $election;
 	}
 	
-	public function onCreate($electionName)
+	public function onCreate($electionName = null)
 	{
 		$this->assertLogin();
 		$this->checkRights($electionName);

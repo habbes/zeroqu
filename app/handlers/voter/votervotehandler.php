@@ -25,7 +25,7 @@ class VoterVoteHandler extends VoterHandler
 		$this->renderView("VoterNotVoted");
 	}
 	
-	public function onCreate($electionName)
+	public function onCreate($electionName = null)
 	{
 		parent::onCreate($electionName);
 		if($this->election->isPending()){
