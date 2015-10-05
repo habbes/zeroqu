@@ -4,14 +4,47 @@ class ElectionVotersHandler extends AdminElectionHandler
 {
 	
 	
-	private function showPage()
+	private function showPage($view)
 	{
-		$this->viewParams->voters = $this->election->getVoters();
-		$this->renderView("ElectionVoters");
+		$voters = [];
+		if(is_null($view)){
+			$view = "sent";
+		}
+			if($view == "sent"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::EMAIL_SENT:
+							$voters[] = $voter;
+					}
+				}
+			}else if($view == "failed"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::EMAIL_FAILED:
+							$voters[] = $voter;
+					}
+				}
+			}else if($view == "registered"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::REGISTERED:
+							$voters[] = $voter;
+					}
+				}
+			}else if($view == "all"){
+				$voters = $this->election->getVoters();
+			}else{
+				
+			}
+			$this->viewParams->selectedTab = $view;
+			$this->viewParams->voters = $voters;
+			$this->renderView("ElectionVoters");
+		
+		
 	}
-	public function get()
+	public function get($election,$view = null)
 	{
-		$this->showPage();
+		$this->showPage($view);
 	}
 	
 	public function post()

@@ -1,42 +1,27 @@
 <?php 
 $allowEdit = $data->election->isPending();
+print_r($data); exit;
 ?>
 
 <div class="col-md-8">
-<?php
-	if(!$data->voters){
-?>
-<p>No voters found. Use the form on the right to add voters.</p>
-<?php 
-	}
-	else {
-?>
-	<?php if($data->unsent) {?>
-	<p style="font-weight:bold;color:red">At least <?= $data->unsent?> emails were not sent successfully.</p>
-	<?php }?>
+<ul class="nav nav-tabs">
+	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="#">Sent</a></li>
+	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="#">Failed</a></li>
+	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="#">Registered</a></li>
+	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="#">All</a></li>
+	</ul>
+<?php if(!$data->voters){?>
+	<div class="col-md-12" >
+		<div class="row">
+			<p>No voters found. Use the form on the right to add voters.</p>
+		</div>
+	</div>
+<?php }else{ ?>
+
 <div class="col-md-12" >
-	
 	<div class="row">
-	<?php 
-		foreach($data->voters as $voter){
-			$emailSent = $voter->isEmailSent();
-			$msg = $emailSent? "Email sent successfully" : "Email not sent";
-			$icon = "fa-info";
-			switch($voter->getStatus()){
-				case Voter::EMAIL_FAILED:
-					$msg = "Email not sent";
-					$icon = "fa-exclamation-triangle text-danger";
-					break;
-				case Voter::EMAIL_SENT:
-					$msg = "Email sent but not yet registered";
-					$icon = "fa-info-circle text-info";
-					break;
-				case Voter::REGISTERED:
-					$msg = "Voter registered successfully";
-					$icon = "fa-check-circle text-success";
-					break;
-			}
-	?>
+	
+	<?php foreach($data->voters as $voter){ ?>
 		
 			<form method="post" class="form-inline" action="<?= $data->election->getName()?>/voters#">
 				<input type="hidden" name="id" value="<?= $voter->getId() ?>"/>
