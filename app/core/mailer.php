@@ -41,11 +41,11 @@ class Mailer
 // 		$transport->setPassword($password);
 // 		$mailer = Swift_Mailer::newInstance($transport);
 		
-		$mandrill = new Mandrill($mandrill['api_key']);
+		$mailer = new Mandrill($mandrill['api_key']);
 		
 		self::$fromEmail = $mandrill['from_email'];
 		self::$fromName = $mandrill['from_name'];
-		return $mandrill;
+		return $mailer;
 	}
 	
 	/**
