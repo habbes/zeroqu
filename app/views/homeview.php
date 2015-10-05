@@ -8,7 +8,7 @@ class HomeView extends View
 		$this->data->loginResult = $params->loginResult;
 		$this->data->voterLoginResult = $params->voterLoginResult;
 		$this->data->subtitle = "Home";
-		$this->data->styles = ["home.css"];
+		//$this->data->styles = ["home.css"];
 		$this->data->body = $this->read("home");
 		$this->show("base");
 	}

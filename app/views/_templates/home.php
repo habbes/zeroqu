@@ -1,134 +1,59 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<?= URL_ROOT ?>">zero<b>Q</b>u</a>
+    </div>
+    
+    <div class="collapse navbar-collapse">
+    	<ul class="nav navbar-nav navbar-right">
+    		<li><a href="#">Features</a></li>
+    		<li><a href="#">Pricing</a></li>
+    		<li><a href="#">Help</a></li>    		
+    	</ul>
+    	
+    </div>
 
-	<div id="menu-container">
-		<div class="menu" id="voter-menu">
-			<div class="head">
-				<h2>Voter</h2>
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Admin Login</h3>
 			</div>
-			<div class="content">
-				<div class="description">
-					Enter to cast vote or view candidates.
-				</div>
-				<div class="form login-form">
-					<form method="post">
-						<input type="hidden" name="form" value="voter-login"/>
-						<div>
-							<div class="form-row">
-								<label>Election ID</label>
-								<input class="field" name="election" type="text" />
-							</div>
-							<div class="form-row">
-								<label>Voter ID</label>
-								<input class="field" name="voter" type="text" />
-							</div>
-							<div class="form-row">
-								<label>Password</label>
-								<input class="field" name="password" type="password" />
-							</div>
+			<div class="panel-body">
+				<?php if($data->loginError){ ?>
+				<p class="alert alert-danger"><?= $data->loginError ?></p>
+				<?php } ?>
+				<form class="form" id="signin" method="post">
+					<input type="hidden" name="form" value="signin">
+					<div class="form-group">
+						<label>Username</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" name="username" class="form-control" value="<?= $data->username ?>" required>
 						</div>
-						<div class="form-buttons">
-							<input class="button" type="submit" value="Enter"/>
+					</div>
+					<div class="form-group">
+						<label>Password</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" name="password" class="form-control" required>
 						</div>
-						<p>
-							<?= $data->voterLoginResult ?>
-						</p>
-					</form>
-				</div>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-success form-control"><i class="fa fa-sign-in"></i> Sign In</button>
+					</div>
+				</form>			
 			</div>
-		</div>
-		<div class="menu" id="admin-menu">
-			<div class="head">
-				<h2>Admin</h2>
 			</div>
-			<div class="content">
-				<div class="description">
-					Enter to create or manage elections.
-				</div>
-				<div class="form login-form" id="admin-login">
-					<form method="post">
-						<input type="hidden" name="form" value="admin-login"/>
-						<div>
-							<div class="form-row">
-								<label>Username</label>
-								<input class="field" name="username" type="text"/>
-							</div>
-							<div class="form-row">
-								<label>Password</label>
-								<input class="field" name="password" type="password" />
-							</div>
-						</div>
-						<div class="form-buttons">
-						<input class="button" type="submit" value="Sign In"/>
-						<span class="form-select"><span class="or">or</span> Sign Up</span>
-						</div>
-						<p>
-							<?= $data->loginResult ?>
-						</p>
-						
-					</form>
-				</div>
-				<div class="form" id="admin-signup">
-					<form method="post" >
-						<input type="hidden" name="form" value="admin-signup"/>
-						<div>
-							<div class="form-row">
-								<label>Username</label>
-								<input class="field" name="username" type="text"/>
-							</div>
-							<div class="form-row">
-								<label>Password</label>
-								<input class="field" name="password" type="password"/>
-							</div>
-							<div class="form-row">
-								<label>Confirm</label>
-								<input class="field" name="confirm_password" type="password"/>
-							</div>
-						</div>
-						<div class="form-buttons">
-						<input class="button" type="submit" value="Sign Up"/>
-						<span class="form-select"><span class="or">or</span> Sign In</span>
-						</div>
-						<div class="form-row">
-							<span class="error"><?= $data->signupError; ?></span>
-						</div>
-						<p>
-							<?= $data->signupResult ?>
-						</p>
-					</form>
-				</div>
-			</div>
-		</div>
 	</div>
-	<script>
-		var descs = document.getElementsByClassName("description");
-		var desc;
-		for(var i = 0; i < descs.length; i++){
-			desc = descs[i];
-			desc.onclick = function(){
-				var par = this.parentNode;
-				var form = par.getElementsByClassName("login-form")[0];
-				form.style.display = "block";
-				this.style.display = "none";
-			};
-		}
-
-		var adminLogin = document.getElementById("admin-login");
-		var adminSignup = document.getElementById("admin-signup");
-
-		function switchAdminForm(){
-			if(adminLogin.style.display == "block"){
-				adminLogin.style.display = "none";
-				adminSignup.style.display = "block";
-			}
-			else {
-				adminLogin.style.display = "block";
-				adminSignup.style.display = "none";
-			}
-		}
-
-		var fs = document.getElementsByClassName("form-select");
-		for(var i = 0; i < fs.length; i++){
-			fs[i].onclick = switchAdminForm;
-		}
-		
-	</script>
-	
+</div>

@@ -20,24 +20,10 @@ class HomeHandler extends RequestHandler
 	public function post()
 	{
 		$form = $this->postVar("form");
-		if($form == "admin"){
+		if($form == "signin"){
 			$this->adminLogin();
 		}
-		else if($form == "voter"){
-			$this->voterLogin();
-		}
 		
-		switch($form){
-			case "admin-login":
-				$this->adminLogin();
-				break;
-			case "admin-signup":
-				$this->adminSignup();
-				break;
-			case "voter-login":
-				$this->voterLogin();
-				break;
-		}
 		
 		$this->showLoginPage();
 	}
@@ -65,12 +51,13 @@ class HomeHandler extends RequestHandler
 	{
 		$username = trim($this->postVar("username"));
 		$password = trim($this->postVar("password"));
-		
+	
 		if($admin = Admin::login($username, $password)){
 			Login::adminLogin($admin);
 			$this->localRedirect("home");
 		}
-		$this->viewParams->loginResult = "Login failed";
+		$this->viewParams->loginError = "Incorrect username or password.";
+		$this->viewParams->username = $username;
 	}
 	
 	private function adminSignup()
@@ -88,17 +75,5 @@ class HomeHandler extends RequestHandler
 		$this->viewParams->signupResult = "Signup failed";
 	}
 	
-	private function voterLogin()
-	{
-		$eId = trim($this->postVar("election"));
-		$vId = trim($this->postVar("voter"));
-		$password = trim($this->postVar("password"));
-		
-		if($voter = Voter::login($vId, $eId, $password)){
-			Login::voterLogin($voter);
-			$this->localRedirect("home");
-		}
-		$this->viewParams->voterLoginResult = "Login failed";
-	}
 	
 }
