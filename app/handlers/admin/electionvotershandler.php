@@ -4,14 +4,50 @@ class ElectionVotersHandler extends AdminElectionHandler
 {
 	
 	
-	private function showPage()
+	private function showPage($view)
 	{
-		$this->viewParams->voters = $this->election->getVoters();
-		$this->renderView("ElectionVoters");
+		$voters = [];
+		if(is_null($view)){
+			$view = "sent";
+		}
+			if($view == "sent"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::EMAIL_SENT:
+							$voters[] = $voter;
+							break;
+					}
+				}
+			}else if($view == "failed"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::EMAIL_FAILED:
+							$voters[] = $voter;
+							break;
+					}
+				}
+			}else if($view == "registered"){
+				foreach($this->election->getVoters() as $voter){
+					switch($voter->getStatus()){
+						case Voter::REGISTERED:
+							$voters[] = $voter;
+							break;
+					}
+				}
+			}else if($view == "all"){
+				$voters = $this->election->getVoters();
+			}else{
+				
+			}
+			$this->viewParams->selectedTab = $view;
+			$this->viewParams->voters = $voters;
+			$this->renderView("ElectionVoters");
+		
+		
 	}
-	public function get()
+	public function get($election,$view = null)
 	{
-		$this->showPage();
+		$this->showPage($view);
 	}
 	
 	public function post()
@@ -24,8 +60,47 @@ class ElectionVotersHandler extends AdminElectionHandler
 		}
 		else if(isset($_POST['delete'])){
 			$this->deleteVoter();
+		}else if(isset($_POST['selected'])){
+			$selected = $_POST['selected'];
+			switch($selected){
+				case 'all':
+					foreach($this->election->getVoters() as $voter){
+						if(!$voter->sendEmail(new VoterRegEmailView())){
+							$this->viewParams->formResult = "Email not sent";
+						}
+					}
+					break;
+				case 'registered':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::REGISTERED){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+				case 'sent':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::EMAIL_SENT){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+				case 'failed':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::EMAIL_FAILED){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+			}
 		}
-		$this->showPage();
+		$view = null;
+		$this->showPage($view);
 		
 	}
 	
