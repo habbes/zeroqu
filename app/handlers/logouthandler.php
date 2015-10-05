@@ -8,7 +8,7 @@ class LogoutHandler extends RequestHandler
 		if(Login::isVoterLoggedIn()){
 			$voter = Login::getVoter();
 			$dest = $voter->getElection()->getName() . "/voter-login?id="
-					. $voter->getId();	
+					. $voter->getVoterId();	
 		}
 		Login::logout();
 		$this->localRedirect($dest);
