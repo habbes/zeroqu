@@ -15,6 +15,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 					switch($voter->getStatus()){
 						case Voter::EMAIL_SENT:
 							$voters[] = $voter;
+							break;
 					}
 				}
 			}else if($view == "failed"){
@@ -22,6 +23,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 					switch($voter->getStatus()){
 						case Voter::EMAIL_FAILED:
 							$voters[] = $voter;
+							break;
 					}
 				}
 			}else if($view == "registered"){
@@ -29,6 +31,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 					switch($voter->getStatus()){
 						case Voter::REGISTERED:
 							$voters[] = $voter;
+							break;
 					}
 				}
 			}else if($view == "all"){
@@ -57,8 +60,47 @@ class ElectionVotersHandler extends AdminElectionHandler
 		}
 		else if(isset($_POST['delete'])){
 			$this->deleteVoter();
+		}else if(isset($_POST['selected'])){
+			$selected = $_POST['selected'];
+			switch($selected){
+				case 'all':
+					foreach($this->election->getVoters() as $voter){
+						if(!$voter->sendEmail(new VoterRegEmailView())){
+							$this->viewParams->formResult = "Email not sent";
+						}
+					}
+					break;
+				case 'registered':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::REGISTERED){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+				case 'sent':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::EMAIL_SENT){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+				case 'failed':
+					foreach($this->election->getVoters() as $voter){
+						if($voter->getStatus() == Voter::EMAIL_FAILED){
+							if(!$voter->sendEmail(new VoterRegEmailView())){
+								$this->viewParams->formResult = "Email not sent";
+							}
+						}
+					}
+					break;
+			}
 		}
-		$this->showPage();
+		$view = null;
+		$this->showPage($view);
 		
 	}
 	
