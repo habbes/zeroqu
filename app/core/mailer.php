@@ -1,13 +1,10 @@
 <?php
 
-$ds = DIRECTORY_SEPARATOR;
-require_once __DIR__ . "{$ds}Swift{$ds}lib{$ds}swift_required.php";
-
 class Mailer
 {
 	
 	/**
-	 * @var Swift_Mailer
+	 * @var Mandrill
 	 */
 	private static $instance;
 	
@@ -28,19 +25,6 @@ class Mailer
 		$ds = DIRECTORY_SEPARATOR;
 		require_once DIR_CONFIG.$ds."mandrill.php";
 		
-		
-// 		$host = $smtp["host"];
-// 		$port = $smtp["port"];
-// 		$security = $smtp["security"];
-// 		$uname = $smtp["uname"];
-// 		$password = $smtp["pass"];
-// 		$from = $smtp["from"];
-// 		$fromName = $smtp["from_name"];
-// 		$transport = Swift_SmtpTransport::newInstance($host, $port, $security);
-// 		$transport->setUsername($uname);
-// 		$transport->setPassword($password);
-// 		$mailer = Swift_Mailer::newInstance($transport);
-		
 		$mailer = new Mandrill($mandrill['api_key']);
 		
 		self::$fromEmail = $mandrill['from_email'];
@@ -50,7 +34,7 @@ class Mailer
 	
 	/**
 	 * the working instance of this class
-	 * @return Swift_Mailer
+	 * @return Mandrill
 	 */
 	public static function getInstance(){
 		if(!self::$instance){
@@ -91,17 +75,6 @@ class Mailer
 			]
 			
 		];
-		
-// 		$msg = Swift_Message::newInstance($subject);
-// 		$msg->setTo([$email]);
-// 		$msg->setBody($htmlbody, "text/html");
-// 		$msg->setFrom([self::$fromEmail => self::$fromName]);
-		
-// 		if(empty($textbody)){
-// 			$textbody = html_entity_decode(strip_tags($htmlbody));
-// 		}
-		
-// 		$msg->addPart($textbody, "text/plain");
 		
 		try {
 			$mailer->messages->send($msg, true);
