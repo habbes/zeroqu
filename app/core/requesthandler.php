@@ -19,6 +19,10 @@ abstract class RequestHandler
 		$this->viewParams = new DataObject();
 	}
 	
+	/**
+	 * gets the instance of the current session
+	 * @return Session
+	 */
 	public function session()
 	{
 		return Session::getInstance();
@@ -30,7 +34,7 @@ abstract class RequestHandler
 	 * the request is handled by the get/post method. It is passed the
 	 * same arguments that will be passed to the get/post methods.
 	 */
-	public function onCreate($electionName = null)
+	public function onCreate()
 	{
 		
 	}
@@ -51,10 +55,11 @@ abstract class RequestHandler
 		$ds = DIRECTORY_SEPARATOR;
 		$viewPath = str_replace("/", $ds, $viewPath);
 		include DIR_VIEWS.$ds.strtolower($viewPath).".php";
-		$view = new $class();
+		$view = new $class($this->viewParams);
 		$args = func_get_args();
 		
-		$view->render($this->viewParams);
+		$view->render();
+		
 		
 		exit;
 	}
@@ -65,14 +70,38 @@ abstract class RequestHandler
 	 */
 	public function localRedirect($url)
 	{
-		header("Location: ".URL_ROOT . "/$url");
+		if(URL_ROOT_SUBPATH && strpos($url, URL_ROOT_SUBPATH) === 0)
+			$url = substr($url, strlen(URL_ROOT_SUBPATH));
+		
+		if(substr($url, 0, 1) != "/")
+			$url = "/".$url;
+		$this->redirect(URL_ROOT.$url);
+	
+	}
+	
+	/**
+	 * rediects to the specified absolute url
+	 * @param string $url
+	 */
+	public function redirect($url)
+	{
+		header("Location: ".$url);
 		exit;
+	}
+	
+	/**
+	 * redirects back to the current page
+	 */
+	public function reloadPage()
+	{
+		$this->localRedirect($_SERVER['REQUEST_URI']);
 	}
 	
 	/**
 	 * gets a GET variable with the given name if the variable is set
 	 * @param string $name the name of the variable to retriev
 	 * @param mixed $default value returned when the variable is not set
+	 * @returns string
 	 */
 	public function getVar($name, $default = null)
 	{
@@ -80,13 +109,52 @@ abstract class RequestHandler
 	}
 	
 	/**
+	 * gets a trimmed GET variable with the given name if the variable is set
+	 * @param string $name the name of the variable to retriev
+	 * @param mixed $default value returned when the variable is not set
+	 * @returns string
+	 */
+	public function trimGetVar($name, $default = null)
+	{
+		return trim($this->getVar($name, $default));
+	}
+	
+	/**
 	 * gets a POST variable with the given name if the variable is set
 	 * @param string $name the name of the variable to retriev
 	 * @param mixed $default value returned when the variable is not set
+	 * @return string
 	 */
 	public function postVar($name, $default = null)
 	{
 		return isset($_POST[$name])? $_POST[$name] : $default;
+	}
+	
+	/**
+	 * gets a trimmed POST variable with the given name if the variable is set
+	 * @param string $name the name of the variable to retriev
+	 * @param mixed $default value returned when the variable is not set
+	 * @returns string
+	 */
+	public function trimPostVar($name, $default = null)
+	{
+		return trim($this->postVar($name, $default));
+	}
+	
+	/**
+	 * gets a FILE variable with the given name and returns an object with the file's metadata
+	 * @param string $name
+	 * @param mixed $default
+	 * @return StdClass
+	 */
+	public function fileVar($name, $default = null)
+	{
+		if(!isset($_FILES[$name]))
+			return $default;
+		
+		$file = $_FILES[$name];
+		
+		return (object) $file;
 	}
 	
 }
