@@ -35,6 +35,8 @@ class ElectionVotersHandler extends AdminElectionHandler
 		
 		$emails = trim($this->postVar("emails"));
 		
+		
+		
 		if(!$emails){
 			$this->viewParams->formResult = "Emails must be provided";
 		}
@@ -43,9 +45,14 @@ class ElectionVotersHandler extends AdminElectionHandler
 			if(!$this->election->getPrefix()){
 				$this->election->setPrefix($prefix);
 			}
+			
+			
+			
 			$emailView = new VoterRegEmailView();
 			$this->election->addVoters($emails, $emailView);
 		}
+		
+		
 		
 	}
 	

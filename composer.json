@@ -6,5 +6,7 @@
             "email": "haby_habbes@outlook.com"
         }
     ],
-    "require": {}
+    "require": {
+        "mandrill/mandrill": "^1.0"
+    }
 }
