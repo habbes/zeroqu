@@ -106,7 +106,6 @@ class ElectionVotersHandler extends AdminElectionHandler
 	
 	public function addVoters()
 	{
-		$prefix = trim($this->postVar("prefix"));
 		
 		$emails = trim($this->postVar("emails"));
 		
@@ -117,11 +116,6 @@ class ElectionVotersHandler extends AdminElectionHandler
 		}
 		else {
 			$emails = explode("\n", $emails);
-			if(!$this->election->getPrefix()){
-				$this->election->setPrefix($prefix);
-			}
-			
-			
 			
 			$emailView = new VoterRegEmailView();
 			$this->election->addVoters($emails, $emailView);

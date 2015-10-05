@@ -15,11 +15,11 @@ class Voter extends DBModel
 	const EMAIL_SENT = 2;
 	const REGISTERED = 3;
 	
-	public static function create(Election $election, $number, $email, EmailView $emailView)
+	public static function create(Election $election, $email, EmailView $emailView)
 	{
 		$voter = new self();
 		$voter->setElection($election);
-		$voter->setVoterId($voter->getElection()->getPrefix() . $number);
+		$voter->setVoterId($email);
 		$voter->setEmail($email);
 		$voter->status = self::EMAIL_FAILED;
 		
@@ -123,7 +123,7 @@ class Voter extends DBModel
 		try{
 			$this->save();
 			$params = new DataObject(["election"=>$this->getElection(),"voterId"=>$this->voter_id,"voterPass"=>$pass]);
-			$result = Mailer::sendHtml($this->email,null, "Elections Manager", $emailView->renderEmail($params));
+			$result = Mailer::sendHtml($this->email,null, "Voter Login Details", $emailView->renderEmail($params));
 			if($result){
 				
 				$this->status = self::EMAIL_SENT;
