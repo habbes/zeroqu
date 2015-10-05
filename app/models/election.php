@@ -11,8 +11,6 @@ class Election extends DBModel
 	protected $status;
 	protected $start_date;
 	protected $end_date;
-	protected $prefix;
-	protected $increment;
 	
 	private $_admin;
 	
@@ -27,7 +25,7 @@ class Election extends DBModel
 		$election->setName($name);
 		$election->setTitle($title);
 		$election->setStatus(self::PENDING);
-		$election->increment = 1;
+		
 		try{
 			$election->save();
 			return $election;
@@ -120,15 +118,6 @@ class Election extends DBModel
 		return true;
 	}
 	
-	public function getIncrement()
-	{
-		return (int) $this->increment;
-	}
-	
-	public function setIncrement($i)
-	{
-		$this->increment = $i;
-	}
 	
 	public function getPositions()
 	{
@@ -170,8 +159,7 @@ class Election extends DBModel
 		foreach($emails as $email){
 			$email = trim($email);
 			if(!$email) continue;
-			Voter::create($this, $this->getIncrement(), $email, $emailView);
-			$this->setIncrement($this->getIncrement() + 1);
+			Voter::create($this, $email, $emailView);
 		}
 		
 		try {
