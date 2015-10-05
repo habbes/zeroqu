@@ -10,7 +10,7 @@
 			$sub = $data->get('subtitle','');
 			$sub = $sub? $sub." | " : "";
 		?>
-		<title><?= $sub?>Elections Manager</title>
+		<title><?= $sub?>zeroQu</title>
 		<base href="<?= URL_ROOT."/"?>">
 		<link href="public/css/basic.css" rel="stylesheet" >
 		<!-- Bootstrap Core CSS -->
