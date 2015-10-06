@@ -107,20 +107,37 @@ class ElectionVotersHandler extends AdminElectionHandler
 	public function addVoters()
 	{
 		
-		$emails = trim($this->postVar("emails"));
+		$tokens = [];
+		$emails = [];
+		if(isset($_FILES) && $_FILES['csv']['size'] !== 0){
+			$file = fopen($_FILES['csv']['tmp_name'],'r');
+			
+			while(!feof($file)){
+				$tokens[] = fgetcsv($file);
+			}
+			foreach($tokens as $group){
+				foreach($group as $token){
+					if(filter_var($token,FILTER_VALIDATE_EMAIL)){
+						$emails[] = $token;
+					}else{
+						continue;
+					}
+				}
+			}
+			fclose($file);
+		}
 		
-		
-		
-		if(!$emails){
+		$inputEmails = trim($this->postVar("emails"));
+		if(!$inputEmails){
 			$this->viewParams->formResult = "Emails must be provided";
 		}
 		else {
-			$emails = explode("\n", $emails);
+			$inputEmails = explode("\n", $inputEmails);
+			$emails = array_merge($emails,$inputEmails);
 			
 			$emailView = new VoterRegEmailView();
 			$this->election->addVoters($emails, $emailView);
 		}
-		
 		
 		
 	}

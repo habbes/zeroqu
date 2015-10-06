@@ -2,7 +2,7 @@
 
 class HomeView extends View
 {
-	public function render($params)
+	public function render($params = null)
 	{
 		$this->data->signupResult = $params->signupResult;
 		$this->data->loginResult = $params->loginResult;
