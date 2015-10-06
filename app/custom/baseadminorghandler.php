@@ -3,6 +3,7 @@
 class BaseAdminOrgHandler extends AdminHandler
 {
 	public $org;
+	public $orgUrl;
 	public $orgAdmin;
 	
 	public function checkOrg($orgName)
@@ -20,10 +21,12 @@ class BaseAdminOrgHandler extends AdminHandler
 		$this->orgAdmin = $orgAdmin;
 		$this->viewParams->org = $org;
 		$this->viewParams->orgAdmin = $orgAdmin;
+		$this->orgUrl = URL_ROOT . "/orgs/".$org->getName();
+		$this->viewParams->orgUrl = $this->orgUrl;
 	}
 	
 	public function onCreate($orgName){
 		parent::onCreate();
-		$this->checkOrg();
+		$this->checkOrg($orgName);
 	}
 }

@@ -1,9 +1,10 @@
 <?php
 
-class AdminElectionHandler extends AdminHandler
+class AdminElectionHandler extends BaseAdminOrgHandler
 {
 	
-	protected $election;
+	public $election;
+	public $electionUrl;
 
 	
 	/**
@@ -12,7 +13,7 @@ class AdminElectionHandler extends AdminHandler
 	 * election properties if the user has the rights
 	 * @param string $electionName the name/id of the election
 	 */
-	protected function checkRights($electionName)
+	protected function checkElectionRights($electionName)
 	{
 		$election = Election::findByName($electionName);
 		if(!$election || !$this->admin->is($election->getAdmin())){
@@ -21,11 +22,13 @@ class AdminElectionHandler extends AdminHandler
 		
 		$this->election = $election;
 		$this->viewParams->election = $this->election;
+		$this->electionUrl = $this->orgUrl . "/elections/" . $election->getName();
+		$this->viewParams->electionUrl = $this->electionUrl;
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
-		parent::onCreate($electionName);
-		$this->checkRights($electionName);
+		parent::onCreate($orgName);
+		$this->checkElectionRights($electionName);
 	}
 }
