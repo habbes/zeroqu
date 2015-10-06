@@ -80,7 +80,7 @@ $allowEdit = $data->election->isPending();
 ?>
 <div class="col-md-4">
 
-<form method="post" class="form">
+<form method="post" class="form" enctype="multipart/form-data">
 	<div style="font-size: 1.1em"><strong>
 	<span data-toggle="popover" title="Add voters" data-placement="bottom" data-content="Enter the email addresses of the  voters below.Each voter will use the provided email and an automatically generated Password.">Add voters
 		<small class="fa-stack" style="font-size:small">
@@ -91,7 +91,7 @@ $allowEdit = $data->election->isPending();
 	</strong></div>
 	<div class="form-group">
 		<label>Upload file</label>
-		<input type="file" name="file">
+		<input type="file" name="csv">
 		<span class="help-block">Upload a CSV file containing the voters email addresses</span>
 	</div>
 	<div class="form-group">
