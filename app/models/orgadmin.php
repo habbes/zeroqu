@@ -86,8 +86,8 @@ class OrgAdmin extends DBModel
 	{
 		$orgs = [];
 		$res  = static::findByField('admin_id', $admin->getId());
-		while($org = $res->fetch()){
-			$orgs[] =$org;
+		while($orgadmin = $res->fetch()){
+			$orgs[] = Org::findById($orgadmin->getOrgId());
 		}
 		return $orgs;
 	}
@@ -96,8 +96,8 @@ class OrgAdmin extends DBModel
 	{
 		$admins = [];
 		$res  = static::findByField('org_id', $org->getId());
-		while($admin = $res->fetch()){
-			$admins[] = $admin;
+		while($orgadmin = $res->fetch()){
+			$admins[] = Admin::findById($orgadmin->getAdminId());
 		}
 		return $admins;
 	}
