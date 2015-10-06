@@ -14,9 +14,9 @@
                         </li>
                         <?php if($data->election){ ?>
 	                        <li>
-	                            <a href="<?=$data->election->getName()?>"><i class="fa fa-dashboard fa-fw"></i> <strong><?=$data->election->getTitle() ?></strong></a>
+	                            <a href="<?=$data->electionUrl?>"><i class="fa fa-dashboard fa-fw"></i> <strong><?=$data->election->getTitle() ?></strong></a>
 	                        </li>
-	                        <?php $url = $data->election->getName(); ?>
+	                        <?php $url = $data->electionUrl; ?>
 	                        <li>
 	                        	<a href="<?=$url?>/settings"><i class="fa fa-cogs"></i> Settings</a>
 	                        </li>
