@@ -7,6 +7,7 @@ $routes = [
 	['^(?:(?:home|index)(?:\.html)?)?\/?$', "Home"],
 	['^logout$', "Logout"],
 	['^new-election$', "admin/NewElection"],
+	['^orgs\/([\w\-]+)\/?$', "admin/OrgHome"],
 	['^([\w\-]+)\/?$', "ElectionHome"],
 	['^([\w\-]+)\/settings\/?$', "admin/ElectionSettings"],
 	['^([\w\-]+)\/positions\/?$', "admin/ElectionPositions"],

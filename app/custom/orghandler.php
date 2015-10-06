@@ -16,6 +16,8 @@ class OrgHandler extends RequestHandler
 		}
 		$this->org = $org;
 		$this->viewParams->org = $org;
+		$this->orgUrl = URL_ROOT . "/orgs/".$org->getName();
+		$this->viewParams->orgUrl = $this->orgUrl;
 	}
 	
 	public function onCreate($orgName = null)

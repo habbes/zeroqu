@@ -17,17 +17,24 @@
 		    	<ul class="nav navbar-nav navbar-right">
 		    		
 		    		<?php if($data->org){
-		    			$orgUrl = URL_ROOT ."/" . urlencode($org->getName());
+		    			$orgUrl = $data->orgUrl;
 		    			?>
-		    		<li><a href="<?= $orgUrl ?>"><i class="fa fa-university"></i> <?= $data->org->getTitle() ?></a>
+		    		<li class="dropdown">
+			    		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			    			<i class="fa fa-university"></i> <?= $data->org->getTitle() ?>
+			    			<span class="caret"></span>
+			    		</a>
 		    			<ul class="dropdown-menu">
-		    				<a href="<?= URL_ROOT ?>">Change Organization</a>
+		    				<li><a href="<?= $orgUrl?>/elections"><i class="fa fa-tasks"></i> Elections</a>
+		    				<li class="divider"></li>
+		    				<li><a href="<?= URL_ROOT ?>"><i class="fa fa-external-link"></i> Change Organization</a></li>
 		    			</ul>
 		    		</li>
-		    		<li><a href="<?php $orgUrl . "/elections"?>"><i class="fa fa-tasks"></i> Elections</a></li>
+		    		
 		    		<?php } else {?>
 		    		<li><a href="<?= URL_ROOT ?>"><i class="fa fa-university"></i> Organizations</a></li>
 		    		<?php } ?> 
+		    		
 		    		<li class="dropdown">
 	                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
 	                        <i class="fa fa-user fa-fw"></i> <?= Login::isAdminLoggedIn()? Login::getAdmin()->getUsername() : Login::getVoter()->getVoterId() ?> <i class="fa fa-caret-down"></i>
