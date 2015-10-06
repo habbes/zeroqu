@@ -45,7 +45,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 		
 		
 	}
-	public function get($election,$view = null)
+	public function get($org, $election,$view = null)
 	{
 		$this->showPage($view);
 	}
