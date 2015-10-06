@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">zeroQu</a>
+                <a class="navbar-brand" href="index.html">zero<b>Q</b>u</a>
             </div>
             <div class="collapse navbar-collapse" id="nav-collapse">
             	<ul class="nav navbar-top-links navbar-right">
