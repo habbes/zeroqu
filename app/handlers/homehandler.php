@@ -73,12 +73,11 @@ class HomeHandler extends RequestHandler
 		$orgtitle = trim($this->postVar('title'));
 		
 		if($password && $password == $confirmPass){
-			print_r("PASSWORS OD");
 			if($admin = Admin::signup($username, $password)){
 				
 				if($org = Org::create($admin, $orgname, $orgtitle)){
 					Login::adminLogin($admin);
-					$this->localRedirect("home");
+					$this->localRedirect("orgs/".$org->getName());
 					
 				};				
 			}

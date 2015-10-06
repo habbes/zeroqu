@@ -31,9 +31,8 @@
 		    			</ul>
 		    		</li>
 		    		
-		    		<?php } else {?>
-		    		<li><a href="<?= URL_ROOT ?>"><i class="fa fa-university"></i> Organizations</a></li>
-		    		<?php } ?> 
+		    		<?php } ?>
+		    		
 		    		
 		    		<li class="dropdown">
 	                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
