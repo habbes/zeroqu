@@ -5,10 +5,10 @@ $allowEdit = $data->election->isPending();
 
 <div class="col-md-8">
 <ul class="nav nav-tabs">
-	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->election->getName()?>/voters/sent"><i class="fa fa-check"></i> Sent</a></li>
-	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->election->getName()?>/voters/failed"><i class="fa fa-times"></i> Failed</a></li>
-	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->election->getName()?>/voters/registered"><i class="fa fa-sign-in"></i> Registered</a></li>
-	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->election->getName()?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All</a></li>
+	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/sent"><i class="fa fa-check"></i> Sent</a></li>
+	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/failed"><i class="fa fa-times"></i> Failed</a></li>
+	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/registered"><i class="fa fa-sign-in"></i> Registered</a></li>
+	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All</a></li>
 	</ul>
 <?php if(!$data->voters){?>
 	<p>No voters found. Use the form on the right to add voters.</p>
@@ -55,7 +55,7 @@ $allowEdit = $data->election->isPending();
 					<form method="post" class="form-inline" action="<?= $data->election->getName()?>/voters#">
 						<input type="hidden" name="id" value="<?= $voter->getId() ?>"/>
 						<span class="col-md-9 col-xs-7" style="border-bottom: solid 1px #ddd" >
-						<input type="email" name="email" class="inputarea col-md-12 col-xs-12" value="<?= $voter->getEmail() ?>" required/></span>
+						<input type="email" name="email" class="inputarea col-md-12 col-xs-12" value="<?= $voter->getEmail() ?>" /></span>
 						<span class="col-md-1 col-xs-1" style="border-bottom: solid 1px #ddd" >
 							<span class="icon-wrapper" style="font-size: 16px" title="<?=$msg?>">
 		  							<i class="fa <?=$icon?>"></i>
