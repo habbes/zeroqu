@@ -18,8 +18,10 @@ class Org extends DBModel
 		$org->created_at = time();
 		
 		try{
-			$election->save();
-			return $election;
+			$org->save();
+			
+			OrgAdmin::create($org, $admin, OrgAdmin::ROLE_OWNER);
+			return $org;
 		}
 		catch (PDOException $e){
 			return false;
