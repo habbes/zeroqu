@@ -161,7 +161,7 @@ class DBModel extends Model
 		$q1 .= ")";
 		$q2 .= ")";
 		$query = $q1 . $q2;
-		print_r($query);
+		
 		
 		$stmt = self::database()->prepare($query);
 		$result = $stmt->execute($values);
