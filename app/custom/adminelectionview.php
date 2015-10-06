@@ -1,6 +1,6 @@
 <?php
 
-class AdminView extends View
+class AdminElectionView extends View
 {
 	
 	public function renderAdminPage($params, $template)

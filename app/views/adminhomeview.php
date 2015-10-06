@@ -1,6 +1,6 @@
 <?php
 
-class AdminHomeView extends AdminView
+class AdminHomeView extends AdminElectionView
 {
 	public function render($options = null)
 	{
