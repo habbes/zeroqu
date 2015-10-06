@@ -8,7 +8,7 @@ class VoterRegEmailView extends EmailView
 		$this->data->election = $params->election;
 		$this->data->voterId = $params->voterId;
 		$this->data->voterPass = $params->voterPass;
-		$this->data->url = $this->electionUrl
+		$this->data->url = $this->data->electionUrl
 				.'/voter-login?id='
 				.$this->data->voterId;
 		return $this->read("emails/voter_reg_email");
