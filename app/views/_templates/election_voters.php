@@ -52,7 +52,7 @@ $allowEdit = $data->election->isPending();
 				$icon = 'fa-exclamation-triangle';
 				$msg = 'Unable to sent email';
 			}?>
-					<form method="post" class="form-inline" action="<?= $data->election->getName()?>/voters#">
+					<form method="post" class="form-inline" action="<?= $data->electionUrl?>/voters#">
 						<input type="hidden" name="id" value="<?= $voter->getId() ?>"/>
 						<span class="col-md-9 col-xs-7" style="border-bottom: solid 1px #ddd" >
 						<input type="email" name="email" class="inputarea col-md-12 col-xs-12" value="<?= $voter->getEmail() ?>" /></span>
