@@ -75,12 +75,12 @@ class Org extends DBModel
 		return Election::findByOrg($this);
 	}
 	
-	public function findByName($name)
+	public static function findByName($name)
 	{
 		return static::findByField('name', $name)->fetch();
 	}
 	
-	public function findByAdmin(Admin $admin)
+	public static function findByAdmin(Admin $admin)
 	{
 		return static::findByField('admin_id', $admin->getId())->fetchAll();
 	}
