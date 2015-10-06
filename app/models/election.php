@@ -4,7 +4,7 @@ class Election extends DBModel
 {
 	
 	
-	
+	protected $org_id;
 	protected $admin_id;
 	protected $name;
 	protected $title;
@@ -13,14 +13,16 @@ class Election extends DBModel
 	protected $end_date;
 	
 	private $_admin;
+	private $_org;
 	
 	const PENDING = 1;
 	const ONGOING = 2;
 	const ENDED = 3;
 	
-	public static function create($admin, $name, $title)
+	public static function create($org, $admin, $name, $title)
 	{
 		$election = new self();
+		$election->setOrg($org);
 		$election->setAdmin($admin);
 		$election->setName($name);
 		$election->setTitle($title);
@@ -33,6 +35,23 @@ class Election extends DBModel
 		catch (PDOException $e){
 			return false;
 		}
+	}
+	
+	public function setOrg(Org $org)
+	{
+		if($this->_inDb){
+			return false;
+		}
+		$this->org_id = $org->getId();
+		$this->_org = $org;
+	}
+	
+	public function getOrg()
+	{
+		if(!$this->org){
+			$this->org = Org::findById($this->org_id);
+		}
+		return $this->org;
 	}
 	
 	public function setAdmin(Admin $admin)
@@ -168,6 +187,11 @@ class Election extends DBModel
 		catch (PDOException $e){
 			return false;
 		}
+	}
+	
+	public static function findByOrg(Org $org)
+	{
+		return static::findByField('org_id', $org->getId())->fetchAll();
 	}
 	
 	public static function findByAdmin(Admin $admin)
