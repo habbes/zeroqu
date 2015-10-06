@@ -2,6 +2,9 @@
 
 class OrgAdmin extends DBModel
 {
+	
+	protected static $table = "org_admins";
+	
 	protected $org_id;
 	protected $admin_id;
 	protected $role;
@@ -14,16 +17,17 @@ class OrgAdmin extends DBModel
 	const ROLE_OWNER = 'owner';
 	
 	
-	public static function create(Org $org, Admin $admin, $type)
+	public static function create(Org $org, Admin $admin, $role)
 	{
-		$this->setOrg($org);
-		$this->setAdmin($admin);
-		$this->type = $type;
-		$this->created_at = time();
+		$orgadmin = new self();
+		$orgadmin->setOrg($org);
+		$orgadmin->setAdmin($admin);
+		$orgadmin->role = $role;
+		$orgadmin->created_at = time();
 		
 		try{
-			$election->save();
-			return $election;
+			$orgadmin->save();
+			return $orgadmin;
 		}
 		catch (PDOException $e){
 			return false;

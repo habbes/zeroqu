@@ -28,7 +28,7 @@ class DBModel extends Model
 	public static function table()
 	{
 		//TODO: find a way to cache the table name
-		return Utils::stringToLowerPlural(get_called_class());
+		return Utils::camelToDelimitedCasePlural(get_called_class());
 		
 	}
 	
@@ -161,6 +161,7 @@ class DBModel extends Model
 		$q1 .= ")";
 		$q2 .= ")";
 		$query = $q1 . $q2;
+		print_r($query);
 		
 		$stmt = self::database()->prepare($query);
 		$result = $stmt->execute($values);

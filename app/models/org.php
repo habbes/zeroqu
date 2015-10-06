@@ -24,6 +24,7 @@ class Org extends DBModel
 			return $org;
 		}
 		catch (PDOException $e){
+			print_r($e->getMessage());
 			return false;
 		}
 	}
@@ -62,7 +63,7 @@ class Org extends DBModel
 	
 	public function validate()
 	{
-		if(!$this->name || $this->title || $this->admin_id){
+		if(!$this->name || !$this->title || !$this->admin_id){
 			return false;
 		}
 		
@@ -86,6 +87,6 @@ class Org extends DBModel
 	
 	public function findByAdminAndName(Admin $admin, $name)
 	{
-		return static::findOne("admin_id=? AND name=?", [$admin->getId(), $name])
+		return static::findOne("admin_id=? AND name=?", [$admin->getId(), $name]);
 	}
 }
