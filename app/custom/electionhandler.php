@@ -1,8 +1,9 @@
 <?php
 
-abstract class ElectionHandler extends RequestHandler
+abstract class ElectionHandler extends OrgHandler
 {
-	protected $election;
+	public $election;
+	public $electionUrl;
 	
 	/**
 	 * Check whether election exists
@@ -16,12 +17,14 @@ abstract class ElectionHandler extends RequestHandler
 		}
 		
 		$this->election = $election;
+		$this->electionUrl = $this->orgUrl . "/elections/" . $election->getName();
+		$this->viewParams->electionUrl = $this->electionUrl;
 		$this->viewParams->election = $election;
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
-		parent::onCreate($electionName);
+		parent::onCreate($orgName);
 		$this->checkElection($electionName);
 	}
 }
