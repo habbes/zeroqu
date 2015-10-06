@@ -15,7 +15,7 @@
 			<div class="panel panel-default">
 
 				<div class="panel-body">
-					<h4 style="text-align:center"><a href="<?= $electionUrl ?>"><?= $org->getTitle() ?></a></h4>
+					<h4 style="text-align:center"><a href="<?= $electionUrl ?>"><?= $election->getTitle() ?></a></h4>
 				</div>
 			</div>
 		</div>
