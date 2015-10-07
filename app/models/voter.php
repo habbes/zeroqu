@@ -25,7 +25,7 @@ class Voter extends DBModel
 		
 		try {
 			$voter->save();
-			$voter->sendEmail($emailView);
+			//$voter->sendEmail($emailView);
 			return $voter;
 		}
 		catch(PDOException $e){
