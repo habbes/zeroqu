@@ -45,8 +45,10 @@ class HomeHandler extends RequestHandler
 	public function showVoterPage()
 	{
 		$voter = Login::getVoter();
-		$this->viewParams->voter = $voter;
+		$this->viewParams->voter = $voter;	
 		$this->viewParams->election = $voter->getElection();
+		$this->viewParams->electionUrl = URL_ROOT . "/orgs/" . $voter->getElection()->getOrg()->getName()
+			. "/elections/" . $voter->getElection()->getName();
 		$this->renderView("VoterHome");
 	}
 	

@@ -1,16 +1,12 @@
 <?php
 
-class VoterHandler extends RequestHandler
+class VoterHandler extends ElectionHandler
 {
 	/**
 	 * @var Voter
 	 */
-	protected $voter;
+	public $voter;
 	
-	/**
-	 * @var Election
-	 */
-	protected $election;
 	
 	/**
 	 * ensures that the user is logged-in admin before visiting the requested page.
@@ -40,8 +36,9 @@ class VoterHandler extends RequestHandler
 		$this->election = $election;
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
+		parent::onCreate($orgName, $electionName);
 		$this->assertLogin();
 		$this->checkRights($electionName);
 	}

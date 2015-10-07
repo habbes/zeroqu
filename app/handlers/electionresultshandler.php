@@ -1,10 +1,9 @@
 <?php
 
-class ElectionResultsHandler extends RequestHandler
+class ElectionResultsHandler extends ElectionHandler
 {
-	private $admin;
-	private $voter;
-	private $election;
+	public $admin;
+	public $voter;
 	
 	
 	protected function assertLogin()
@@ -22,11 +21,10 @@ class ElectionResultsHandler extends RequestHandler
 		}
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
-		$access = false;
-		$election = Election::findByName($electionName);
-		$this->election = $election;
+		parent::onCreate($orgName, $electionName);
+		$election = $this->election;
 		if(Login::isAdminLoggedIn()){
 			$admin = Login::getAdmin();
 			if($election->getAdmin()->is($admin)){
