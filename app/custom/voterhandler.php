@@ -5,12 +5,8 @@ class VoterHandler extends ElectionHandler
 	/**
 	 * @var Voter
 	 */
-	protected $voter;
+	public $voter;
 	
-	/**
-	 * @var Election
-	 */
-	protected $election;
 	
 	/**
 	 * ensures that the user is logged-in admin before visiting the requested page.
