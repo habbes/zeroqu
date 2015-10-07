@@ -96,7 +96,7 @@ $allowEdit = $data->election->isPending();
 	</div>
 	<div class="form-group">
 		<label>Voters' Emails</label>
-		<textarea class="form-control" name="emails" rows="6" required></textarea>
+		<textarea class="form-control" name="emails" rows="6"></textarea>
 	</div>
 	<div class="form-group">
 		<button name="add" class="btn btn-success form-control">Add Voters</button>
