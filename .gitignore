@@ -4,3 +4,4 @@
 /vendor/
 /routing.php
 .env
+storage/
