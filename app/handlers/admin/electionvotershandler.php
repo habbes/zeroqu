@@ -45,7 +45,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 		
 		
 	}
-	public function get($election,$view = null)
+	public function get($org, $election,$view = null)
 	{
 		$this->showPage($view);
 	}
@@ -128,7 +128,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 		}
 		
 		$inputEmails = trim($this->postVar("emails"));
-		if(!$inputEmails){
+		if(!$inputEmails && empty($emails)){
 			$this->viewParams->formResult = "Emails must be provided";
 		}
 		else {

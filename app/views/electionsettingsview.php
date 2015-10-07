@@ -1,6 +1,6 @@
 <?php
 
-class ElectionSettingsView extends AdminView
+class ElectionSettingsView extends AdminElectionView
 {
 	public function render($params = null)
 	{

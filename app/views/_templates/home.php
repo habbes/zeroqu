@@ -26,34 +26,90 @@
 	<div class="row">
 		<div class="col-md-offset-2 col-md-8">
 			<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Admin Login</h3>
-			</div>
-			<div class="panel-body">
-				<?php if($data->loginError){ ?>
-				<p class="alert alert-danger"><?= $data->loginError ?></p>
-				<?php } ?>
-				<form class="form" id="signin" method="post">
-					<input type="hidden" name="form" value="signin">
-					<div class="form-group">
-						<label>Username</label>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" name="username" class="form-control" value="<?= $data->username ?>" required>
+				<div class="panel-heading">
+					<h3 class="panel-title">Admin Login</h3>
+				</div>
+				<div class="panel-body">
+					<?php if($data->loginError){ ?>
+					<p class="alert alert-danger"><?= $data->loginError ?></p>
+					<?php } ?>
+					<form class="form" id="signin" method="post">
+						<input type="hidden" name="form" value="signin">
+						<div class="form-group">
+							<label>Username</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input type="text" name="username" class="form-control" value="<?= $data->username ?>" required>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label>Password</label>
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="password" name="password" class="form-control" required>
+						<div class="form-group">
+							<label>Password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" name="password" class="form-control" required>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<button class="btn btn-success form-control"><i class="fa fa-sign-in"></i> Sign In</button>
-					</div>
-				</form>			
+						<div class="form-group">
+							<button class="btn btn-success form-control"><i class="fa fa-sign-in"></i> Sign In</button>
+						</div>
+					</form>			
+				</div>
 			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">New Account</h3>
+				</div>
+				<div class="panel-body">
+					<?php if($data->signupError){ ?>
+					<p class="alert alert-danger"><?= $data->signupError ?></p>
+					<?php } ?>
+					<form class="form" id="signup" method="post">
+						<input type="hidden" name="form" value="signup">
+						
+						<div class="form-group">
+							<label>Organization Name</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-university"></i></span>
+								<input type="text" name="title" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Unique Identifier</label>
+							<div class="input-group">
+								<span class="input-group-addon"><?= URL_ROOT ?>/</span>
+								<input type="text" name="name" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Administrator Email</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								<input type="email" name="username" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" name="password" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Confirm Password</label>
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" name="confirm-password" class="form-control" required>
+							</div>
+						</div>					
+						
+						<div class="form-group">
+							<button class="btn btn-success form-control"><i class="fa fa-plus-circle"></i> Create Account</button>
+						</div>
+					</form>			
+				</div>
 			</div>
+			
+		</div>
 	</div>
 </div>

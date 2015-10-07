@@ -1,6 +1,6 @@
 <?php
 
-class NewElectionHandler extends AdminHandler
+class NewElectionHandler extends BaseAdminOrgHandler
 {
 	public function get()
 	{
@@ -12,8 +12,8 @@ class NewElectionHandler extends AdminHandler
 		$title = $_POST['title'];
 		$name = $_POST['id'];
 	
-		if($election = Election::create(Login::getAdmin(), $name, $title)){
-			$this->localRedirect($election->getName());
+		if($election = Election::create($this->org, Login::getAdmin(), $name, $title)){
+			$this->redirect($this->orgUrl . "/elections/" . $election->getName());
 		}
 		else {
 			$this->showForm();

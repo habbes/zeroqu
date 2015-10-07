@@ -81,6 +81,16 @@ class Admin extends DBModel
 		}
 	}
 	
+	public function getOwnedOrgs()
+	{
+		return OrgAdmin::findOrgsByRole($this, OrgAdmin::ROLE_OWNER);
+	}
+	
+	public function getOrgs()
+	{
+		return OrgAdmin::findOrgs($this);
+	}
+	
 	public function getElections()
 	{
 		return Election::findByAdmin($this);

@@ -1,6 +1,6 @@
 <?php 
 
-$url = $data->election->getName();
+$url = $data->electionUrl;
 
 ?>
 <div class="navbar-default sidebar" role="navigation">

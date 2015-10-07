@@ -25,7 +25,7 @@ class Voter extends DBModel
 		
 		try {
 			$voter->save();
-			$voter->sendEmail($emailView);
+			//$voter->sendEmail($emailView);
 			return $voter;
 		}
 		catch(PDOException $e){
@@ -122,7 +122,7 @@ class Voter extends DBModel
 		
 		try{
 			$this->save();
-			$params = new DataObject(["election"=>$this->getElection(),"voterId"=>$this->voter_id,"voterPass"=>$pass]);
+			$params = new DataObject(["org"=>$this->getElection()->getOrg(), "election"=>$this->getElection(),"voterId"=>$this->voter_id,"voterPass"=>$pass]);
 			$result = Mailer::sendHtml($this->email,null, "Voter Login Details", $emailView->renderEmail($params));
 			if($result){
 				
