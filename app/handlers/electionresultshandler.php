@@ -21,11 +21,10 @@ class ElectionResultsHandler extends ElectionHandler
 		}
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
-		$access = false;
-		$election = Election::findByName($electionName);
-		$this->election = $election;
+		parent::onCreate($orgName, $electionName);
+		$election = $this->election;
 		if(Login::isAdminLoggedIn()){
 			$admin = Login::getAdmin();
 			if($election->getAdmin()->is($admin)){
