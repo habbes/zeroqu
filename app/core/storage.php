@@ -3,8 +3,7 @@
 use League\Flysystem\FileSystem;
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Local;
+use League\Flysystem\Adapter\Local;
 
 
 class Storage
@@ -28,7 +27,7 @@ class Storage
 			$adapter = new Local(DIR_ROOT . getenv('STORAGE_PATH'));
 		}
 		
-		self::$storage = new FileSystem($adpater);
+		self::$storage = new FileSystem($adapter);
 	}
 	/**
 	 * 

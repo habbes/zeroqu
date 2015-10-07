@@ -61,13 +61,23 @@ class Candidate extends DBModel
 		return $this->_position;
 	}
 	
-	public function setImage($file){
-		$name = uniqid();
-		$ds = DIRECTORY_SEPARATOR;
-		$parts = explode(".",$file['name']);
-		$ext = $parts[count($parts) - 1];
-		$ext = ".{$ext}";
-		move_uploaded_file($file['tmp_name'],DIR_APP . $ds."candidates_pictures".$ds.$name.$ext);
+	public function getDir()
+	{
+		return $this->getElection()->getDir() . "/candidates/".$this->getId();
+	}
+	
+	public function generateImagePath()
+	{
+		return $this->getDir() . "/image";
+	}
+	
+	public function setImage($path){
+		$imageStream = fopen($path, 'r+');
+		$dest = $this->generateImagePath();
+		Storage::instance()->writeStream($dest, $imageStream);	
+		fclose($imageStream);
+		$this->image_path = $dest;
+		$this->save();
 	}
 	
 	public function getVotes()

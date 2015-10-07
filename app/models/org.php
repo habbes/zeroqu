@@ -43,6 +43,15 @@ class Org extends DBModel
 		return true;
 	}
 	
+	/**
+	 * org's directory or folder
+	 * @return string
+	 */
+	public function getDir()
+	{
+		return "orgs/".$this->getName();
+	}
+	
 	public function setAdmin(Admin $admin)
 	{
 		if($this->_inDb){

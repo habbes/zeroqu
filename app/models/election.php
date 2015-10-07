@@ -128,6 +128,15 @@ class Election extends DBModel
 		return $this->save();
 	}
 	
+	/**
+	 * the election's directory
+	 * @return string
+	 */
+	public function getDir()
+	{
+		return $this->getOrg()->getDir()."/elections/".$this->getName();
+	}
+	
 	public function validate()
 	{
 		if(!$this->title || !$this->name || !$this->admin_id){

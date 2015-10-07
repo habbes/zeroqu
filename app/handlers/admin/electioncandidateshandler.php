@@ -48,12 +48,16 @@ class ElectionCandidatesHandler extends AdminElectionHandler
 		else {
 			
 			if($candidate = Candidate::create($position, $name)){
-				
+				$image = $this->fileVar('picture');
+				if($path = $image->tmp_name){
+					$candidate->setImage($path);
+				}
 			}
 			else {
 				$this->viewParams->formResult = "Error: Candidate not created.";
 			}
 		}
+		
 		
 		$this->showPage();
 	}
@@ -70,6 +74,10 @@ class ElectionCandidatesHandler extends AdminElectionHandler
 				
 			}
 			try {
+				$image = $this->fileVar('picture');
+				if($path = $image->tmp_name){
+					$candidate->setImage($path);
+				}
 				$candidate->save();
 			}
 			catch (PDOException $e){
