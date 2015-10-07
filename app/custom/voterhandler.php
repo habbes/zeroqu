@@ -1,6 +1,6 @@
 <?php
 
-class VoterHandler extends RequestHandler
+class VoterHandler extends ElectionHandler
 {
 	/**
 	 * @var Voter
@@ -40,8 +40,9 @@ class VoterHandler extends RequestHandler
 		$this->election = $election;
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName, $electionName)
 	{
+		parent::onCreate($orgName, $electionName);
 		$this->assertLogin();
 		$this->checkRights($electionName);
 	}
