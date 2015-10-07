@@ -1,10 +1,9 @@
 <?php
 
-class ElectionResultsHandler extends RequestHandler
+class ElectionResultsHandler extends ElectionHandler
 {
-	private $admin;
-	private $voter;
-	private $election;
+	public $admin;
+	public $voter;
 	
 	
 	protected function assertLogin()
