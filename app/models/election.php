@@ -48,10 +48,10 @@ class Election extends DBModel
 	
 	public function getOrg()
 	{
-		if(!$this->org){
-			$this->org = Org::findById($this->org_id);
+		if(!$this->_org){
+			$this->_org = Org::findById($this->org_id);
 		}
-		return $this->org;
+		return $this->_org;
 	}
 	
 	public function setAdmin(Admin $admin)
