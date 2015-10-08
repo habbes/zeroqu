@@ -18,7 +18,10 @@ class Storage
 					'credentials' => [
 							'key'    => getenv('S3_KEY'),
 							'secret' => getenv('S3_SECRET'),
-					]
+					],
+					
+					'region' => 'us-west-2',
+					'version' => '2006-03-01'
 			]);
 		
 			$adapter = new AwsS3Adapter($client, getenv('S3_BUCKET'), getenv('S3_PREFIX'));
