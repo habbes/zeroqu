@@ -200,6 +200,19 @@ class Voter extends DBModel
 		return true;
 	}
 	
+	/**
+	 * Find all voters in a given election that match the specified query
+	 * @param Election $election
+	 * @param string $query
+	 * @param array $params
+	 */
+	public static function findByElectionWhere(Election $election, $query = '', $params = [])
+	{
+		$query = 'election_id=?' . ($query? " AND $query" : '');
+		$params = array_merge([$election->getId()], $params);
+		return static::find($query, $params)->fetchAll();
+	}
+	
 	public static function findByElection(Election $election)
 	{
 		return static::findByField("election_id", $election->getId())->fetchAll();

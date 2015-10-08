@@ -172,6 +172,16 @@ class Election extends DBModel
 		return Voter::findByElection($this);
 	}
 	
+	/**
+	 * Find voters in this election that match the specified query
+	 * @param string $q
+	 * @param array $params
+	 */
+	public function getVotersWhere($q = '', $params = [])
+	{
+		return Voter::findByElectionWhere($this, $q, $params);
+	}
+	
 	public function getVoterById($id)
 	{
 		return Voter::findByElectionAndId($this, $id);
