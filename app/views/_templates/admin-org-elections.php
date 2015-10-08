@@ -1,6 +1,5 @@
-<div class="container" style="margin-top:20px">
-	<div class="row">
-		<div class="col col-md-4 col-sm-6">
+
+		<div class="col col-md-4 col-sm-6" style="margin-top:20px">
 			<div class="panel panel-default">
 
 				<div class="panel-body">
@@ -21,5 +20,4 @@
 		</div>
 		<?php } ?>
 		
-	</div>
-</div>
+>

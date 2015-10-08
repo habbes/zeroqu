@@ -55,7 +55,7 @@
 					</form>			
 				</div>
 			</div>
-			
+			<?php /*
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">New Account</h3>
@@ -109,7 +109,8 @@
 					</form>			
 				</div>
 			</div>
-			
+			*/
+			?>
 		</div>
 	</div>
 </div>
