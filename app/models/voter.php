@@ -205,10 +205,12 @@ class Voter extends DBModel
 	 * @param Election $election
 	 * @param string $query
 	 * @param array $params
+	 * @param string @range part of the query specifying LIMIT and OFFSET
 	 */
-	public static function findByElectionWhere(Election $election, $query = '', $params = [])
+	public static function findByElectionWhere(Election $election, $query = '', $params = [], $range = '')
 	{
 		$query = 'election_id=?' . ($query? " AND ($query)" : '');
+		$query = $query . ($range? " $range" : '');
 		$params = array_merge([$election->getId()], $params);
 		return static::find($query, $params)->fetchAll();
 	}
