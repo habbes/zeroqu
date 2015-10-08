@@ -11,7 +11,7 @@ class ElectionSettingsHandler extends AdminElectionHandler
 	{
 		
 		if($this->election->hasEnded()){
-			$this->localRedirect($this->election->getName() . "/settings");
+			$this->localRedirect($this->electionUrl . "/settings");
 		}
 		
 		if(array_key_exists("details", $_POST)){
@@ -56,7 +56,7 @@ class ElectionSettingsHandler extends AdminElectionHandler
 		if($this->election->save())
 		{
 			
-			$this->localRedirect($this->election->getName()."?saved=true");
+			$this->localRedirect($this->electionUrl . "?saved=true");
 		}
 		else {
 			$this->viewParams->formResult = "Changes were not saved.";
@@ -79,6 +79,6 @@ class ElectionSettingsHandler extends AdminElectionHandler
 			$sub = "?ended=true";
 		}
 		
-		$this->localRedirect($this->election->getName() . $sub);
+		$this->localRedirect($this->electionUrl . $sub);
 	}
 }
