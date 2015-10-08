@@ -27,7 +27,7 @@ class Storage
 			$adapter = new AwsS3Adapter($client, getenv('S3_BUCKET'), getenv('S3_PREFIX'));
 		}
 		else {
-			$adapter = new Local(DIR_ROOT . getenv('STORAGE_PATH'));
+			$adapter = new Local(DIR_ROOT . "/storage");
 		}
 		
 		self::$storage = new FileSystem($adapter);
