@@ -180,7 +180,7 @@ class Election extends DBModel
 	 */
 	public function getVotersWhere($q = '', $params = [], $range = '')
 	{
-		return Voter::findByElectionWhere($this, $q, $params);
+		return Voter::findByElectionWhere($this, $q, $params, $range);
 	}
 	
 	public function getVoterById($id)
