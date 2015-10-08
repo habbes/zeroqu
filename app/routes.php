@@ -13,6 +13,7 @@ $routes = [
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/settings\/?$', "admin/ElectionSettings"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/positions\/?$', "admin/ElectionPositions"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/candidates\/?$' ,"admin/ElectionCandidates"],
+	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/candidates\/(\w+)\/image?$' ,"CandidateImage"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voters\/?$' ,"admin/ElectionVoters"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voters\/([\w\-]+)\/?$' ,"admin/ElectionVoters"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/view-candidates\/?$',"voter/VoterCandidates"],

@@ -176,7 +176,7 @@ class Utils
 	 */
 	public static function sendFileResponse($path, $displayName)
 	{
-		if(!file_exists($path)) return false;
+		if(!Storage::instance()->has($path)) return false;
 		
 		header('Content-Description: File Transfer');
 		header('Content-Type: application/octet-stream');
@@ -185,7 +185,7 @@ class Utils
 		header("Expires: 0");
 		header("Cache-Control: must-revalidate");
 		header("Pragma: public");
-		header("Content-Length: " . filesize($path));
+		header("Content-Length: " . Storage::instance()->getSize($path));
 		
 		/*
 		 discard the content of the output buffer and flush
@@ -194,8 +194,21 @@ class Utils
 		*/
 		ob_clean();
 		flush();
-		
-		readfile($path);
+		echo Storage::instance()->read($path);
+		exit;
+	}
+	
+	/**
+	 * Send file as a response
+	 * @param string $path
+	 */
+	public static function sendDataResponse($path)
+	{
+		header('Content-Type: '.Storage::instance()->getMimetype($path));
+		header("Content-Length: " . Storage::instance()->getSize($path));
+		ob_clean();
+		flush();
+		echo Storage::instance()->read($path);
 		exit;
 	}
 	

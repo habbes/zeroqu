@@ -13,12 +13,16 @@
 		<div class="candidates-wrapper row">
 		<?php 
 			foreach($candidates as $candidate) {
+				if(!($imagePath = $candidate->getImagePath())){
+					$imagePath = "public/images/generic-user-96.png";
+				}
+				
 		?>
 		<div class="col-md-4">
 			<div class="candidate-wrapper panel panel-default" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
-				<div class="candidate-name panel-heading"><?= $candidate->getName()?></div>
+				<div class="candidate-name panel-heading"><h4 style="text-align:center"><?= $candidate->getName()?></h4></div>
 				<div class="panel-body">
-					<img alt="Candidate's picture" class="img img-responsive col-md-12 col-xs-12" src="public/images/generic-user-96.png"/>
+					<img alt="Candidate's picture" class="img img-responsive col-md-12 col-xs-12" style="height: 130px" src="<?= $imagePath?>"/>
 				</div>
 				<?php 
 					if($allowEdit){

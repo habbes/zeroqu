@@ -2,7 +2,16 @@
 
 abstract class ElectionHandler extends OrgHandler
 {
+	/**
+	 * 
+	 * @var Election
+	 */
 	public $election;
+	
+	/**
+	 * 
+	 * @var string
+	 */
 	public $electionUrl;
 	
 	/**
