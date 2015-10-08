@@ -3,5 +3,4 @@
 .buildpath
 /vendor/
 /routing.php
-.env
 storage/
