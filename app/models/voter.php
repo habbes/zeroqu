@@ -208,7 +208,7 @@ class Voter extends DBModel
 	 */
 	public static function findByElectionWhere(Election $election, $query = '', $params = [])
 	{
-		$query = 'election_id=?' . ($query? " AND $query" : '');
+		$query = 'election_id=?' . ($query? " AND ($query)" : '');
 		$params = array_merge([$election->getId()], $params);
 		return static::find($query, $params)->fetchAll();
 	}
