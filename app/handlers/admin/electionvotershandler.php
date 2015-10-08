@@ -7,30 +7,25 @@ class ElectionVotersHandler extends AdminElectionHandler
 	private function showPage($view)
 	{
 		$pageNumber = isset($_GET['page'])?(int)$_GET['page']:1;
-		$votersPerPage = 20;
-		$offset = ($pageNumber - 1) * $votersPerPage;
+		$votersPerPage = 1;
+		$offset = ($pageNumber - 1) * 1;
 		$voters = [];
 		if(is_null($view)){
 			$view = "sent";
 		}
 			if($view == "sent"){
-				$query = "status=".Voter::EMAIL_SENT." LIMIT ".$voterPerPage." OFFSET ".$offset;
-				foreach($this->election->getVotersWhere($query) as $voter){
-					$voters[] = $voter;
-				}
+				$query = "LIMIT 1 OFFSET ".$offset;
+				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_SENT],$query);
 			}else if($view == "failed"){
-				$query = "status=".Voter::EMAIL_FAILED." LIMIT ".$voterPerPage." OFFSET ".$offset;
-				foreach($this->election->getVotersWhere($query) as $voter){
-					$voters[] = $voter;
-				}
+				$query = "LIMIT 1 OFFSET ".$offset;
+				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_FAILED],$query);
 			}else if($view == "registered"){
-				$query = "status=".Voter::REGISTERED." LIMIT ".$voterPerPage." OFFSET ".$offset;
-				foreach($this->election->getVotersWhere($query) as $voter){
-					$voters[] = $voter;
-				}
+				$query = "LIMIT 1 OFFSET ".$offset;
+				$voters = $this->election->getVotersWhere("status=?",[Voter::REGISTERED],$query);
 			}else if($view == "all"){
-				$query = "LIMIT ".$voterPerPage." OFFSET ".$offset;
-				$voters = $this->election->getVotersWhere($query);
+				$query = "LIMIT 1 OFFSET ".$offset;
+				$voters = $this->election->getVotersWhere(null,[],$query);
+				
 			}else{
 				
 			}
