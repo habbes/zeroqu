@@ -6,6 +6,9 @@ class ElectionVotersHandler extends AdminElectionHandler
 	
 	private function showPage($view)
 	{
+		$pageNumber = isset($_GET['page'])?(int)$_GET['page']:1;
+		$votersPerPage = 20;
+		$offset = ($pageNumber - 1) * $votersPerPage;
 		$voters = [];
 		if(is_null($view)){
 			$view = "sent";
