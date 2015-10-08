@@ -1,6 +1,6 @@
 <?php 
 
-use League\Flysystem\FileSystem;
+use League\Flysystem\Filesystem;
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Adapter\Local;
@@ -30,7 +30,7 @@ class Storage
 			$adapter = new Local(DIR_ROOT . "/storage");
 		}
 		
-		self::$storage = new FileSystem($adapter);
+		self::$storage = new Filesystem($adapter);
 	}
 	/**
 	 * 
