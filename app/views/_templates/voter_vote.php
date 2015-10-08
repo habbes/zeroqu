@@ -20,7 +20,7 @@ if($data->position->getDescription()){
 		<div class="form-row candidate-wrapper-large float-left center-text">
 			<div class="center-text"><span class="candidate-name bold center-text"><?= $name ?></span></div>
 			<div>
-				<img src="<?= $imagePath ?>" class="candidate-img-large"/>
+				<img src="<?= $imagePath ?>" class="candidate-img-large" style="height:130px" />
 			</div>
 			<div>
 			<input type="radio" id="candidate<?= $id ?>" name="candidate" value="<?= $id ?>" data-name="<?= $name ?>"/>
