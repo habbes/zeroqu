@@ -176,8 +176,9 @@ class Election extends DBModel
 	 * Find voters in this election that match the specified query
 	 * @param string $q
 	 * @param array $params
+	 * @param string $range part of query specifying LIMIT and OFFSET
 	 */
-	public function getVotersWhere($q = '', $params = [])
+	public function getVotersWhere($q = '', $params = [], $range = '')
 	{
 		return Voter::findByElectionWhere($this, $q, $params);
 	}
