@@ -69,6 +69,10 @@ $allowEdit = $data->election->isPending();
 					</form>
 
 	<?php } ?>
+	<ul class="pagination">
+	  <li><a href="<?=$data->previousPageUrl?>">Previous</a></li>
+	  <li><a href="<?=$data->nextPageUrl?>">Next</a></li>
+	</ul>
 	</div>
 </div>
 <?php 

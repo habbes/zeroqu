@@ -10,25 +10,33 @@ class ElectionVotersHandler extends AdminElectionHandler
 		$votersPerPage = 1;
 		$offset = ($pageNumber - 1) * 1;
 		$voters = [];
+		$query = "LIMIT ".$votersPerPage." OFFSET ".$offset;
 		if(is_null($view)){
 			$view = "sent";
 		}
 			if($view == "sent"){
-				$query = "LIMIT 1 OFFSET ".$offset;
 				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_SENT],$query);
 			}else if($view == "failed"){
-				$query = "LIMIT 1 OFFSET ".$offset;
 				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_FAILED],$query);
 			}else if($view == "registered"){
-				$query = "LIMIT 1 OFFSET ".$offset;
 				$voters = $this->election->getVotersWhere("status=?",[Voter::REGISTERED],$query);
 			}else if($view == "all"){
-				$query = "LIMIT 1 OFFSET ".$offset;
 				$voters = $this->election->getVotersWhere(null,[],$query);
 				
 			}else{
 				
 			}
+			$paginationUrl = $this->electionUrl . "/voters/" . $view;
+			$this->viewParams->currentPageUrl = $paginationUrl . "?page=" . $pageNumber;
+			$this->viewParams->nextPageUrl = $paginationUrl . "?page=" . ++$pageNumber;
+			if($pageNumber < 1){
+			 	$pageNumber = 1;
+			}else{
+				$pageNumber--;
+			}
+			$this->viewParams->previousPageUrl = $paginationUrl . "?page=" . $pageNumber;
+			
+			
 			$this->viewParams->selectedTab = $view;
 			$this->viewParams->voters = $voters;
 			$this->renderView("ElectionVoters");
