@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 $allowEdit = $data->election->isPending();
 
 ?>
@@ -6,10 +7,10 @@ $allowEdit = $data->election->isPending();
 <div class="col-md-8">
 <ul class="nav nav-tabs">
 	
-	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/sent"><i class="fa fa-check"></i> Sent</a></li>
-	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/failed"><i class="fa fa-times"></i> Failed</a></li>
-	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/registered"><i class="fa fa-sign-in"></i> Registered</a></li>
-	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All</a></li>
+	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/sent"><i class="fa fa-check"></i> Sent <span class="badge" style="background-color: #777"><?=$data->sentCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/failed"><i class="fa fa-times"></i> Failed <span class="badge" style="background-color: #777"><?=$data->failedCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/registered"><i class="fa fa-sign-in"></i> Registered <span class="badge" style="background-color: #777"><?=$data->registeredCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All <span class="badge" style="background-color: #777"><?=$data->allCount?></span></a></li>
 	</ul>
 <?php if(!$data->voters){?>
 	<p>No voters found. Use the form on the right to add voters.</p>

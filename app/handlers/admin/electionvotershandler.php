@@ -7,8 +7,8 @@ class ElectionVotersHandler extends AdminElectionHandler
 	private function showPage($view)
 	{
 		$pageNumber = isset($_GET['page'])?(int)$_GET['page']:1;
-		$votersPerPage = 1;
-		$offset = ($pageNumber - 1) * 1;
+		$votersPerPage = 20;
+		$offset = ($pageNumber - 1) * $votersPerPage;
 		$voters = [];
 		$query = "LIMIT ".$votersPerPage." OFFSET ".$offset;
 		if(is_null($view)){
@@ -34,9 +34,12 @@ class ElectionVotersHandler extends AdminElectionHandler
 			}else{
 				$pageNumber--;
 			}
+			
 			$this->viewParams->previousPageUrl = $paginationUrl . "?page=" . $pageNumber;
-			
-			
+			$this->viewParams->sentCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::EMAIL_SENT]);
+			$this->viewParams->failedCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::EMAIL_FAILED]);
+			$this->viewParams->registeredCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::REGISTERED]);
+			$this->viewParams->allCount = Voter::count("election_id=?",[$this->election->getId()]);
 			$this->viewParams->selectedTab = $view;
 			$this->viewParams->voters = $voters;
 			$this->renderView("ElectionVoters");
