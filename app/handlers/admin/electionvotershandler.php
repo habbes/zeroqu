@@ -14,31 +14,23 @@ class ElectionVotersHandler extends AdminElectionHandler
 			$view = "sent";
 		}
 			if($view == "sent"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::EMAIL_SENT:
-							$voters[] = $voter;
-							break;
-					}
+				$query = "status=".Voter::EMAIL_SENT." LIMIT ".$voterPerPage." OFFSET ".$offset;
+				foreach($this->election->getVotersWhere($query) as $voter){
+					$voters[] = $voter;
 				}
 			}else if($view == "failed"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::EMAIL_FAILED:
-							$voters[] = $voter;
-							break;
-					}
+				$query = "status=".Voter::EMAIL_FAILED." LIMIT ".$voterPerPage." OFFSET ".$offset;
+				foreach($this->election->getVotersWhere($query) as $voter){
+					$voters[] = $voter;
 				}
 			}else if($view == "registered"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::REGISTERED:
-							$voters[] = $voter;
-							break;
-					}
+				$query = "status=".Voter::REGISTERED." LIMIT ".$voterPerPage." OFFSET ".$offset;
+				foreach($this->election->getVotersWhere($query) as $voter){
+					$voters[] = $voter;
 				}
 			}else if($view == "all"){
-				$voters = $this->election->getVoters();
+				$query = "LIMIT ".$voterPerPage." OFFSET ".$offset;
+				$voters = $this->election->getVotersWhere($query);
 			}else{
 				
 			}
