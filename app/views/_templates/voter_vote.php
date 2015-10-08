@@ -15,11 +15,12 @@ if($data->position->getDescription()){
 		foreach($data->candidates as $candidate){
 			$name = $candidate->getName();
 			$id = $candidate->getId();
+			$imagePath = $candidate->getImagePath()? $candidate->getImagePath() : "public/images/generic-user-96.png";
 	?>
 		<div class="form-row candidate-wrapper-large float-left center-text">
 			<div class="center-text"><span class="candidate-name bold center-text"><?= $name ?></span></div>
 			<div>
-				<img src="public/images/generic-user-96.png" class="candidate-img-large"/>
+				<img src="<?= $imagePath ?>" class="candidate-img-large"/>
 			</div>
 			<div>
 			<input type="radio" id="candidate<?= $id ?>" name="candidate" value="<?= $id ?>" data-name="<?= $name ?>"/>

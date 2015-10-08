@@ -30,11 +30,12 @@ if(!$data->election->hasEnded()){
 		<?php 
 			foreach($candidates as $candidate) {
 				$numVotes = $candidate->countVotes();
+				$imagePath = $candidate->getImagePath()? $candidate->getImagePath() : 'public/images/generic-user-96.png';
 		?>
 			<div class="candidate-wrapper-small" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
 				<div class="candidate-name bold" style="font-size:1.2em"><?= $candidate->getName()?></div>
 				<div class="candidate-img-wrapper">
-					<img alt="Candidate's picture" class="candidate-img-small" src="public/images/generic-user-96.png"/>
+					<img alt="Candidate's picture" class="candidate-img-small" src="<?= $imagePath ?>"/>
 					<span class="vote-count">
 						<?= $numVotes ?>
 					</span>
