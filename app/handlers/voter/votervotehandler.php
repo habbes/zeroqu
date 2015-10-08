@@ -3,8 +3,8 @@
 class VoterVoteHandler extends VoterHandler
 {
 	
-	private $position;
-	private $vote;
+	public $position;
+	public $vote;
 	private function showVotingPage()
 	{
 		$this->viewParams->position = $this->position;
@@ -27,6 +27,7 @@ class VoterVoteHandler extends VoterHandler
 	
 	public function onCreate($orgName,$electionName)
 	{
+		parent::onCreate($orgName, $electionName);
 		if($this->election->isPending()){
 			$this->localRedirect("home");
 		}
@@ -56,7 +57,7 @@ class VoterVoteHandler extends VoterHandler
 		
 	}
 	
-	public function post($electionName, $positionTitle)
+	public function post($orgName, $electionName, $positionTitle)
 	{
 		$position = Position::findByElectionAndTitle($this->election, $positionTitle);
 		
