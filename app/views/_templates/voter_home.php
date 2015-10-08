@@ -35,7 +35,7 @@ else if($data->election->isPending()) {
                                         <div class="media">
 										  <div class="media-left">
 										    <a href="#">
-										      <img class="media-object" src="<?= $imagePath ?>" alt="...">
+										      <img style="max-height:100px" class="media-object" src="<?= $imagePath ?>" alt="...">
 										    </a>
 										  </div>
 										  <div class="media-body">

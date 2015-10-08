@@ -35,7 +35,7 @@ if(!$data->election->hasEnded()){
 			<div class="candidate-wrapper-small" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
 				<div class="candidate-name bold" style="font-size:1.2em"><?= $candidate->getName()?></div>
 				<div class="candidate-img-wrapper">
-					<img alt="Candidate's picture" class="candidate-img-small" src="<?= $imagePath ?>"/>
+					<img alt="Candidate's picture" class="candidate-img-small" src="<?= $imagePath ?>" style="height:130px"/>
 					<span class="vote-count">
 						<?= $numVotes ?>
 					</span>
