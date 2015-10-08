@@ -25,15 +25,14 @@ class VoterVoteHandler extends VoterHandler
 		$this->renderView("VoterNotVoted");
 	}
 	
-	public function onCreate($electionName = null)
+	public function onCreate($orgName,$electionName)
 	{
-		parent::onCreate($electionName);
 		if($this->election->isPending()){
 			$this->localRedirect("home");
 		}
 	}
 	
-	public function get($electionName, $positionTitle)
+	public function get($orgName, $electionName, $positionTitle)
 	{
 		$position = Position::findByElectionAndTitle($this->election, $positionTitle);
 		
