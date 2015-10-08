@@ -25,14 +25,17 @@ else if($data->election->isPending()) {
                     <div id="collapse<?=$position->getId()?>" class="panel-collapse collapse collapsed">
                         <div class="panel-body">
                             <table class="table">
-                            	<?php foreach($position->getCandidates() as $candidate){ ?>
+                            	<?php foreach($position->getCandidates() as $candidate){
+
+                            		$imagePath = URL_ROOT . "/" .($candidate->getImagePath()? $candidate->getImagePath() : "public/images/generic-user-96.png");
+                            		?>
                                 <tr>
                                     <td>
                                     <h4><?=$candidate->getName()?></h4>
                                         <div class="media">
 										  <div class="media-left">
 										    <a href="#">
-										      <img class="media-object" src="<?=URL_ROOT?>/public/images/generic-user-96.png" alt="...">
+										      <img class="media-object" src="<?= $imagePath ?>" alt="...">
 										    </a>
 										  </div>
 										  <div class="media-body">

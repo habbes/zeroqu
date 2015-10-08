@@ -21,9 +21,6 @@ $url = $data->electionUrl;
 	                        <li>
 	                            <a href="<?=$url?>"><i class="fa fa-dashboard fa-fw"></i> <strong><?=$data->election->getTitle() ?></strong></a>
 	                        </li>
-	                        <li>
-	                        	<a href="<?=$url?>/view-candidates"><i class="fa fa-cogs"></i> Candidates</a>
-	                        </li>
 							<?php if($data->election->isOngoing()){ ?>
 								<li>
 									<a href="#"><i class="fa fa-wrench fa-fw"></i> Vote<span class="fa arrow"></span></a>
