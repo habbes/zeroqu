@@ -15,14 +15,37 @@ class ElectionVotersHandler extends AdminElectionHandler
 			$view = "sent";
 		}
 			if($view == "sent"){
-				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_SENT],$query);
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::EMAIL_SENT,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_SENT],$query);
+				}
 			}else if($view == "failed"){
-				$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_FAILED],$query);
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::EMAIL_FAILED,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_FAILED],$query);
+				}
 			}else if($view == "registered"){
-				$voters = $this->election->getVotersWhere("status=?",[Voter::REGISTERED],$query);
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::REGISTERED,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::REGISTERED],$query);
+				}
 			}else if($view == "all"){
-				$voters = $this->election->getVotersWhere(null,[],$query);
-				
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVoterWhere("email LIKE ?",[$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere(null,[],$query);
+				}
 			}else{
 				
 			}
