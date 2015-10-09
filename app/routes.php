@@ -22,7 +22,7 @@ $routes = [
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/results\/?$',"ElectionResults"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voter\-login$',"VoterLogin"],
 	['^test\/(\d+)\/(\d+)', "OtherTest"],
-	['^test\/(\w+)', "Test"],
+	['^test\/?$', "Test"],
 	
 	
 ];

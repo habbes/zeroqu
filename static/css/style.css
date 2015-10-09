@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+@import url(https://fonts.googleapis.com/css?family=Raleway););
+
+body {
+	font-family: 'Raleway', 'sans-serif';
+}
+
+.logo {
+	font-family: 'Poiret One', 'sans-serif';
+}
+
+
+.logo-q {
+	font-weight:bold;
+	color:#4BC264;
+}
+
+.section-title, .page-title {
+	font-family: 'Poiret One', sans-serif;
+}

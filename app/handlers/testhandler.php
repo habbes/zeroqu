@@ -2,9 +2,9 @@
 
 class TestHandler extends RequestHandler
 {
-	public function get($name)
+	public function get()
 	{
-		echo "Hello, $name";
+		$this->renderView("Test");
 		
 	}
 }
