@@ -6,39 +6,63 @@ class ElectionVotersHandler extends AdminElectionHandler
 	
 	private function showPage($view)
 	{
+		$pageNumber = isset($_GET['page'])?(int)$_GET['page']:1;
+		$votersPerPage = 20;
+		$offset = ($pageNumber - 1) * $votersPerPage;
 		$voters = [];
+		$query = "LIMIT ".$votersPerPage." OFFSET ".$offset;
 		if(is_null($view)){
 			$view = "sent";
 		}
 			if($view == "sent"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::EMAIL_SENT:
-							$voters[] = $voter;
-							break;
-					}
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::EMAIL_SENT,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_SENT],$query);
 				}
 			}else if($view == "failed"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::EMAIL_FAILED:
-							$voters[] = $voter;
-							break;
-					}
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::EMAIL_FAILED,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::EMAIL_FAILED],$query);
 				}
 			}else if($view == "registered"){
-				foreach($this->election->getVoters() as $voter){
-					switch($voter->getStatus()){
-						case Voter::REGISTERED:
-							$voters[] = $voter;
-							break;
-					}
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVotersWhere("status=? AND email LIKE ?",[Voter::REGISTERED,$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere("status=?",[Voter::REGISTERED],$query);
 				}
 			}else if($view == "all"){
-				$voters = $this->election->getVoters();
+				if(isset($_GET['q'])){
+					$niddle = "%{$_GET['q']}%";
+					$voters = $this->election->getVoterWhere("email LIKE ?",[$niddle],$query);
+					$this->viewParams->isSearch = true;
+				}else{
+					$voters = $this->election->getVotersWhere(null,[],$query);
+				}
 			}else{
 				
 			}
+			$paginationUrl = $this->electionUrl . "/voters/" . $view;
+			$this->viewParams->currentPageUrl = $paginationUrl . "?page=" . $pageNumber;
+			$this->viewParams->nextPageUrl = $paginationUrl . "?page=" . ++$pageNumber;
+			if($pageNumber < 1){
+			 	$pageNumber = 1;
+			}else{
+				$pageNumber--;
+			}
+			
+			$this->viewParams->previousPageUrl = $paginationUrl . "?page=" . $pageNumber;
+			$this->viewParams->sentCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::EMAIL_SENT]);
+			$this->viewParams->failedCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::EMAIL_FAILED]);
+			$this->viewParams->registeredCount = Voter::count("election_id=? AND status=?",[$this->election->getId(),Voter::REGISTERED]);
+			$this->viewParams->allCount = Voter::count("election_id=?",[$this->election->getId()]);
 			$this->viewParams->selectedTab = $view;
 			$this->viewParams->voters = $voters;
 			$this->renderView("ElectionVoters");

@@ -1,4 +1,5 @@
-<?php 
+
+<?php
 $allowEdit = $data->election->isPending();
 
 ?>
@@ -6,26 +7,62 @@ $allowEdit = $data->election->isPending();
 <div class="col-md-8">
 <ul class="nav nav-tabs">
 	
-	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/sent"><i class="fa fa-check"></i> Sent</a></li>
-	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/failed"><i class="fa fa-times"></i> Failed</a></li>
-	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/registered"><i class="fa fa-sign-in"></i> Registered</a></li>
-	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All</a></li>
+	  <li class="<?=$data->selectedTab == 'sent'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/sent"><i class="fa fa-check"></i> Sent <span class="badge" style="background-color: #777"><?=$data->sentCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'failed'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/failed"><i class="fa fa-times"></i> Failed <span class="badge" style="background-color: #777"><?=$data->failedCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'registered'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/registered"><i class="fa fa-sign-in"></i> Registered <span class="badge" style="background-color: #777"><?=$data->registeredCount?></span></a></li>
+	  <li class="<?=$data->selectedTab == 'all'?'active':''?>"><a href="<?=$data->electionUrl?>/voters/all"><i class="fa fa-check"></i> <i class="fa fa-times"></i> <i class="fa fa-sign-in"></i> All <span class="badge" style="background-color: #777"><?=$data->allCount?></span></a></li>
 	</ul>
 <?php if(!$data->voters){?>
-	<p>No voters found. Use the form on the right to add voters.</p>
+	<?php if($data->selectedTab == "sent"){ ?>
+		<?php if($data->isSearch){ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no sent emails with characters you searched for.</p>
+		<?php }else{ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no emails sent yet.</p>
+		<?php } ?>
+	<?php }else if($data->selectedTab == "registered"){ ?>
+		<?php if($data->isSearch){ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no registered emails with characters you searched for.</p>
+		<?php }else{ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no emails registered yet.</p>
+		<?php } ?>
+	<?php }else if($data->selectedTab == "failed"){ ?>
+		<?php if($data->isSearch){ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no failed emails with characters you searched for.</p>
+		<?php }else{ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no failed emails.</p>
+		<?php } ?>
+	<?php }else if($data->selectedTab == "all"){ ?>
+		<?php if($data->isSearch){ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no emails with characters you searched for.</p>
+		<?php }else{ ?>
+			<p style="padding-top: 20px; padding-bottom: 20px">There are no emails. Use the panel on the left to add voters.</p>
+		<?php } ?>
+	<?php }?>
 <?php }else{ ?>
 
 <div class="col-md-12" >
 	<div class="row">
-		<div class="col-md=12">
+		<div class="col-md-12">
 			<div class="row">
-				<div class="col-md-12" style="padding-top: 10px;padding-bottom: 10px">
+				<div class="col-md-12" style="padding-top: 20px; padding-bottom: 20px">
+				<div class="col-md-5" style="">
 					<form action="" class="form" method="POST">
 						<div class="form-group">
 							<input type="hidden" value="<?=$data->selectedTab?>" name="selected">
 							<button type="submit" class="btn btn-default"><i class="fa fa-reply"></i> Resend emails</button>
 						</div>
 					</form>
+				</div>
+				<div class="col-md-7">
+					<form class="form">
+						<div class="input-group">
+							<input type="search" name="q" class="form-control" placeholder="Search...">
+							<span class="input-group-btn">
+						      <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+						    </span>
+						</div>
+					</form>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -69,6 +106,10 @@ $allowEdit = $data->election->isPending();
 					</form>
 
 	<?php } ?>
+	<ul class="pagination">
+	  <li><a href="<?=$data->previousPageUrl?>"><i class="fa fa-angle-double-left"></i> Previous</a></li>
+	  <li><a href="<?=$data->nextPageUrl?>">Next <i class="fa fa-angle-double-right"></i></a></li>
+	</ul>
 	</div>
 </div>
 <?php 
