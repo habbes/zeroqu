@@ -107,8 +107,8 @@ $allowEdit = $data->election->isPending();
 
 	<?php } ?>
 	<ul class="pagination">
-	  <li><a href="<?=$data->previousPageUrl?>"><i class="fa fa-angle-double-left"></i> Previous</a></li>
-	  <li><a href="<?=$data->nextPageUrl?>">Next <i class="fa fa-angle-double-right"></i></a></li>
+	  <li><a href="<?=$data->previousPageUrl?><?=$data->isSearch?"&q=" . $data->niddle:""?>"><i class="fa fa-angle-double-left"></i> Previous</a></li>
+	  <li class="<?=$data->theEnd?"active":""?>"><a href="<?=$data->nextPageUrl?><?=$data->isSearch?"&q=" . $data->niddle:""?>">Next <i class="fa fa-angle-double-right"></i></a></li>
 	</ul>
 	</div>
 </div>
