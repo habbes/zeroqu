@@ -12,7 +12,7 @@
 		?>
 		<title><?= $sub?>zeroQu</title>
 		<base href="<?= URL_ROOT."/"?>">
-		<link href="public/css/basic.css" rel="stylesheet" >
+		
 		<!-- Bootstrap Core CSS -->
     	<link href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -30,7 +30,7 @@
 
     	<!-- Custom Fonts -->
     	<link href="public/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+		<link href="public/css/basic.css" rel="stylesheet" >
   
 		<?php 
 			foreach($data->get('styles', []) as $style)

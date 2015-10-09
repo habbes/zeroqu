@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="nav-collapse">
             	<ul class="nav navbar-top-links navbar-right">
             	</ul>
-		    	<ul class="nav navbar-nav navbar-right">
+		    	<ul class="nav navbar-nav top-links navbar-right">
 		    		
 		    		<?php if($data->org){
 		    			$orgUrl = $data->orgUrl;
@@ -55,11 +55,11 @@
              <!-- /.navbar-static-side -->
         
 
-        <div id="page-wrapper">
+        <div id="<?= $data->menu? 'page-wrapper' : '' ?>" class="container page-content">
             <div class="row">
                 <div class="col-lg-12">
                 	<?php if($data->contentTitle){ ?>
-                    <h1 class="page-header"><?=$data->contentTitle?></h1>
+                    <h1 class="page-title"><?=$data->contentTitle?></h1>
                     <?php } ?>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -77,6 +77,3 @@
     </div>
     <!-- /#wrapper -->
 	
-</body>
-
-</html>

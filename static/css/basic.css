@@ -1,5 +1,13 @@
 
 body {
-	font-family:tahoma;
-	font-size:13px;
+	
+}
+
+.page-content {
+	
+}
+
+#page-wrapper.full-width {
+	margin-right:auto;
+	margin-left:auto;
 }
