@@ -3,6 +3,7 @@
 <head>
 	<title>zeroQu Election Manager</title>
 	<base href="<?= URL_ROOT ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="public/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="public/css/style.css" rel="stylesheet">
