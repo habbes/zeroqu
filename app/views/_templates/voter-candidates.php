@@ -21,7 +21,7 @@
                 <div id="collapse<?=$position->getId()?>" class="panel-collapse collapse collapsed">
                     <div class="panel-body">
                         <p class="well">
-                        	<?= $position->getDescription() ?>
+                        	<i class="fa fa-info-circle fa-pull-left" title="Position's description"></i> <?= $position->getDescription() ?>
                         </p>
                         <h4 class="text-lg" style="padding-left:5px" class="normal-title">Candidates</h4>
                    		

@@ -1,85 +1,91 @@
 <?php
 
-class VoterVoteHandler extends VoterHandler
+class VoterVoteHandler extends RequestHandler
 {
+	/**
+	 * 
+	 * @var Voter
+	 */
+	public $voter;
 	
-	public $position;
-	public $vote;
-	private function showVotingPage()
+	/**
+	 * 
+	 * @var Election
+	 */
+	public $election;
+	
+	/**
+	 * 
+	 * @var Org
+	 */
+	public $org;
+	
+	
+	private function showPage()
 	{
-		$this->viewParams->position = $this->position;
-		$this->viewParams->candidates = $this->position->getCandidates();
-		$this->renderView("VoterVote");
+		$positions  = $this->election->getPositions();
+		
+		$this->viewParams->positions = array_filter($positions, function($position){
+			if($this->voter->getVoteByPosition($position)){
+				return false;
+			}
+			return true;
+		});
+		$this->renderView("voter/Vote");
+		
 	}
 	
-	private function showVotedPage()
-	{
-		$this->viewParams->position = $this->position;
-		$this->viewParams->candidate = $this->vote->getCandidate();
-		$this->renderView("VoterVoted");
-	}
 	
-	private function showNotVotedPage()
+	public function onCreate()
 	{
-		$this->viewParams->position = $this->position;
-		$this->renderView("VoterNotVoted");
-	}
-	
-	public function onCreate($orgName,$electionName)
-	{
-		parent::onCreate($orgName, $electionName);
-		if($this->election->isPending()){
-			$this->localRedirect("home");
+		if(Login::isVoterLoggedIn()){
+			$this->voter = Login::getVoter();
+			$this->viewParams->voter = $this->voter;
+			$this->election = $this->voter->getElection();
+			$this->viewParams->election = $this->election;
+			$this->org = $this->election->getOrg();
+			$this->viewParams->org = $this->org;
+		} else {
+			$this->localRedirect('home');
 		}
 	}
 	
-	public function get($orgName, $electionName, $positionTitle)
+	public function get()
 	{
-		$position = Position::findByElectionAndTitle($this->election, $positionTitle);
+		
+		$this->showPage();	
+		
+	}
+	
+	public function post()
+	{
+		$position = Position::findById($this->postVar('position'));
 		
 		if(!$position){
-			$this->localRedirect("home");
-		}
-		
-		$this->position = $position;
-		
-		if($vote = $this->voter->getVoteByPosition($position)){
-			$this->vote = $vote;
-			$this->showVotedPage();
-		}
-		else if($this->election->hasEnded()){
-			$this->showNotVotedPage();
-		}
-		else {
-			$this->showVotingPage();
-		}
-		
-		
-	}
-	
-	public function post($orgName, $electionName, $positionTitle)
-	{
-		$position = Position::findByElectionAndTitle($this->election, $positionTitle);
-		
-		if(!$position){
-			$this->localRedirect("home");
+			$this->viewParams->error = "Position not found.";
+			$this->showPage();
 		}
 		$this->position = $position;
+		
+		if($this->voter->getVoteByPosition($position)){
+			$this->viewParams->error = "You have already voted in that position.";
+			$this->showPage();
+		}
 		
 		$cId = (int) $this->postVar("candidate");
 		$candidate = Candidate::findByPositionAndId($position, $cId);
 		
 		if(!$candidate){
-			$this->viewParams->formResult = "Candidate not found.";
-			$this->showVotingPage();
+			$this->viewParams->error = "Candidate not found.";
 		}
 		else if($vote = Vote::create($this->voter, $candidate)){
 			$this->vote = $vote;
-			$this->showVotedPage();
+			$this->viewParams->success = "Vote casted successfully.";
 		}
 		else {
-			$this->viewParams->formResult = "Vote not casted successfully";
-			$this->showVotingPage();
-		}		
+			$this->viewParams->error = "Vote not casted successfully";
+		}
+
+		$this->showPage();
 	}
 }

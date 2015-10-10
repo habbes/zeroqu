@@ -20,7 +20,7 @@ $routes = [
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voters\/([\w\-]+)\/?$' ,"admin/ElectionVoters"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/view-candidates\/?$',"voter/VoterCandidates"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/vote\/?$',"ElectionHome"],
-	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/vote\/([\w\-\s]+)\/?',"voter/VoterVote"],
+	['voter\/vote',"voter/VoterVote"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/results\/?$',"ElectionResults"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voter\-login$',"VoterLogin"],
 	['^test\/(\d+)\/(\d+)', "OtherTest"],
