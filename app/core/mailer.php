@@ -59,7 +59,7 @@ class Mailer
 	}
 	
 	public static function sendHtml($email, $name, $subject, $htmlbody, $textbody="")
-	{
+ 	{
 		$mailer = self::getInstance();		
 		
 		$msg = [
@@ -85,5 +85,5 @@ class Mailer
 			return false;
 		}
 	}
-	
+
 }
