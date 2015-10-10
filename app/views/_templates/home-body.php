@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container page">
 	<div class="row">
 		<div class="col-md-7">
 			<h1 class='section-title title-underline'><span class="logo">zero<span class="logo-q">Q</span>u</span> election management</h1>

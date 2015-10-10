@@ -1,6 +1,6 @@
 <?php
 
-class VoterView extends View
+class VoterView extends BaseView
 {
 	public function renderVoterPage($params, $template)
 	{

@@ -1,10 +1,12 @@
 <?php
 
-class VoterHomeView extends VoterView
+class VoterHomeView extends BaseView
 {
-	public function render($params = null)
+	public function render()
 	{
-		$this->data->subtitle = "Voter Home";
-		$this->renderVoterPage($params, "voter_home");
+		$this->data->positions = $this->data->election->getPositions();
+		$this->data->navbar = $this->read('voter-navbar');
+		$this->data->pageBody = $this->read('voter-candidates');
+		parent::render();
 	}
 }
