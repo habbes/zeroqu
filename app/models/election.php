@@ -198,6 +198,7 @@ class Election extends DBModel
 		foreach($emails as $email){
 			$email = trim($email);
 			if(!$email) continue;
+			echo "Q";
 			Voter::create($this, $email, $emailView);
 		}
 		
