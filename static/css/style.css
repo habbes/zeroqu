@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Poiret+One);
-@import url(https://fonts.googleapis.com/css?family=Raleway););
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web);
 
 body {
-	font-family: 'Raleway', 'sans-serif';
+	font-family: 'Titillium Web', 'sans-serif';
+	font-weight:300;
 }
 
 .logo {
@@ -18,3 +19,10 @@ body {
 .section-title, .page-title {
 	font-family: 'Poiret One', sans-serif;
 }
+
+.title-underline {
+	padding-bottom:5px;
+	border-bottom: 1px solid #eee;
+	margin-bottom:10px;
+}
+

@@ -55,21 +55,21 @@
 								<label>Organization Name</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-university"></i></span>
-									<input type="text" name="title" class="form-control" placeholder="" required>
+									<input type="text" name="title" class="form-control" value="<?= $data->signupOrgTitle ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Unique Identifier</label>
 								<div class="input-group">
 									<span class="input-group-addon"><?= URL_ROOT ?>/orgs/</span>
-									<input type="text" name="name" class="form-control" placeholder="" required>
+									<input type="text" name="name" class="form-control" value="<?= $data->signupOrgName ?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Administrator's Email</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="email" name="username" class="form-control" required>
+									<input type="email" name="username" value="<?= $data->signupUsername ?>" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">

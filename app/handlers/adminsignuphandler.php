@@ -5,7 +5,7 @@ class AdminSignupHandler extends RequestHandler
 	public function post()
 	{
 		$orgTitle = $this->trimPostVar('title');
-		$orgName = $this->trimPostVar('orgName');
+		$orgName = $this->trimPostVar('name');
 		$username = $this->trimPostVar('username');
 		$password = $this->postVar('password');
 		$confirmPass = $this->postVar("confirm-password");
