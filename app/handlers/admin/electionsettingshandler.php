@@ -79,6 +79,6 @@ class ElectionSettingsHandler extends AdminElectionHandler
 			$sub = "?ended=true";
 		}
 		
-		$this->localRedirect($this->electionUrl . $sub);
+		$this->redirect($this->electionUrl . $sub);
 	}
 }
