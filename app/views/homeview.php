@@ -1,15 +1,11 @@
 <?php
 
-class HomeView extends View
+class HomeView extends BaseView
 {
 	public function render($params = null)
 	{
-		$this->data->signupResult = $params->signupResult;
-		$this->data->loginResult = $params->loginResult;
-		$this->data->voterLoginResult = $params->voterLoginResult;
-		$this->data->subtitle = "Home";
-		//$this->data->styles = ["home.css"];
-		$this->data->body = $this->read("home");
-		$this->show("base");
+		$this->data->pageBody = $this->read('home-body');
+		$this->data->navbar = $this->read('home-navbar');
+		parent::render();
 	}
 }

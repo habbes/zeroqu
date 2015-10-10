@@ -9,24 +9,27 @@
 		<div class="col-md-5">
 			<ul id="formtabs" class="nav nav-pills">
 			    <li class="active"><a href="#signin" data-toggle="pill">Existing User</a></li>
-			    <li><a href="#signup" data-toggle="pill">New User</a></li>
+			    <li class=""><a href="#signup" data-toggle="pill">New User</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="signin" class="panel tab-pane fade in active">
 					<div class="panel-body">
-						<form class="form" method="post">
+						<?php if($data->loginError) { ?>
+						<p class="alert alert-danger"><?= $data->loginError ?></p>
+						<?php } ?>
+						<form class="form" method="post" action="admin-login">
 							<div class="form-group">
 								<label>Email</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="email" name="username" class="form-control">
+									<input type="email" name="username" class="form-control" value="<?= $data->loginUsername?>" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Password</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" name="password" class="form-control">
+									<input type="password" name="password" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
@@ -37,40 +40,50 @@
 				</div>
 				<div id="signup" class="panel tab-pane fade">
 					<div class="panel-body">
-						<form class="form" method="post">
+						<?php if($data->signupErrors) { ?>
+						
+							<ul class="alert alert-danger">
+								<?php foreach($data->signupErrors as $error) { ?>
+								Account creation failed due to following errors:
+								<li><?= $error ?></li>
+								<?php } ?>
+							</ul>
+						
+						<?php } ?>
+						<form class="form" method="post" action="new-account">
 							<div class="form-group">
 								<label>Organization Name</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-university"></i></span>
-									<input type="text" name="title" class="form-control" placeholder="">
+									<input type="text" name="title" class="form-control" placeholder="" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Unique Identifier</label>
 								<div class="input-group">
 									<span class="input-group-addon"><?= URL_ROOT ?>/orgs/</span>
-									<input type="text" name="name" class="form-control" placeholder="">
+									<input type="text" name="name" class="form-control" placeholder="" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Administrator's Email</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user"></i></span>
-									<input type="email" name="username" class="form-control">
+									<input type="email" name="username" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Password</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" name="password" class="form-control">
+									<input type="password" name="password" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Confirm Password</label>
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-									<input type="password" name="confirm-pass" class="form-control">
+									<input type="password" name="confirm-password" class="form-control" required>
 								</div>
 							</div>
 							<div class="form-group">

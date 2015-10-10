@@ -36,7 +36,7 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		    </button>
-	      	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u</a>
+	      	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u <span class="logo-q">elections</span></a>
 		</div>
 
 		<div class="collapse navbar-collapse">
@@ -53,22 +53,16 @@
 
 <script src="public/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<?php 
-foreach($data->get('scripts',[]) as $script){
-	?>
+
+<?php foreach($data->get('scripts',[]) as $script){ ?>
 <script src="<?= $script ?>"></script>
-}
+<?php } ?>
 
-?>
-
-foreach($data->get('inlineScripts',[]) as $iScript){
-	?>
+<?php foreach($data->get('inlineScripts',[]) as $iScript){ ?>
 <script>
 <?= $iScript ?>
 </script>
-}
-
-?>
+<?php } ?>
 
 <script>
 $('#formtabs a').click(function(e){
