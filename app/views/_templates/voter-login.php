@@ -9,7 +9,7 @@
 					<h4 class="logo">Elections: <span class="logo-q"><?= $data->election->getTitle() ?></span></h4>
 
 					<p>
-					Log in using the voter id and password sent to your email. If you encounter any problems logging in,
+					Log in using the Voter ID and Password sent to your email. If you encounter any problems logging in,
 					ask your elections' administrator to send you new credentials.
 					</p>
 					</div>
