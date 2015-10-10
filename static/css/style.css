@@ -4,6 +4,11 @@
 body {
 	font-family: 'Titillium Web', 'sans-serif';
 	font-weight:300;
+	/*background-color: #524C4C;*/
+}
+
+.page {
+	background-color: white;
 }
 
 .logo {
@@ -11,7 +16,7 @@ body {
 }
 
 
-.logo-q {
+.logo-q, .heading-highlight {
 	font-weight:bold;
 	color:#4BC264;
 }
@@ -26,3 +31,22 @@ body {
 	margin-bottom:10px;
 }
 
+.normal-title, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.candidate-photo {
+	height:130px;
+	width:130px;
+}
+
+.vote-radio {
+	position:relative;
+	top:50px;
+}
+
+.vote-button-container {
+	border-top: 1px solid #eee;
+	margin-top:30px;
+	padding-top:30px;
+}
