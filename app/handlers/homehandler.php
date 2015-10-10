@@ -49,7 +49,16 @@ class HomeHandler extends RequestHandler
 		$this->viewParams->election = $voter->getElection();
 		$this->viewParams->electionUrl = URL_ROOT . "/orgs/" . $voter->getElection()->getOrg()->getName()
 			. "/elections/" . $voter->getElection()->getName();
-		$this->renderView("VoterHome");
+		$this->viewParams->org = $voter->getElection()->getOrg();
+		if($voter->getElection()->isPending()){
+			$this->renderView("VoterCandidates");
+		}
+		else if($voter->getElection()->isOngoing()){
+			$this->renderView('VoterVote');
+		}
+		else if($voter->getElection()->hasEnded()){
+			$this->renderView('VoterResults');
+		}
 	}
 	
 	private function adminLogin()
