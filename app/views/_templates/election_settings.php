@@ -27,11 +27,24 @@ if($data->formResult){
 	<?php 
 		if(!$data->election->hasEnded()){
 			$action = $data->election->isPending()?"Start Election Now" : "End Election Now";
+			$btnType = $data->election->isPending()? "btn-success" : "btn-danger";
 			?>
 		<div class="buttons">
 			<button name="change-status" class="btn btn-success"><?= $action ?></button>
 		</div>
 			<?php 
+		}
+		else {
+			if(!$data->election->areResultsReleased()){
+			?>
+			<button name="release-results" class="btn btn-success">Allow Voters To View Results</button>
+			<?php
+			}
+			else {
+			?>
+			<b>Voters can also view the results</b>
+			<?php
+			}
 		}
 	?>
 	

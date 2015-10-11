@@ -2,7 +2,10 @@
 
 class AdminElectionHandler extends BaseAdminOrgHandler
 {
-	
+	/**
+	 * 
+	 * @var Election
+	 */
 	public $election;
 	public $electionUrl;
 
