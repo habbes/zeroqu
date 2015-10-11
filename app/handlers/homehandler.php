@@ -68,7 +68,14 @@ class HomeHandler extends RequestHandler
 			$this->renderView('voter/Vote');
 		}
 		else if($voter->getElection()->hasEnded()){
-			$this->renderView('voter/Results');
+			if($voter->getElection()->areResultsReleased()){
+				$this->viewParams->positions = $voter->getElection()->getPositions();
+				$this->renderView('voter/Results');
+			}
+			else {
+				$this->renderView('voter/ElectionEnded');
+			}
+			
 		}
 	}
 	

@@ -50,3 +50,22 @@ body {
 	margin-top:30px;
 	padding-top:30px;
 }
+
+.vote-result-wrapper {
+	width:130px;
+	height:130px;
+	padding:30px;
+	
+	background-color:#eee;
+	
+}
+
+.vote-percent {
+	font-size:20px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.vote-count {
+	text-align:center;
+}
