@@ -8,7 +8,11 @@
 	<?php if($data->success){ ?>
 	<div class="alert alert-success"><?= $data->success ?> <i class="fa fa-check"></i></div>
 	<?php } ?>
-	<div class="alert alert-info"><b>The voting process is ongoing</b>. Cast your vote below.</div>
+	<?php if($data->allVotesCasted) { ?>
+		<div class="alert alert-success">Thank you for voting. <i class="fa fa-check"></i></div>
+	<?php } else {?>
+		<div class="alert alert-info"><b>The voting process is ongoing</b>. Cast your vote below.</div>
+	<?php } ?>
 	
 	<div class="panel-group" id="accordion">
 		<?php if(count($data->positions) == 0) { ?>
