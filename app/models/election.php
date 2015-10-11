@@ -11,6 +11,7 @@ class Election extends DBModel
 	protected $status;
 	protected $start_date;
 	protected $end_date;
+	protected $results_released;
 	
 	private $_admin;
 	private $_org;
@@ -125,6 +126,17 @@ class Election extends DBModel
 	public function end()
 	{
 		$this->setStatus(self::ENDED);
+		return $this->save();
+	}
+	
+	public function areResultsReleased()
+	{
+		return (bool) $this->results_released;
+	}
+	
+	public function releaseResults()
+	{
+		$this->results_released = (int) true;
 		return $this->save();
 	}
 	
