@@ -56,12 +56,15 @@ class HomeHandler extends RequestHandler
 		else if($voter->getElection()->isOngoing()){
 			$positions  = $voter->getElection()->getPositions();
 			
-			$this->viewParams->positions = array_filter($positions, function($position){
+			$this->viewParams->positions = array_filter($positions, function($position) use ($voter){
 				if($voter->getVoteByPosition($position)){
 					return false;
 				}
 				return true;
 			});
+			if(count($positions) > 0 && count($this->viewParams->positions) == 0){
+				$this->viewParams->allVotesCasted = true;
+			}
 			$this->renderView('voter/Vote');
 		}
 		else if($voter->getElection()->hasEnded()){

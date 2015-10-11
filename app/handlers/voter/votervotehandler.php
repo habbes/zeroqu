@@ -31,6 +31,9 @@ class VoterVoteHandler extends RequestHandler
 			}
 			return true;
 		});
+		if(count($positions) > 0 && count($this->viewParams->positions) == 0){
+				$this->viewParams->allVotesCasted = true;
+		}
 		$this->renderView("voter/Vote");
 		
 	}
@@ -80,11 +83,12 @@ class VoterVoteHandler extends RequestHandler
 		}
 		else if($vote = Vote::create($this->voter, $candidate)){
 			$this->vote = $vote;
-			$this->viewParams->success = "Vote casted successfully.";
+			$this->viewParams->success = "Your vote was successfull. Thank you for voting.";
 		}
 		else {
-			$this->viewParams->error = "Vote not casted successfully";
+			$this->viewParams->error = "Your vote was not successful";
 		}
+		
 
 		$this->showPage();
 	}
