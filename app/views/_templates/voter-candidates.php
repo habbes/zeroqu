@@ -25,7 +25,10 @@
                         </p>
                         <h4 class="text-lg" style="padding-left:5px" class="normal-title">Candidates</h4>
                    		
-                        	<?php foreach($position->getCandidates() as $candidate){
+                        	<?php 
+                        	$candidates = $position->getCandidates();
+                        	uasort($candidates, 'strcmp');
+                        	foreach($position->getCandidates() as $candidate){
 
                         		$imagePath = URL_ROOT . "/" .($candidate->getImagePath()? $candidate->getImagePath() : "public/images/generic-user-96.png");
                         		?>

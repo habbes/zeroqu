@@ -4,6 +4,10 @@ class AdminSignupHandler extends RequestHandler
 {
 	public function post()
 	{
+		//disable account creation
+		$this->viewParams->signupErrors = ['New accounts are not accepted at this time.'];
+		return $this->renderView('home');
+		
 		$orgTitle = $this->trimPostVar('title');
 		$orgName = $this->trimPostVar('name');
 		$username = $this->trimPostVar('username');
