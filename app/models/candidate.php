@@ -74,7 +74,7 @@ class Candidate extends DBModel
 	public function setImage($path){
 		$imageStream = fopen($path, 'r+');
 		$dest = $this->generateImagePath();
-		Storage::instance()->writeStream($dest, $imageStream);	
+		Storage::instance()->putStream($dest, $imageStream);	
 		fclose($imageStream);
 		$this->image_path = $dest;
 		$this->save();
