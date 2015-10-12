@@ -27,7 +27,7 @@
              <!-- /.navbar-static-side -->
         
 
-        <div id="page-wrapper" class="container <?= !$data->menu? 'full-width' : '' ?>">
+        <div id="page-wrapper" class="container-fluid <?= !$data->menu? 'full-width' : '' ?>">
             <div class="row">
                 <div class="">
                 	<?php if($data->contentTitle){ ?>
