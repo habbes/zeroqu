@@ -1,12 +1,7 @@
-<style>
-	.highcharts-container{
-		width: 1008px;
-	}
-</style>
 <div class="col-md-12">
 	<ul class="nav nav-tabs">
 		<?php foreach($data->results['positions'] as $position){ ?>
-			<li><a data-toggle="tab" href="#<?=str_replace(" ","-",$position['title'])?>"><?=$position['title']?></a></li>
+			<li><a data-toggle="tab" href="#<?=str_replace(" ","-",$position['title']);?>"><?=$position['title']?></a></li>
 		<?php } ?>
 	  	<!-- <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 	  	<li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
