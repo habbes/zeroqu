@@ -1,4 +1,4 @@
-<div class="navbar-default sidebar" role="navigation" style="background-color: white">
+<div class="navbar-default sidebar" role="navigation" style="background-color: rgb(250,250,250)">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                        

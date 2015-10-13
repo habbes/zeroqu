@@ -1,3 +1,8 @@
+<style>
+	.highcharts-container{
+		width: 1008px;
+	}
+</style>
 <div class="col-md-12">
 	<ul class="nav nav-tabs">
 		<?php foreach($data->results['positions'] as $position){ ?>
@@ -10,9 +15,9 @@
 	
 	<div class="tab-content">
 		<?php foreach($data->results['positions'] as $position){ ?>
-			 <div id="<?=str_replace(" ","-",$position['title'])?>" class="tab-pane fade">
+			 <div id="<?=str_replace(" ","-",$position['title'])?>" class="tab-pane fade container-fluid" >
 			    <h3><?=$position['title']?></h3>
-			    <p id="<?=str_replace(" ", "-", $position['title'])?>" class="col-md-12"></p>
+			    <div id="<?=str_replace(" ", "-", $position['title'])?>" class="row"></div>
 			  </div>
 		<?php } ?>
 	  <div id="home" class="tab-pane fade in active">
