@@ -57,7 +57,9 @@
 		
 		<!-- jQuery -->
     	<script src="public/bower_components/jquery/dist/jquery.min.js"></script>
-
+		<!-- HighCharts -->
+		
+		<script src="http://code.highcharts.com/highcharts.js"></script>
     	<!-- Bootstrap Core JavaScript -->
     	<script src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

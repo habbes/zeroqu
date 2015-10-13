@@ -1,12 +1,19 @@
+
 <?php
+
 if(!$data->election->hasEnded()){
 ?>
-<p>Election has not yet ended. The votes will be tallied once the voting process has ended.</p>
+<div class="container-fluid">
+<div class="col-xs-6">Election is still ongoing. The votes will be tallied once the voting process has ended.</div>
+<div class="col-md-6"><a href="<?=$data->electionUrl?>/results/details" class="pull-right">More details...</a></div>
+</div>
 <?php 
 }
 ?>
 <div>
-
+<div class="container-fluid">
+<div class="col-md-12"><a href="<?=$data->electionUrl?>/results/details" class="pull-right">More details...</a></div>
+</div>
 <?php 
 	$positions = $data->get("positions",[]);
 	$allowEdit = $data->election->isPending();
@@ -21,27 +28,35 @@ if(!$data->election->hasEnded()){
 		
 		uasort($candidates, 'callback');
 ?>
-	<div class="position-wrapper clear-both" data-id="<?= $position->getId()?>">
-		<h3 class="title"><?= $position->getTitle() ?></h3>
-		<div style="margin-bottom:10px">
+	<div class="panel panel-default clear-both" data-id="<?= $position->getId()?>">
+		<div class="panel-heading">
+			<h3 class="panel-title"><?= $position->getTitle() ?></h3>
+		</div>
+		<div style="margin-bottom:10px; padding-left: 20px">
 			<b>Total Votes: <strong style="font-size:1.2em;display:inline-block;margin-left:5px"><?= $total ?></strong></b>
 		</div>
-		<div class="candidates-wrapper">
+
+		<div class="container-fluid">
 		<?php 
 			foreach($candidates as $candidate) {
 				$numVotes = $candidate->countVotes();
 				$imagePath = $candidate->getImagePath()? $candidate->getImagePath() : 'public/images/generic-user-96.png';
 		?>
-			<div class="candidate-wrapper-small" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
-				<div class="candidate-name bold" style="font-size:1.2em"><?= $candidate->getName()?></div>
-				<div class="candidate-img-wrapper">
-					<img alt="Candidate's picture" class="candidate-img-small" src="<?= $imagePath ?>" style="height:130px"/>
-					<span class="vote-count">
+			<div class="panel panel-default" data-pos="<?= $position->getId()?>" data-id="<?= $candidate->getId()?>">
+				<div class="panel-header" style="font-size:1.2em">
+					<h6 class="panel-title" style="padding-left: 20px"><?= $candidate->getName()?></h6>
+				
+				</div>
+				<div class="panel-body">
+					<div class="col-md-4">
+						<img alt="Candidate's picture" class="candidate-img-small" width="250" src="<?= $imagePath ?>" style="height:130px"/>
+					</div>
+					<div class="col-md-4" style="height:100%;border-right: solid #ccc 1px; font-size: 2em; text-align:center">
 						<?= $numVotes ?>
-					</span>
-					<span class="vote-count">
+					</div>
+					<div class="col-md-4" style="border-left: solid #ccc 1px; font-size: 2em; text-align:center">
 						<?php printf("%.2f%%", $total > 0? $numVotes * 100/$total : 0); ?>
-				</span>
+					</div>
 				</div>
 				
 			</div>
