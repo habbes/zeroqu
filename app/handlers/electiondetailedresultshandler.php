@@ -13,6 +13,10 @@ class ElectionDetailedResultsHandler extends AdminElectionHandler{
 			$data['positions'][] = $pos;
 		}
 		echo "<script> console.log(" . json_encode($data). ");</script>";
+		
+		$this->viewParams->election = $this->election;
+		$this->viewParams->results = $data;
+		$this->renderView("DetailedResults");
 	}
 	
 }

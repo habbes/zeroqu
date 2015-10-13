@@ -5,7 +5,7 @@ if(!$data->election->hasEnded()){
 ?>
 <div class="container-fluid">
 <div class="col-xs-6">Election is still ongoing. The votes will be tallied once the voting process has ended.</div>
-<div class="col-md-6"><a href="<?=$data->electionUrl?>/results/details" class="pull-right">More details...</a></div>
+
 </div>
 <?php 
 }

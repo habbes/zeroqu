@@ -24,7 +24,8 @@
 
     	<!-- Custom CSS -->
     	<link href="public/dist/css/sb-admin-2.css" rel="stylesheet">
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="http://code.highcharts.com/highcharts.js"></script>
     	<!-- Morris Charts CSS -->
     	<link href="public/bower_components/morrisjs/morris.css" rel="stylesheet">
 
@@ -59,7 +60,6 @@
     	<script src="public/bower_components/jquery/dist/jquery.min.js"></script>
 		<!-- HighCharts -->
 		
-		<script src="http://code.highcharts.com/highcharts.js"></script>
     	<!-- Bootstrap Core JavaScript -->
     	<script src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

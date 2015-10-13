@@ -10,7 +10,7 @@
 		<?php foreach($data->org->getElections() as $election){
 			$electionUrl = $data->orgUrl . "/elections/".$election->getName();
 			?>
-		<div class="col col-md-4 col-sm-6">
+		<div class="col col-md-4 col-sm-6" style="margin-top:20px">
 			<div class="panel panel-default">
 
 				<div class="panel-body">
