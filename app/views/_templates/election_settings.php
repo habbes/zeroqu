@@ -7,7 +7,7 @@ if($data->formResult){
 ?>
 <div class="col-md-8">
 <form method="post" style="margin-top:20px" >
-	<div class="form-row">
+	<div class="col-md-12">
 		<?php 
 			switch($data->election->getStatus()){
 				case Election::PENDING:
@@ -24,6 +24,7 @@ if($data->formResult){
 		<span>Current Status: </span><span style="font-weight:bold"><?= $status ?></span>
 		
 	</div>
+	<div class="col-md-12" style="padding-top: 20px">
 	<?php 
 		if(!$data->election->hasEnded()){
 			$action = $data->election->isPending()?"Start Election Now" : "End Election Now";
@@ -47,7 +48,7 @@ if($data->formResult){
 			}
 		}
 	?>
-	
+	</div>
 </form>
 </div>
 <div class="col-md-4">

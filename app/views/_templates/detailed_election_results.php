@@ -16,33 +16,52 @@
 			  </div>
 		<?php } ?>
 	  <div id="home" class="tab-pane fade in active">
-	    <h3>HOME</h3>
-	    <p>Some content.</p>
+	    <h3><?=$data->election->getTitle()?></h3>
+	    <p>Here are graphical representations of the results...</p>
+	    <p>Use the tabs above to view</p>
 	  </div>
-	  <div id="menu1" class="tab-pane fade">
-	    <h3>Menu 1</h3>
-	    <p>Some content in menu 1.</p>
-	  </div>
-	  <div id="menu2" class="tab-pane fade">
-	    <h3>Menu 2</h3>
-	    <p>Some content in menu 2.</p>
-	  </div>
+	  
 	</div>
 </div>
 <script>
-<?php foreach($data->results['positions'] as $position){?>
+<?php foreach($data->results['positions'] as $position){
+		$candidates = "";
+		$votes = "";
+		foreach ($position['candidates'] as $candidate){
+			$candidates .= "'" . $candidate['name'] . "',";
+			$votes .= $candidate['votes'] . ",";
+		}
+		$candidates = trim($candidates,",");
+		$votes = trim($votes,",");
+		
+		$candidates = "[" . $candidates . "]";
+		$votes = "[" . $votes . "]";
+	?>
 $(function() {
      var chart1 = new Highcharts.Chart({
          chart: {
             renderTo: '<?=str_replace(" ", "-", $position['title'])?>',
-            type: 'bar'
+            type: 'column'
          },
          rangeSelector: {
             selected: 1
          },
+         title: {
+			text: "<?=$position['title']?>"
+         },
+         xAxis: {
+			categories: <?=$candidates?>,
+			tickInterval: 1
+         },
+         yAxis: {
+             title: {
+				text: "Votes"	
+             },
+             tickInterval: 1
+         },
          series: [{
-            name: 'USD to EUR',
-            data: [43,45,65,76,56] // predefined JavaScript array
+            name: 'Votes',
+            data: <?=$votes?> // predefined JavaScript array
          }]
       });
    });
