@@ -12,7 +12,10 @@ if(!$data->election->hasEnded()){
 ?>
 <div>
 <div class="container-fluid">
-<div class="col-md-12"><a href="<?=$data->electionUrl?>/results/details" class="pull-right">More details...</a></div>
+	<div class="col-md-8 col-md-offset-4" style="text-align: right">
+		<a href="<?=$data->electionUrl?>/results/print">Print Friendly...</a> |
+		<a href="<?=$data->electionUrl?>/results/details">More details...</a>
+	</div>
 </div>
 <?php 
 	$positions = $data->get("positions",[]);

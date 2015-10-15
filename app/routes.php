@@ -22,6 +22,7 @@ $routes = [
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/vote\/?$',"ElectionHome"],
 	['voter\/vote',"voter/VoterVote"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/results\/?$',"ElectionResults"],
+	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/results\/print\/?$',"ElectionDetailedResults@printFriendly"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/results\/details\/?$',"ElectionDetailedResults"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voter\-login$',"VoterLogin"],
 	['^test\/(\d+)\/(\d+)', "OtherTest"],

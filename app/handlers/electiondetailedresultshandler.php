@@ -1,6 +1,22 @@
 <?php
 class ElectionDetailedResultsHandler extends AdminElectionHandler{
 	public function get($orgName, $electionName){
+		$data = $this->getFinalResults();
+		echo "<script> console.log(" . json_encode($data). ");</script>";
+		
+		$this->viewParams->election = $this->election;
+		$this->viewParams->results = $data;
+		$this->renderView("DetailedResults");
+	}
+	public function printFriendly($orgName,$electionName){
+		$data = $this->getFinalResults();
+		
+		$this->viewParams->results = $data;
+		$this->viewParams->election = $this->election;
+		$this->viewParams->user = $this->admin;
+		$this->renderView("PrintResults");
+	}
+	private function getFinalResults(){
 		$data = [];
 		$data['positions'] = [];
 		foreach ($this->election->getPositions() as $position){
@@ -12,11 +28,6 @@ class ElectionDetailedResultsHandler extends AdminElectionHandler{
 			}
 			$data['positions'][] = $pos;
 		}
-		echo "<script> console.log(" . json_encode($data). ");</script>";
-		
-		$this->viewParams->election = $this->election;
-		$this->viewParams->results = $data;
-		$this->renderView("DetailedResults");
+		return $data;
 	}
-	
 }
