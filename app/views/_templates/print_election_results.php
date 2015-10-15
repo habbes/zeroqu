@@ -27,7 +27,7 @@ h4, h5{
 				</thead>
 				<?php foreach ($result['candidates'] as $candidate){?>
 					<tbody>
-						<tr><td><?=$candidate['name']?></td><td><?=$candidate['votes']?></td><td><?php printf("%.2f%%", $result['votes'] > 0? $$candidate['votes'] * 100/$result['votes'] : 0); ?></td><td></tr>
+						<tr><td><?=$candidate['name']?></td><td><?=$candidate['votes']?></td><td><?php printf("%.2f%%", $result['votes'] > 0? $candidate['votes'] * 100/$result['votes'] : 0); ?></td><td></tr>
 					</tbody>
 				<?php } ?>
 				</table>
