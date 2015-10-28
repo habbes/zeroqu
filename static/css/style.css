@@ -5,6 +5,17 @@ body {
 	font-family: 'Titillium Web', 'sans-serif';
 	font-weight:300;
 	/*background-color: #524C4C;*/
+	color: #898C8E;
+}
+
+@media(min-width:765px){
+	.navbar-container {
+		margin-bottom:60px;
+	}
+}
+
+.navbar .container {
+	border-bottom:1px solid #CFFFD9;
 }
 
 .page {
@@ -21,7 +32,7 @@ body {
 	color:#4BC264;
 }
 
-.section-title, .page-title {
+.section-title, .page-title, .elegant {
 	font-family: 'Poiret One', sans-serif;
 }
 
@@ -31,9 +42,22 @@ body {
 	margin-bottom:10px;
 }
 
+.intro-title {
+	font-size:58px;
+	font-weight: normal;
+}
+
+.intro-big {
+	font-size:30px;
+}
+
+
+
 .normal-title, h1, h2, h3, h4, h5, h6 {
 	font-family: 'Titillium Web', sans-serif;
 }
+
+
 
 .candidate-photo {
 	height:130px;

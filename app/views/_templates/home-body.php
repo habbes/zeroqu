@@ -1,13 +1,16 @@
 <div class="container page">
 	<div class="row">
 		<div class="col-md-7">
-			<h1 class='section-title title-underline'><span class="logo">zero<span class="logo-q">Q</span>u</span> election management</h1>
-			<p>
-				zeroQu is a comprehensive online election management service for institutions.
-			</p>
+			<div class='intro-title'><span class="logo">zero<span class="logo-q">Q</span>u</span> elections</div>
+			<div class="intro-big">
+			Comprehensive online election management service.
+			</div>
+			<br><br>
+			<div class="intro-mid">
+			</div>
 		</div>
 		<div class="col-md-5">
-			<ul id="formtabs" class="nav nav-pills">
+			<ul id="formtabs" class="nav nav-tabs">
 			    <li class="active"><a href="#signin" data-toggle="pill">Existing User</a></li>
 			    <li class=""><a href="#signup" data-toggle="pill">New User</a></li>
 			</ul>
