@@ -4,9 +4,9 @@
 			<div class="panel">
 				<div class="panel-body">
 					<div class="col-md-7">
-					<h2 class="section-title title-underline">zero<span class="logo-q">Q</span>u <span class="logo-q">voter</span></h2>
-					<h4 class="logo">Institution: <span class="logo-q"><?= $data->org->getTitle() ?></span></h4>
-					<h4 class="logo">Elections: <span class="logo-q"><?= $data->election->getTitle() ?></span></h4>
+					<h2 class="section-title title-underline">zero<span class="logo-q">Q</span>u <span class="logo-subtext">voter</span></h2>
+					<h4 class="logo">Institution: <span class="logo-subtext"><?= $data->org->getTitle() ?></span></h4>
+					<h4 class="logo">Elections: <span class="logo-subtext"><?= $data->election->getTitle() ?></span></h4>
 
 					<p>
 					Log in using the Voter ID and Password sent to your email. If you encounter any problems logging in,
