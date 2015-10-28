@@ -29,7 +29,11 @@ body {
 
 .logo-q, .heading-highlight {
 	font-weight:bold;
-	color:#4BC264;
+	color:;
+}
+
+.navbar-toggle {
+	color: #4BC264
 }
 
 .section-title, .page-title, .elegant {

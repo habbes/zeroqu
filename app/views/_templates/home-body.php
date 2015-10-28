@@ -1,7 +1,8 @@
 <div class="container page">
 	<div class="row">
 		<div class="col-md-7">
-			<div class='intro-title'><span class="logo">zero<span class="logo-q">Q</span>u</span> elections</div>
+			<div class='intro-title section-title'><span class="logo">zero<span class="logo-q">Q</span>u</span>
+				<span class="logo-q">elections</span></div>
 			<div class="intro-big">
 			Comprehensive online election management service.
 			</div>
