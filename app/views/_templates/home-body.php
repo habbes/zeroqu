@@ -8,8 +8,7 @@
 			</div>
 			<br><br>
 			<div class="intro-mid">
-			Conveniently manage your organization's election.<br>
-			<a class="btn btn-primary">Learn More</a>
+			<a class="btn btn-primary btn-lg">Learn More</a>
 			</div>
 		</div>
 		<div class="col-md-5">

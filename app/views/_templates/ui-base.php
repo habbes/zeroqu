@@ -28,26 +28,24 @@
 </head>
 <body>
 
+<header class="main-header">
 <nav class="navbar navbar-container">
 	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-	        	<span class="sr-only">Toggle navigation</span>
-		        <span class="fa fa-ellipsis-v"></span>
-		    </button>
-	      	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u <span class="logo-subtext-strong">elections</span></a>
-		</div>
-
-		<div class="collapse navbar-collapse">
-			<?= $data->navbar ?>
-		</div>
+		<?= $data->navbar ?>
 	</div>
 </nav>
-
+</header>
 <div id="page-body">
 	<?= $data->pageBody ?>
 </div>
 
+<footer class="main-footer">
+	
+	<div class="container">
+		&copy; 2015 - <span class="logo">zero<span class="logo-q-dark">q</span>u</span>. All rights reserved.
+	</div>
+	
+</footer>
 
 
 <script src="public/bower_components/jquery/dist/jquery.min.js"></script>

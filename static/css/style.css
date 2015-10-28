@@ -14,8 +14,17 @@ body {
 	}
 }
 
-.navbar .container {
+.main-header .container {
 	border-bottom:1px solid #CFFFD9;
+}
+
+.main-footer .container {
+	border-top:1px solid #CFFFD9;
+	margin-top:40px;
+	margin-bottom:10px;
+	height:60px;
+	padding:25px;
+	font-size:14px;
 }
 
 .page {
@@ -27,13 +36,18 @@ body {
 }
 
 
-.logo-q, .logo-subtext {
+.logo-q, .logo-subtext, .logo-subtext-strong {
 	
 	color:#4BC264;
 }
 
-.logo-q, .logo-subtext-strong {
+.logo-q, .logo-q-dark {
+	text-transform: uppercase;
+}
+
+.logo-q, .logo-q-dark, .logo-subtext-strong {
 	font-weight:bold;
+
 }
 
 .navbar-toggle {

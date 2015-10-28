@@ -3,12 +3,9 @@
     	<span class="sr-only">Toggle navigation</span>
         <span class="fa fa-ellipsis-v"></span>
     </button>
-  	<a class="navbar-brand" href="#">How it Works</span></a>
+  	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u <span class="logo-subtext">elections</span></a>
 </div>
-<div class="collpase navbar-collapse">
-	<ul class="nav navbar-nav navbar-right">
-		<li><a href="#">Features</a></li>
-		<li><a href="#">Pricing</a></li>
-		<li><a href="#">Blog</a></li>
-	</ul>
+
+<div class="collapse navbar-collapse">
+	<?= $data->navbarLinks ?>
 </div>
