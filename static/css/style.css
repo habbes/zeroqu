@@ -27,9 +27,13 @@ body {
 }
 
 
-.logo-q, .heading-highlight {
-	font-weight:bold;
+.logo-q, .logo-subtext {
+	
 	color:#4BC264;
+}
+
+.logo-q, .logo-subtext-strong {
+	font-weight:bold;
 }
 
 .navbar-toggle {
@@ -53,6 +57,10 @@ body {
 
 .intro-big {
 	font-size:30px;
+}
+
+.intro-mid {
+	font-size:20px;
 }
 
 

@@ -35,7 +35,7 @@
 	        	<span class="sr-only">Toggle navigation</span>
 		        <span class="fa fa-ellipsis-v"></span>
 		    </button>
-	      	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u <span class="logo-q">elections</span></a>
+	      	<a class="navbar-brand logo" href="#">zero<span class="logo-q">Q</span>u <span class="logo-subtext-strong">elections</span></a>
 		</div>
 
 		<div class="collapse navbar-collapse">

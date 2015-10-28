@@ -2,12 +2,14 @@
 	<div class="row">
 		<div class="col-md-7">
 			<div class='intro-title section-title'><span class="logo">zero<span class="logo-q">Q</span>u</span>
-				<span class="logo-q">elections</span></div>
+				<span class="logo-subtext">elections</span></div>
 			<div class="intro-big">
 			Comprehensive online election management service.
 			</div>
 			<br><br>
 			<div class="intro-mid">
+			Conveniently manage your organization's election.<br>
+			<a class="btn btn-primary">Learn More</a>
 			</div>
 		</div>
 		<div class="col-md-5">
