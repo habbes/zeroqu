@@ -8,7 +8,7 @@
 			</div>
 			<br><br>
 			<div class="intro-mid">
-			<a class="btn btn-primary btn-lg">Learn More</a>
+			<a class="btn btn-primary btn-lg" href="/learnmore">Learn More</a>
 			</div>
 		</div>
 		<div class="col-md-5">

@@ -3,12 +3,12 @@
     	<span class="sr-only">Toggle navigation</span>
         <span class="fa fa-ellipsis-v"></span>
     </button>
-  	<a class="navbar-brand" href="#">How it Works</span></a>
+  	<a class="navbar-brand" href="/howitworks">How it Works</span></a>
 </div>
 <div class="collpase navbar-collapse">
 	<ul class="nav navbar-nav navbar-right">
-		<li><a href="#">Features</a></li>
-		<li><a href="#">Pricing</a></li>
-		<li><a href="#">Blog</a></li>
+		<li><a href="/features">Features</a></li>
+		<li><a href="/pricing">Pricing</a></li>
+		<li><a href="/blog">Blog</a></li>
 	</ul>
 </div>
