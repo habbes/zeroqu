@@ -1,3 +1,7 @@
-<div class="col-md-8">
-    Learn more about zeroQu
+<div class="container page">
+    <div class="row">
+        <div class="col-md-8">
+            Learn more about zeroQu
+        </div>
+    </div>
 </div>
