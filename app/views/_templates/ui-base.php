@@ -5,8 +5,19 @@
 	<base href="<?= URL_ROOT ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="public/bower_components/magnific-popup/dist/magnific-popup.css">
 	<link href="public/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 	<link href="public/css/style.css" rel="stylesheet">
+	<style rel="stylesheet">
+		.white-popup {
+			position: relative;
+			background: #FFF;
+			padding: 20px;
+			width: auto;
+			max-width: 500px;
+			margin: 20px auto;
+			}
+	</style>
 	<?php 
 		foreach($data->get('styles', []) as $style)
 		{
@@ -49,6 +60,7 @@
 
 
 <script src="public/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="public/bower_components/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
 <script src="public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <?php foreach($data->get('scripts',[]) as $script){ ?>
@@ -65,7 +77,11 @@
 $('#formtabs a').click(function(e){
 	e.preventDefault();
 	$(this).tab('show');
-})
+});
+$('.popup-image').magnificPopup({
+  type: 'image'
+  // other options
+});
 </script>
 
 </body>

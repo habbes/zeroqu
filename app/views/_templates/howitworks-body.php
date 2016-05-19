@@ -6,7 +6,9 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 20px">
                         <div class="col-md-6">
-                            <img class="img-responsive" src="public/images/screenshots/main.png" alt="Main page">
+                            <a href="public/images/screenshots/main.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/main.png" alt="Main page">
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <h5 class="text-center">Registration</h5>
@@ -29,7 +31,9 @@
                             
                         </div>
                         <div class="col-md-6">
-                           <img class="img-responsive" src="public/images/screenshots/organisations.png" alt="Organisations page">
+                            <a href="public/images/screenshots/organisations.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/organisations.png" alt="Organisations page">
+                            </a>
                         </div>
                      </div>
                 </div>
@@ -37,7 +41,9 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 20px">
                         <div class="col-md-6">
-                            <img class="img-responsive" src="public/images/screenshots/elections.png" alt="Elections page">
+                            <a href="public/images/screenshots/elections.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/elections.png" alt="Elections page">
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <h5 class="text-center">Create an Election</h5>
@@ -61,7 +67,9 @@
                             
                         </div>
                         <div class="col-md-6">
-                           <img class="img-responsive" src="public/images/screenshots/positions.png" alt="Organisations page">
+                            <a href="public/images/screenshots/positions.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/positions.png" alt="Organisations page">
+                            </a>
                         </div>
                      </div>
                 </div>
@@ -69,7 +77,9 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 20px">
                         <div class="col-md-6">
-                            <img class="img-responsive" src="public/images/screenshots/candidates.png" alt="Elections page">
+                            <a href="public/images/screenshots/candidates.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/candidates.png" alt="Elections page">
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <h5 class="text-center">Allocate Candidates</h5>
@@ -92,7 +102,9 @@
                             
                         </div>
                         <div class="col-md-6">
-                           <img class="img-responsive" src="public/images/screenshots/voters.png" alt="Voters page">
+                            <a href="public/images/screenshots/voters.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/voters.png" alt="Voters page">
+                            </a>
                         </div>
                      </div>
                 </div>
@@ -100,7 +112,9 @@
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 20px">
                         <div class="col-md-6">
-                            <img class="img-responsive" src="public/images/screenshots/graphs.png" alt="Results page">
+                            <a href="public/images/screenshots/graphs.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/graphs.png" alt="Results page">
+                            </a>
                         </div>
                         <div class="col-md-6">
                             <h5 class="text-center">Viewing Results</h5>
@@ -123,7 +137,9 @@
                             
                         </div>
                         <div class="col-md-6">
-                           <img class="img-responsive" src="public/images/screenshots/print.png" alt="Print page">
+                            <a href="public/images/screenshots/print.png" class="popup-image">
+                                <img class="img-responsive" src="public/images/screenshots/print.png" alt="Print page">
+                            </a>
                         </div>
                      </div>
                 </div>

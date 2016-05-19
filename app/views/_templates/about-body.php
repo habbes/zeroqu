@@ -31,25 +31,33 @@
         </div>
         <div class="col-md-12">
             <div class="col-md-3">
-                <img class="img-responsive" src="public/images/team/clement.jpg">
+                <a href="public/images/team/clement.jpg" class="popup-image">
+                    <img class="img-responsive" src="public/images/team/clement.jpg">
+                </a>
                 <p class="text-center" style="margin-top: 10px">Clement Habinshuti - Rwandese</p>
                 <p class="text-center">Bsc. Computer Science</p>
                 <p class="text-center">Project Manager & Lead Developer</p>
              </div>
              <div class="col-md-3">
-                <img class="img-responsive" src="public/images/team/Nderitu.jpg">
+                <a href="public/images/team/Nderitu.jpg" class="popup-image">
+                    <img class="img-responsive" src="public/images/team/Nderitu.jpg">
+                </a>
                 <p class="text-center" style="margin-top: 10px">Kevin Nderitu - Kenyan</p>
                 <p class="text-center">Bsc. Computer Science</p>
                 <p class="text-center">UI Designer & Developer</p>
             </div>
              <div class="col-md-3">
-                <img class="img-responsive" src="public/images/team/kingsley.jpg">
+                <a href="public/images/team/kingsley.jpg" class="popup-image">
+                    <img class="img-responsive" src="public/images/team/kingsley.jpg">
+                </a>
                 <p class="text-center" style="margin-top: 10px">Kingsley Ibomo - Nigerian</p>
                 <p class="text-center">BB. Information Technology</p>
                 <p class="text-center">System Analys & Procurement</p>
             </div>
              <div class="col-md-3">
-                <img class="img-responsive" src="public/images/team/Saruni.jpg">
+                <a href="public/images/team/Saruni.jpg" class="popup-image">
+                    <img class="img-responsive" src="public/images/team/Saruni.jpg">
+                </a>
                 <p class="text-center" style="margin-top: 10px">Saruni Maina - Kenyan</p>
                 <p class="text-center">BB. Information Technology</p>
                 <p class="text-center">User Experience & Marketing</p>
