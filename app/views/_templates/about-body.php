@@ -11,7 +11,10 @@
                     students from our university club NazBits to ensure a more efficient and modern way of
                     providing advanced software solutions and/or to act in response to the current market
                     forces that dictate the necessity of online presence in order to stay abreast with
-                    competition. Since the time it was founded in the year 2013, the Group has been
+                    competition. 
+                </p>
+                <p>
+                    Since the time it was founded in the year 2013, the Group has been
                     involved in releasing numerous projects for diverse business spheres ranging from basic
                     websites to highly sophisticated business automation systems. Our proficiency in a wide
                     range of modern computer technologies ensures that the solutions we develop
