@@ -29,7 +29,7 @@ $routes = [
 	['^test\/?$', "Test"],
 	['^pricing\/?$','Pricing'],
 	['^features\/?$','Features'],
-	['^blog\/?$','Blog'],
+	['^about\/?$','About'],
 	['^howitworks\/?$','Howitworks'],
 	['^learnmore\/?$','Learnmore'],
 ];

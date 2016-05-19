@@ -9,6 +9,6 @@
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="/features">Features</a></li>
 		<li><a href="/pricing">Pricing</a></li>
-		<li><a href="/blog">Blog</a></li>
+		<li><a href="/about">About</a></li>
 	</ul>
 </div>
