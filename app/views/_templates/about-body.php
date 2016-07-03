@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="">
                 <h2 class="logo-subtext text-center">Background <small>-What is zero<span class="logo-q">Q</span>u?</small></h3>
-                <p class="">
+                <p class="" style="line-height: 200%">
                     zeroQu is an open-software development group formed by a team of young developers
                     passionate about changing the IT industry by providing efficient and reliable services to
                     businesses and the world at large. The group was established recognizing the need for
@@ -13,7 +13,7 @@
                     forces that dictate the necessity of online presence in order to stay abreast with
                     competition. 
                 </p>
-                <p>
+                <p style="line-height: 200%">
                     Since the time it was founded in the year 2013, the Group has been
                     involved in releasing numerous projects for diverse business spheres ranging from basic
                     websites to highly sophisticated business automation systems. Our proficiency in a wide
@@ -25,7 +25,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="logo-subtext text-center">Brilliance <small>-The zero<span class="logo-q">Q</span>u Team</small></h2>
-            <p class="">
+            <p class="" style="line-height: 200%">
                 We are well aware that the success of any software product depends significantly on the qualities of a development team. That is the reason why we pay much attention to organizing a solid professional collective. All zeroQu personnel are highly qualified and experienced in what they do. Every member of the development team has as a minimum a bachelor degree in computer science and/or Business and Information Technology and other related fields. They possess professional experience working as outsourced developers in software development and programming. Our experience and expertise allow us to perform tasks of practically any kind and complexity in the fields of creation, testing, and modification of software products.
             </p>
         </div>
