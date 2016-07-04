@@ -28,6 +28,7 @@ class Election extends DBModel
 		$election->setName($name);
 		$election->setTitle($title);
 		$election->setStatus(self::PENDING);
+		$election->results_released = (int) false;
 		
 		try{
 			$election->save();
