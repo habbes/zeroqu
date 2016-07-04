@@ -48,12 +48,40 @@ if($data->formResult){
 			}
 		}
 	?>
+	<hr>
+	<div class="col-md-12">
+		<small>These custom values are used to filter voters in an election</small>
+		<table class="table table-bordered">
+			<thead>
+				<tr><th>Attribute type</th><th>Attribute name</th> </tr>
+			</thead>
+			<tbody>
+			<?php foreach($data->election->getCustomProperties() as $attribute){ ?>
+				<tr><td style="color: #aaa"><?=$attribute->type?></td><td><?=$attribute->name?></td> </tr>
+			<?php } ?>
+			</tbody>
+		</table>
+	</div>
 	</div>
 </form>
 </div>
 <div class="col-md-4">
-<form method="post" class="form">
+<form method="post" class="form" role="form">
 	<div class="form-group">
+		<label for="attributes">Custom Attributes</label>
+		<div class="entry input-group col-xs-12"  style="margin-bottom: 10px">
+			<input type="text" class="form-control" name="attribute_types[]" id="type" placeholder="Attribute type"/>
+			<span class="input-group-addon"></span>
+			<input type="text" class="form-control" name="attribute_names[]" placeholder="Attribute name"/>
+			<span class="input-group-btn">
+				<button class="btn btn-success btn-add" type="button">
+					<span class="glyphicon glyphicon-plus"></span>
+				</button>
+			</span>
+		</div>
+		
+	</div>
+	<div class="form-group id">
 		<label>Election ID</label>
 		<input type="text" class="form-control" value="<?= $data->election->getName()?>" disabled />
 	</div>
@@ -83,4 +111,30 @@ if($data->formResult){
 	
 	<?php }?>
 </form>
+<script>
+	$(function()
+		{
+			$(document).on('click', '.btn-add', function(e)
+			{
+				e.preventDefault();
+	
+				var controlForm = $('.form:first');
+					currentEntry = $(this).parents('.entry:first');
+					newEntry = $(currentEntry.clone()).insertBefore(".id");
+
+				newEntry.find('input').val('');
+				controlForm.find('.entry:not(:last) .btn-add')
+					.removeClass('btn-add').addClass('btn-remove')
+					.removeClass('btn-success').addClass('btn-danger')
+					.html('<span class="glyphicon glyphicon-minus"></span>');
+			}).on('click', '.btn-remove', function(e)
+			{
+				$(this).parents('.entry:first').remove();
+
+				e.preventDefault();
+				return false;
+			});
+		});
+
+</script>
 </div>

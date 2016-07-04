@@ -3,8 +3,8 @@ class CustomProperty extends DBModel{
     protected static $table = "custom_properties";
 
     protected $election_id;
-    protected $name;
-    protected $type;
+    public $name;
+    public $type;
 
     private $_election;
 
