@@ -240,4 +240,26 @@ class Election extends DBModel
 	{
 		return static::findOne("admin_id=? AND name=?", [$admin->getId(), $name]);
 	}
+	/*
+	Creates a custom property of this election
+	@param String $name
+	@param String type default 'text'
+	**/
+	public function createCustomProperty($name, $type= 'text'){
+		return CustomProperty::create($this, $name, $type);
+	}
+	/*
+	Gets all custom properties
+	@return array
+	*/
+	public function getCustomProperties(){
+		return CustomProperty::findByElection($this);
+	}
+	/*
+	This gets a property by name
+	@param String $name
+	*/
+	public function getPropertyByName($name){
+		return CustomProperty::findOneByField("name",$name);
+	}
 }

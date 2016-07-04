@@ -1,10 +1,10 @@
 <?php 
 
-class TestHandler extends RequestHandler
+class TestHandler extends AdminElectionHandler
 {
 	public function get()
 	{
-		$this->renderView("Test");
+		echo "Test";
 		
 	}
 }

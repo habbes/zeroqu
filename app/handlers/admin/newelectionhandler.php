@@ -9,6 +9,7 @@ class NewElectionHandler extends BaseAdminOrgHandler
 	
 	public function post()
 	{
+		print_r($_POST); exit;
 		$title = $_POST['title'];
 		$name = $_POST['id'];
 	

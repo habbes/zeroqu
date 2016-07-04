@@ -224,5 +224,17 @@ class Voter extends DBModel
 	{
 		return static::findOne("id=? AND election_id=?",[$id, $election->getId()]);
 	}
-	
+
+	/*
+		Gets custom property
+	*/
+	public function getCustomValue($property){
+
+	}
+	/*
+		Sets custom value
+	*/
+	public function setCustomValue($property, $value){
+		return CustomValue::create($this, $property, $value);
+	}
 }
