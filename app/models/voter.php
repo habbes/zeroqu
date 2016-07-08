@@ -22,10 +22,10 @@ class Voter extends DBModel
 		$voter->setVoterId($email);
 		$voter->setEmail($email);
 		$voter->status = self::EMAIL_FAILED;
-		
+
 		try {
 			$voter->save();
-			$voter->sendEmail($emailView);
+			//$voter->sendEmail($emailView);
 			return $voter;
 		}
 		catch(PDOException $e){

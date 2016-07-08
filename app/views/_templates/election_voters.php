@@ -138,8 +138,16 @@ $allowEdit = $data->election->isPending();
 	</div>
 	<div class="form-group">
 		<label>Voters' Emails</label>
-		<textarea class="form-control" name="emails" rows="6"></textarea>
+		<textarea class="form-control" name="emails" rows="1" placeholder="Emails"></textarea>
 	</div>
+	<?php
+		
+	 	foreach($data->election->getCustomProperties() as $property){ ?>
+			 <div class="form-group">
+				<label style="text-transform: capitalize"><?=$property->name?></label>
+				<input class="form-control" name="<?=$property->name?>" placeholder="<?=$property->name?>"  required>
+			</div>
+	<?php } ?>
 	<div class="form-group">
 		<button name="add" class="btn btn-success form-control">Add Voters</button>
 	</div>

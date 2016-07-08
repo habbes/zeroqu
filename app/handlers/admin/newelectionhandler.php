@@ -17,7 +17,9 @@ class NewElectionHandler extends BaseAdminOrgHandler
 	
 		if($election = Election::create($this->org, Login::getAdmin(), $name, $title)){
 			foreach($attribute_types as $key=>$type){
-				$election->createCustomProperty($attribute_names[$key], $type);
+				if($attribute_names[$key] !== "" && $type !== ""){
+					$election->createCustomProperty($attribute_names[$key], $type);
+				}
 			}
 			$this->redirect($this->orgUrl . "/elections/" . $election->getName());
 		}

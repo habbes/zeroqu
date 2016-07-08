@@ -264,10 +264,16 @@ class ElectionVotersHandler extends AdminElectionHandler
 		}
 		else {
 			$inputEmails = explode("\n", $inputEmails);
+			$inputProperties = [];
+			foreach($this->election->getCustomProperties() as $property){
+				if(isset($_POST[$property->name]) && $_POST[$property->name] !== ""){
+					$inputProperties[$property->name] = $_POST[$property->name];
+				}
+			}
 			$emails = array_merge($emails,$inputEmails);
 			
 			$emailView = new VoterRegEmailView();
-			$this->election->addVoters($emails, $emailView);
+			$this->election->addVoters($emails, $inputProperties, $emailView);
 		}
 		
 		

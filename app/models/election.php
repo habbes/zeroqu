@@ -206,12 +206,21 @@ class Election extends DBModel
 		return Vote::findByElection($this);
 	}
 	
-	public function addVoters(array $emails, EmailView $emailView)
+	public function addVoters(array $emails, $voterProperties, EmailView $emailView)
 	{
 		foreach($emails as $email){
 			$email = trim($email);
 			if(!$email) continue;
-			Voter::create($this, $email, $emailView);
+			$voter = Voter::create($this, $email, $emailView);
+
+			if($voter){
+				foreach($voterProperties as $key=>$value){
+					$property = $this->getPropertyByName($key);
+					$voter->setCustomValue($property, $value);
+				}
+			}else{
+				return false;
+			}
 		}
 		
 		try {

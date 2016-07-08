@@ -3,7 +3,7 @@ class CustomValue extends DBModel
 {
     protected static $table = "custom_values";
 
-    protected $customproperties_id;
+    protected $customproperty_id;
     protected $voter_id;
     protected $value;
 
@@ -25,11 +25,11 @@ class CustomValue extends DBModel
     }
 
     public function setCustomProperty($property){
-        $this->customproperties_id = $property->id;
+        $this->customproperty_id = $property->id;
         $this->_property = $property;
     }
     public function setVoter($voter){
-        $this->voter->id = $voter->id;
+        $this->voter_id = $voter->id;
         $this->_voter = $voter;
     }
     public function setValue($value){
