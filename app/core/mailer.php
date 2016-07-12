@@ -68,7 +68,7 @@ class Mailer
 
 		try {
 			$mailer->sendMessage(self::$domain, [
-				"from"=> self::$fromEmail,
+				"from"=> "${self::$fromName} <${self::$fromEmail}>",
 				"to"=> $email,
 				"subject"=> $subject,
 				"html" => $htmlbody
