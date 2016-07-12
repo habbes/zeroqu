@@ -62,14 +62,14 @@ class Mailer
  	{
 		$mailer = self::getInstance();
 		
-		$email = new SendGrid\Email();
-		$email->addTo($email)
+		$msg = new SendGrid\Email();
+		$msg->addTo($email)
 			->setFrom(self::$fromEmail)
 			->setSubject($subject)
 			->setHtml($htmlbody);
 		
 		try {
-			$mailer->send($email);
+			$msg->send($email);
 			return true;
 		}
 		catch(Exception $e){
