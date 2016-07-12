@@ -17,18 +17,22 @@ class Mailer
 	 * @var string
 	 */
 	private static $fromName;
+
+	private static $domain;
 	
 	private function __construct(){}
 	
 	private static function mailerFromConfig()
 	{
 		$ds = DIRECTORY_SEPARATOR;
-		require_once DIR_CONFIG.$ds."sendgrid.php";
+		require_once DIR_CONFIG.$ds."mailgun.php";
 		
-		$mailer = new SendGrid($sendgrid['username'], $sendgrid['password']);
+		$client = new \Http\Adapter\Guzzle6\Client();
+		$mailer = new Mailgun\Mailgun($mailgun['api_key'], $client);
 		
-		self::$fromEmail = $sendgrid['from_email'];
-		self::$fromName = $sendgrid['from_name'];
+		self::$fromEmail = $mailgun['from_email'];
+		self::$fromName = $mailgun['from_name'];
+		self::$domain = $mailgun['domain'];
 		return $mailer;
 	}
 	
@@ -61,15 +65,14 @@ class Mailer
 	public static function sendHtml($email, $name, $subject, $htmlbody, $textbody="")
  	{
 		$mailer = self::getInstance();
-		
-		$msg = new SendGrid\Email();
-		$msg->addTo($email)
-			->setFrom(self::$fromEmail)
-			->setSubject($subject)
-			->setHtml($htmlbody);
-		
+
 		try {
-			$msg->send($email);
+			$mailer->sendMessage(self::$domain, [
+				"from"=> self::$fromEmail,
+				"to"=> $email,
+				"subject"=> $subject,
+				"html" => $htmlbody
+			]);
 			return true;
 		}
 		catch(Exception $e){
