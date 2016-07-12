@@ -23,12 +23,12 @@ class Mailer
 	private static function mailerFromConfig()
 	{
 		$ds = DIRECTORY_SEPARATOR;
-		require_once DIR_CONFIG.$ds."mandrill.php";
+		require_once DIR_CONFIG.$ds."sendgrid.php";
 		
-		$mailer = new Mandrill($mandrill['api_key']);
+		$mailer = new SendGrid($sendgrid['username'], $sendgrid['password']);
 		
-		self::$fromEmail = $mandrill['from_email'];
-		self::$fromName = $mandrill['from_name'];
+		self::$fromEmail = $sendgrid['from_email'];
+		self::$fromName = $sendgrid['from_name'];
 		return $mailer;
 	}
 	
@@ -60,27 +60,19 @@ class Mailer
 	
 	public static function sendHtml($email, $name, $subject, $htmlbody, $textbody="")
  	{
-		$mailer = self::getInstance();		
+		$mailer = self::getInstance();
 		
-		$msg = [
-			'html'=> $htmlbody,
-			'subject' => $subject,
-			'from_email' => self::$fromEmail,
-			'from_name' => self::$fromName,
-			'to' => [
-				[
-					'email' => $email,
-					'type' => 'to'
-				]
-			]
-			
-		];
+		$email = new SendGrid\Email();
+		$email->addTo($email)
+			->setFrom(self::$fromEmail)
+			->setSubject($subject)
+			->setHtml($htmlbody);
 		
 		try {
-			$mailer->messages->send($msg, true);
+			$mailer->send($email);
 			return true;
 		}
-		catch(Mandrill_Error $e){
+		catch(Exception $e){
 			echo $e->getMessage();
 			return false;
 		}
