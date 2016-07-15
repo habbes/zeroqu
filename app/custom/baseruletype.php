@@ -5,6 +5,13 @@ abstract class BaseRuleType {
 	const RULE_PROPERTYEQ = 'propertyEq';
 	
 	/**
+	 * check whether the given voter matches this rule
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	abstract public function match(Voter $voter);
+	
+	/**
 	 * serialize rule to dictionary
 	 */
 	abstract public function toDict();

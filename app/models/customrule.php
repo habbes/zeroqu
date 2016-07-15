@@ -23,13 +23,32 @@ class CustomRule extends DBModel
 		return $r->save();
 	}
 	
+	
+	/**
+	 * 
+	 * @param BaseRuleType $rule
+	 */
+	public function setRule(BaseRuleType $rule){
+		$this->rule = $rule->toJson();
+	}
+	
+	
 	/**
 	 * 
 	 * @return BaseRuleType
 	 */
-	public function deserializeRule()
+	public function getRule()
 	{
 		return BaseRuleType::fromJson($this->rule);
+	}
+	
+	/**
+	 * check whether this rule applies to specified voter
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	public function match(Voter $voter){
+		return $this->getRule()->match($voter);
 	}
 	
 	
