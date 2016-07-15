@@ -78,6 +78,41 @@ class Position extends DBModel
 		return Vote::countByPosition($this);
 	}
 	
+	/**
+	 * 
+	 * @return array
+	 */
+	public function getCustomRules(){
+		return CustomRule::findByPosition($this);
+	}
+	
+
+
+	/**
+	 * check whether voter is eligible to cast vote in
+	 * this position
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	public function isVoterEligible(Voter $voter){
+		return $this->matchRules($voter);
+	}
+	
+	/**
+	 * check whether voter matches all rules for the given position
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	public function matchRules(Voter $voter){
+		$rules = $this->getCustomRules();
+		foreach($rules as $rule){
+			if(!$rule->match($voter)){
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	public static function findByElection(Election $election)
 	{
 		return  static::findByField("election_id", $election->getId())->fetchAll();

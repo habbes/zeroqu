@@ -51,5 +51,14 @@ class CustomRule extends DBModel
 		return $this->getRule()->match($voter);
 	}
 	
+	/**
+	 * find custom rules for the given position
+	 * @param Position $position
+	 * @return array
+	 */
+	public static function findByPosition(Position $position){
+		return static::findByField('position_id', $position->getId());
+	}
+	
 	
 }
