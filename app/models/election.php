@@ -265,11 +265,24 @@ class Election extends DBModel
 	public function getCustomProperties(){
 		return CustomProperty::findByElection($this);
 	}
-	/*
-	This gets a property by name
-	@param String $name
-	*/
+	
+	/**
+	 * gets custom property of this election by id
+	 * @param unknown $id
+	 * @return CustomProperty
+	 */
+	public function getPropertyById($id){
+		return CustomProperty::findOne('id=? AND election_id=?', 
+				[$id, $this->getId()]);
+	}
+	
+	/**
+	 * gets custom property this election by by name
+	 * @param string $name
+	 * @return CustomProperty
+	 */
 	public function getPropertyByName($name){
-		return CustomProperty::findOneByField("name",$name);
+		return CustomProperty::findOne("name=? AND election_id=?", 
+				[$name, $this->getId()]);
 	}
 }
