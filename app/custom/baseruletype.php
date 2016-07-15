@@ -18,7 +18,7 @@ abstract class BaseRuleType {
 	/**
 	 * discover rule type and deserialize from dictionary
 	 * @param array $obj
-	 * @return boolean
+	 * @return BaseRuleType
 	 */
 	public static function createTypeFromDict($obj){
 		$name = array_keys($obj)[0];

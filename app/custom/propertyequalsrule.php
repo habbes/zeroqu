@@ -2,6 +2,9 @@
 
 class PropertyEqualsRule extends BaseRuleType {
 	
+	const RULE_KEY =  static::RULE_PROPERTYEQ;
+	
+	
 	public $property_id;
 	
 	/**
