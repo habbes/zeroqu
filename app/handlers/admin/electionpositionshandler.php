@@ -99,12 +99,12 @@ class ElectionPositionsHandler extends AdminElectionHandler
 		
 		$position = $this->election->getPositionById($positionId);
 		if(!$position){
-			$this->viewParams->formResult = 'Error: position not found';
+			$this->setPositionFormResult($positionId, 'Error: position not found.', 'danger');
 			return $this->showPositionsPage();
 		}
 		$property = $this->election->getPropertyById($propertyId);
 		if(!$property){
-			$this->viewParams->formResult = 'Error: position not found';
+			$this->setPositionFormResult($positionId, 'Error: property not found.', 'danger');
 			return $this->showPositionsPage();
 		}
 		$ruleType = new PropertyEqualsRule();
@@ -112,10 +112,10 @@ class ElectionPositionsHandler extends AdminElectionHandler
 		$ruleType->value = $value;
 		try{
 			$rule = $position->createCustomRule($ruleType, $name);
-			$this->viewParams->formResult = 'Rule created successfully.';
+			$this->setPositionFormResult($positionId, 'Rule created successfully.', 'success');
 		}
 		catch(Exception $e){
-			$this->viewParams->formResult = 'Error occured while creating rule.';
+			$this->setPositionFormResult($positionId, 'Error occured while creating rule.', 'danger');
 		}
 		$this->showPositionsPage();
 		
@@ -124,25 +124,35 @@ class ElectionPositionsHandler extends AdminElectionHandler
 	
 	public function deleteRule()
 	{
-		$posId = $this->postVar('position');
+		$positionId = $this->postVar('position');
 		$ruleId = $this->postvar('rule');
-		$position = $this->election->getPositionById($posId);
+		$position = $this->election->getPositionById($positionId);
 		if(!$position){
-			$this->viewParams->formResult = 'Error: position not found.';
+			$this->setPositionFormResult($positionId, 'Error: position not found.', 'danger');
 			return $this->showPositionsPage();
 		}
 		$rule = $position->getCustomRuleById($ruleId);
 		if(!$rule){
-			$this->viewParams->formResult = 'Error: rule not found.';
+			$this->setPositionFormResult($positionId, 'Error: rule not found', 'danger');
 			return $this->showPositionsPage();
 		}
 		try {
 			$rule->delete();
-			$this->viewParams->formResult = 'Rule deleted successfully.';
+			$this->setPositionFormResult($positionId, 'Rule deleted successfully', 'info');
 		}
 		catch(Exception $e){
-			$this->viewParams->formResult = 'Error: rule not delete.';
+			$this->setPositionFormResult($positionId, 'Error: rule not deleted', 'danger');
 		}
 		$this->showPositionsPage();
+	}
+	
+	public function setPositionFormResult($positionId, $message, $type)
+	{
+		if(!$type){
+			$type = 'info';
+		}
+		$this->viewParams->positionFormId = $positionId;
+		$this->viewParams->positionFormResult = $message;
+		$this->viewParams->positionFormResultType = $type;
 	}
 }

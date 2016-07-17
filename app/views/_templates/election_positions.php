@@ -22,8 +22,12 @@
 				<button class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 			</div>
 			<?php } ?>
+			<br>
 			<hr>
-			<h3>Position Rules</h3>
+			<?php if($data->positionFormResult && $data->positionFormId== $position->getId()){?>
+			<p class="alert alert-<?= $data->positionFormResultType ?>"><?= $data->positionFormResult ?></p>
+			<?php } ?>
+			<h4>Position Rules</h4>
 			<p><i>These rules limit which voters can cast a vote in this position</i></p>
 			<?php 
 			$rules = $position->getCustomRules();
