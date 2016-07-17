@@ -21,6 +21,8 @@
 				<button class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 				<button class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 			</div>
+			<?php } ?>
+			<hr>
 			<h3>Position Rules</h3>
 			<p><i>These rules limit which voters can cast a vote in this position</i></p>
 			<?php 
@@ -33,16 +35,19 @@
 				<div class="list-group-item">
 					<b><?= $rule->getName() ?>:</b>
 					<?= $rule->getDisplayText() ?>
+					<?php if($allowEdit) { ?>
 					<form class="pull-right" method="post" action="<?= $data->electionUrl .'/positions/delete-rule'?>">
 						<input type="hidden" name="position" value="<?= $position->getId() ?>">
 						<input type="hidden" name="rule" value="<?= $rule->getId() ?>">
 						<button class="btn btn-sm btn-danger"><i class="fa fa-minus-circle"></i> Delete Rule</button>
 					</form>
 					<span class="clearfix"></span>
+					<?php } ?>
 				</div>
 				<?php } ?>
 			</div>
 			<?php } ?>
+			<?php if ($allowEdit) {?>
 			<form method="post" action="<?= $data->electionUrl.'/positions/create-rule'?>">
 				<h4>Add Rule</h4>
 				<input type="hidden" name="position" value="<?= $position->getId() ?>">
@@ -69,9 +74,7 @@
 				</div>
 				
 			</form>
-			<?php 
-				}
-			?>
+			<?php } ?>
 		</div>
 	</div>
 <?php 

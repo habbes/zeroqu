@@ -32,7 +32,7 @@ class Position extends DBModel
 		return true;
 	}
 	
-	public function onRemove()
+	public function onDelete()
 	{
 		if(!$this->getElection()->isPending()){
 			return false;

@@ -7,6 +7,7 @@ class CustomRule extends DBModel
 	protected $position_id;
 	
 	private $_position;
+	private $_election;
 	
 	/**
 	 * create custom rule for the given position
@@ -25,6 +26,10 @@ class CustomRule extends DBModel
 		return $r->save();
 	}
 	
+	/**
+	 * 
+	 * @return Position
+	 */
 	public function getPosition()
 	{
 		if(!$this->_position){
@@ -33,12 +38,31 @@ class CustomRule extends DBModel
 		return $this->_position;
 	}
 	
+	/**
+	 * @return Election
+	 */
+	public function getElection()
+	{
+		if(!$this->_election){
+			$this->_election = $this->getPosition()->getElection();
+		}	
+		return $this->_election;
+	}
+	
 	public function validate()
 	{
 		// allow modification only if position allows modification
 		return $this->getPosition()->validate();
 	}
 	
+	
+	public function onDelete()
+	{
+		if(!$this->getElection()->isPending()){
+			return false;
+		}
+		return true;
+	}
 	
 	/**
 	 * 
