@@ -58,6 +58,15 @@ class CustomRule extends DBModel
 	}
 	
 	/**
+	 * 
+	 * @return string
+	 */
+	public function getDisplayText()
+	{
+		return $this->getRule()->getDisplayText();
+	}
+	
+	/**
 	 * check whether this rule applies to specified voter
 	 * @param Voter $voter
 	 * @return boolean
@@ -72,7 +81,7 @@ class CustomRule extends DBModel
 	 * @return array
 	 */
 	public static function findByPosition(Position $position){
-		return static::findByField('position_id', $position->getId());
+		return static::findByField('position_id', $position->getId())->fetchAll();
 	}
 	
 	

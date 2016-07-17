@@ -23,6 +23,20 @@
 			</div>
 			<h3>Position Rules</h3>
 			<p><i>These rules limit which voters can cast a vote in this position</i></p>
+			<?php 
+			$rules = $position->getCustomRules();
+			if(count($rules) == 0){ ?>
+			<p>You have not created any rule. <b>All registered voters will be able to cast a vote in this position.</b></p>
+			<?php } else { ?>
+			<div class="list-group">
+				<?php foreach($rules as $rule) {?>
+				<div class="list-group-item">
+					<b><?= $rule->getName() ?>:</b>
+					<?= $rule->getDisplayText()?>
+				</div>
+				<?php } ?>
+			</div>
+			<?php } ?>
 			<form method="post" action="<?= $data->electionUrl.'/positions/create-rule'?>">
 				<h4>Add Rule</h4>
 				<input type="hidden" name="position" value="<?= $position->getId() ?>">
