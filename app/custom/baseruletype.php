@@ -12,6 +12,12 @@ abstract class BaseRuleType {
 	abstract public function match(Voter $voter);
 	
 	/**
+	 * friendly display text describing the rule
+	 * @return string
+	 */
+	abstract public function getDisplayText();
+	
+	/**
 	 * @return string
 	 */
 	abstract static public function getRuleKey();
@@ -49,7 +55,7 @@ abstract class BaseRuleType {
 	 * @return boolean
 	 */
 	public static function fromJson($json){
-		$dict = json_decode($json);
+		$dict = json_decode($json, true);
 		$rule = static::createTypeFromDict($dict);
 		return $rule;
 	}

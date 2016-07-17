@@ -21,6 +21,13 @@ class PropertyEqualsRule extends BaseRuleType {
 		return $value->getValue() == $this->value;
 	}
 	
+	public function getDisplayText()
+	{
+		$property = CustomProperty::findById($this->property_id);
+		$text = "{$property->getName()} must be {$this->value}";
+		return $text;
+	}
+	
 	public function toDict(){
 		$obj = [
 			'propertyId'=>$this->property_id,
@@ -37,5 +44,6 @@ class PropertyEqualsRule extends BaseRuleType {
 		$rule = new self();
 		$rule->property_id = (int) $obj['propertyId'];
 		$rule->value = (int) $obj['value'];
+		return $rule;
 	}
 }
