@@ -12,6 +12,11 @@ abstract class BaseRuleType {
 	abstract public function match(Voter $voter);
 	
 	/**
+	 * @return string
+	 */
+	abstract static public function getRuleKey();
+	
+	/**
 	 * serialize rule to dictionary
 	 */
 	abstract public function toDict();
@@ -55,7 +60,7 @@ abstract class BaseRuleType {
 	 */
 	public function toJson(){
 		$obj = [
-				static::RULE_KEY => $this->toDict()
+				static::getRuleKey() => $this->toDict()
 		];
 		return json_encode($obj);
 	}

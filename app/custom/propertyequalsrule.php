@@ -2,8 +2,6 @@
 
 class PropertyEqualsRule extends BaseRuleType {
 	
-	const RULE_KEY =  static::RULE_PROPERTYEQ;
-	
 	
 	public $property_id;
 	
@@ -29,6 +27,10 @@ class PropertyEqualsRule extends BaseRuleType {
 			'value' => $this->value				
 		];
 		return $obj;
+	}
+	
+	public static function getRuleKey(){
+		return static::RULE_PROPERTYEQ;
 	}
 	
 	public static function createFromDict($obj){
