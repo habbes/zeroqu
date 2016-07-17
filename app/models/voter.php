@@ -228,8 +228,11 @@ class Voter extends DBModel
 	/*
 		Gets custom property
 	*/
+	public function getAllCustomValues(){
+		return CustomValue::findByField("voter_id", $this->id)->fetchAll();
+	}
 	public function getCustomValue($property){
-
+		return CustomValue::findByPropertyAndVoter($property, $this);
 	}
 	/*
 		Sets custom value

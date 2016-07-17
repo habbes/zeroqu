@@ -35,9 +35,12 @@ class CustomValue extends DBModel
     public function setValue($value){
         $this->value = $value;
     }
+    public function getValue(){
+    	return $this->value;
+    }
     public function getProperty(){
         if(!$this->_property){
-			$this->_property = CustomProperty::findById($this->customproperties_id);
+			$this->_property = CustomProperty::findById($this->customproperty_id);
 		}
 		return $this->_property;
     }
@@ -46,5 +49,11 @@ class CustomValue extends DBModel
 			$this->_voter = Voter::findById($this->voter_id);
 		}
 		return $this->_voter;
+    }
+    public static function findByVoter($voter){
+    	return static::findByField("voter_id", $voter->id)->fetchAll();
+    }
+    public static function findByPropertyAndVoter($property, $voter){
+    	return static::find("voter_id=? AND customproperty_id=?", [$voter->id, $property->id])->fetch();
     }
 }

@@ -7,8 +7,9 @@ class ElectionVotersHandler extends AdminElectionHandler
 	private function showPage($view)
 	{
 		$pageNumber = isset($_GET['page'])?(int)$_GET['page']:1;
-		$votersPerPage = 12;
+		$votersPerPage = 5;
 		$offset = ($pageNumber - 1) * $votersPerPage;
+		$electionProperties = $this->election->getCustomProperties();
 		$paginationUrl = $this->electionUrl . "/voters/" . $view;
 		$voters = [];
 		$query = "LIMIT ".$votersPerPage." OFFSET ".$offset;
@@ -164,6 +165,7 @@ class ElectionVotersHandler extends AdminElectionHandler
 			
 			$this->viewParams->selectedTab = $view;
 			$this->viewParams->voters = $voters;
+			$this->viewParams->electionProperties = $electionProperties;
 			
 			//page numbers ================================================================================================	
 				
@@ -265,9 +267,10 @@ class ElectionVotersHandler extends AdminElectionHandler
 		else {
 			$inputEmails = explode("\n", $inputEmails);
 			$inputProperties = [];
+			
 			foreach($this->election->getCustomProperties() as $property){
-				if(isset($_POST[$property->name]) && $_POST[$property->name] !== ""){
-					$inputProperties[$property->name] = $_POST[$property->name];
+				if(isset($_POST[str_replace(" ", "_",$property->name)]) && $_POST[str_replace(" ", "_",$property->name)] != ""){
+					$inputProperties[$property->name] = $_POST[str_replace(" ", "_",$property->name)];
 				}
 			}
 			$emails = array_merge($emails,$inputEmails);
@@ -284,9 +287,20 @@ class ElectionVotersHandler extends AdminElectionHandler
 		$id = (int) $this->postVar("id");
 		
 		$email = trim($this->postVar("email"));
-		
 		$voter = $this->election->getVoterById($id);
+		$holder = $_POST;
+		//remove the id and the email
+		unset($holder["id"]);
+		unset($holder["email"]);
 		
+		//This will updatte the customValue values;
+		foreach($holder as $key=>$value){
+			$customValue = CustomValue::findById($key);
+			if($customValue){
+				$customValue->setValue($value);
+				$customValue->save();
+			}
+		}
 		if(!$voter){
 			$this->viewParams->formResult = "Voter not found";
 			return;
@@ -295,7 +309,12 @@ class ElectionVotersHandler extends AdminElectionHandler
 		if($email != $voter->getEmail()){
 			$voter->setEmail($email);
 		}
-		
+		$properties = $this->election->getCustomProperties();
+		if($properties){
+			foreach($properties as $property){
+				
+			}
+		}
 		if(!$voter->sendEmail(new VoterRegEmailView())){
 			$this->viewParams->formResult = "Email not sent";
 		}
@@ -308,7 +327,9 @@ class ElectionVotersHandler extends AdminElectionHandler
 		if(!$voter){
 			$this->viewParams->formResult = "Voter not found";
 		}
-		
+		foreach ($voter->getAllCustomValues() as $value){
+			$value->delete();
+		}
 		if(!$voter->delete()){
 			$this->viewParams = "Voter not unregistered";
 		}

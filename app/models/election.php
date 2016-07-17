@@ -212,7 +212,6 @@ class Election extends DBModel
 			$email = trim($email);
 			if(!$email) continue;
 			$voter = Voter::create($this, $email, $emailView);
-
 			if($voter){
 				foreach($voterProperties as $key=>$value){
 					$property = $this->getPropertyByName($key);

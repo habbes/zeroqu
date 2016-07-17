@@ -1,6 +1,7 @@
 
 <?php
 $allowEdit = $data->election->isPending();
+$properties = $data->electionProperties;
 
 ?>
 
@@ -54,7 +55,7 @@ $allowEdit = $data->election->isPending();
 					</form>
 				</div>
 				<div class="col-md-7">
-					<form class="form">
+					<form class="form-horizontal">
 						<div class="input-group">
 							<input type="search" name="q" class="form-control" placeholder="Search...">
 							<span class="input-group-btn">
@@ -67,7 +68,8 @@ $allowEdit = $data->election->isPending();
 			</div>
 		</div>
 	<?php foreach($data->voters as $voter){ ?>
-			<?php if($data->selectedTab == 'all'){
+			<?php 
+			if($data->selectedTab == 'all'){
 				switch($voter->getStatus()){
 					case Voter::EMAIL_SENT:
 						$icon = 'fa-check';
@@ -90,21 +92,40 @@ $allowEdit = $data->election->isPending();
 				$icon = 'fa-exclamation-triangle';
 				$msg = 'Unable to sent email';
 			}?>
-					<form method="post" class="form-inline" action="<?= $data->electionUrl?>/voters#">
+			<div class="col-md-12">
+					<form method="post" class="form-horizontal" action="<?= $data->electionUrl?>/voters#">
 						<input type="hidden" name="id" value="<?= $voter->getId() ?>"/>
-						<span class="col-md-9 col-xs-7" style="border-bottom: solid 1px #ddd" >
-						<input type="email" name="email" class="inputarea col-md-12 col-xs-12" value="<?= $voter->getEmail() ?>" /></span>
-						<span class="col-md-1 col-xs-1" style="border-bottom: solid 1px #ddd" >
-							<span class="icon-wrapper" style="font-size: 16px" title="<?=$msg?>">
-		  							<i class="fa <?=$icon?>"></i>
-							</span>
-						</span>
-						<?php if($allowEdit) {?>
-						<span class="col-md-1 col-xs-1"  style="border-bottom: solid 1px #ddd" ><button name="resend" class="buttons"><i class="fa fa-paper-plane" title="Resend Email"></i></button></span>
-						<span class="col-md-1 col-xs-1"  style="border-bottom: solid 1px #ddd" ><button name="delete" class="buttons"><i class="fa fa-trash-o" title="Unregister user"></i></button></span>
-						<?php } ?>
+						 <fieldset class="form-group row">
+						    <label for="email" class="col-md-2 form-control-label">Email:</label>
+						    <div class="col-md-10">
+						    	<input type="email" class="form-control" id="email" name="email" value="<?= $voter->getEmail() ?>" placeholder="Enter email">
+						    	<small class="text-muted">We'll never share your email with anyone else.</small>
+						    </div>
+						 </fieldset>
+						 <?php foreach($properties as $property){ 
+						 	$custom = $voter->getCustomValue($property);
+						 	$value = "";
+							if($custom){
+								$value = $custom->getValue();
+							}
+						 	?>
+						 	<fieldset class="form-group row">
+						    <label for="email" class="col-md-2 form-control-label"><?=$property->name?>:</label>
+						    <div class="col-md-10">
+						    	<input type="text" class="form-control" id="email" name="<?=$custom->getId()?>" value="<?=$value?>" placeholder="Enter <?=$property->name?> value" required>
+						    </div>
+						 </fieldset>
+						 <?php } ?>
+						<div class="btn-group" role="group" aria-label="Second group">
+						    <span disabled class="btn btn-secondary"><i class="fa <?=$icon?>"></i> <?=$msg?></span>
+						    <button type="submit" name="resend" class="btn btn-primary"><i class="fa fa-envelope"></i> Resend</button>
+						    <button type="submit" name="delete" class="btn btn-secondary"><i class="fa fa-trash-o"></i> Delete</button>
+						  </div>
+					
 					</form>
-
+					<hr style="border-bottom: 4px solid rgb(240,240,240)">
+			</div>
+			
 	<?php } ?>
 	<ul class="pagination">
 	  <li><a href="<?=$data->previousPageUrl?><?=$data->isSearch?"&q=" . $data->niddle:""?>"><i class="fa fa-angle-double-left"></i> Previous</a></li>
