@@ -10,7 +10,6 @@ You will be able to edit more details once the election has been created.
 	<div class="form-group">
 		<label for="attributes">Custom Attributes</label>
 		<div class="entry input-group col-xs-8"  style="margin-bottom: 10px">
-			<input type="text" class="form-control" name="attribute_types[]" id="type" placeholder="Attribute type"/>
 			<span class="input-group-addon"></span>
 			<input type="text" class="form-control" name="attribute_names[]" placeholder="Attribute name"/>
 			<span class="input-group-btn">

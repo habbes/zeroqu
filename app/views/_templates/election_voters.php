@@ -166,7 +166,7 @@ $properties = $data->electionProperties;
 	 	foreach($data->election->getCustomProperties() as $property){ ?>
 			 <div class="form-group">
 				<label style="text-transform: capitalize"><?=$property->name?></label>
-				<input class="form-control" name="<?=$property->name?>" placeholder="<?=$property->name?>"  required>
+				<input class="form-control" name="<?=$property->getId()?>" placeholder="<?=$property->name?>"  required>
 			</div>
 	<?php } ?>
 	<div class="form-group">

@@ -70,8 +70,7 @@ if($data->formResult){
 	<div class="form-group">
 		<label for="attributes">Custom Attributes</label>
 		<div class="entry input-group col-xs-12"  style="margin-bottom: 10px">
-			<input type="text" class="form-control" name="attribute_types[]" id="type" placeholder="Attribute type"/>
-			<span class="input-group-addon"></span>
+		<span class="input-group-addon"></span>
 			<input type="text" class="form-control" name="attribute_names[]" placeholder="Attribute name"/>
 			<span class="input-group-btn">
 				<button class="btn btn-success btn-add" type="button">

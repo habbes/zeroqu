@@ -29,11 +29,10 @@ class ElectionSettingsHandler extends AdminElectionHandler
 	
 	protected function saveDetails()
 	{
-		$attribute_types = $_POST["attribute_types"];
 		$attribute_names = $_POST["attribute_names"];
 
-		foreach($attribute_types as $key=>$type){
-				$this->election->createCustomProperty($attribute_names[$key], $type);
+		foreach($attribute_names as $name){
+				$this->election->createCustomProperty($name, "text");
 		}
 		
 		$title = isset($_POST['title'])? trim($_POST['title']) : "";
