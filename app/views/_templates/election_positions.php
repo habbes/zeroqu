@@ -21,6 +21,33 @@
 				<button class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 				<button class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 			</div>
+			<h3>Position Rules</h3>
+			<p><i>These rules limit which voters can cast a vote in this position</i></p>
+			<form method="post">
+				<h4>Add Rule</h4>
+				<div class="form-group">
+					<label>Rule Description</label>
+					<input type="text" name="name" class="form-control"
+						placeholder="Enter a name or short description for the rule">
+				</div>
+				<div class="form-group">
+					<label>Property to use to restrict voters</label>
+					<select name="property" class="form-control" required>
+						<?php foreach($data->election->getCustomProperties() as $property){?>
+						<option value="<?= $property->getId() ?>"><?= $property->getName() ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Value for authorized voters</label>
+					<input type="text" name="value" class="form-control" 
+						placeholder="Value that authorized voters must have for the selected property" required>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-default"><i class="fa fa-plus"></i> Add Rule</button>
+				</div>
+				
+			</form>
 			<?php 
 				}
 			?>
