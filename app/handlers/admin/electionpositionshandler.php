@@ -90,4 +90,35 @@ class ElectionPositionsHandler extends AdminElectionHandler
 		
 		$this->showPositionsPage();
 	}
+	
+	public function createRule(){
+		$positionId = $this->postVar('position');
+		$propertyId = $this->postVar('property');
+		$name = $this->postVar('name');
+		$value = $this->postVar('value');
+		
+		$position = $this->election->getPositionById($positionId);
+		if(!$position){
+			$this->viewParams->formResult = 'Error: position not found';
+			return $this->showPositionsPage();
+		}
+		$property = $this->election->getPropertyById($propertyId);
+		if(!$property){
+			$this->viewParams->formResult = 'Error: position not found';
+			return $this->showPositionsPage();
+		}
+		$ruleType = new PropertyEqualsRule();
+		$ruleType->property_id = $property->getId();
+		$ruleType->value = $value;
+		try{
+			$rule = $position->createCustomRule($ruleType, $name);
+			$this->viewParams->formResult = 'Rule created successfully.';
+		}
+		catch(Exception $e){
+			$this->viewParams->formResult = 'Error occured while creating rule.';
+		}
+		$this->showPositionsPage();
+		
+		
+	}
 }

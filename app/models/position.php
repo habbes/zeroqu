@@ -86,7 +86,16 @@ class Position extends DBModel
 		return CustomRule::findByPosition($this);
 	}
 	
-
+	/**
+	 * 
+	 * @param BaseRuleType $rule
+	 * @param string $name
+	 * @return CustomRule
+	 */
+	public function createCustomRule(BaseRuleType $rule, $name)
+	{
+		return CustomRule::create($this, $rule, $name);
+	}
 
 	/**
 	 * check whether voter is eligible to cast vote in

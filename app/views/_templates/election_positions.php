@@ -23,8 +23,9 @@
 			</div>
 			<h3>Position Rules</h3>
 			<p><i>These rules limit which voters can cast a vote in this position</i></p>
-			<form method="post">
+			<form method="post" action="<?= $data->electionUrl.'/positions/create-rule'?>">
 				<h4>Add Rule</h4>
+				<input type="hidden" name="position" value="<?= $position->getId() ?>">
 				<div class="form-group">
 					<label>Rule Description</label>
 					<input type="text" name="name" class="form-control"

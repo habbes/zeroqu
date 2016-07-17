@@ -14,6 +14,7 @@ $routes = [
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/?$', "ElectionHome"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/settings\/?$', "admin/ElectionSettings"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/positions\/?$', "admin/ElectionPositions"],
+	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/positions\/create\-rule\/?$', "admin/ElectionPositions@createRule"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/candidates\/?$' ,"admin/ElectionCandidates"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/candidates\/(\w+)\/image?$' ,"CandidateImage"],
 	['^orgs\/([\w\-]+)\/elections\/([\w\-]+)\/voters\/?$' ,"admin/ElectionVoters"],

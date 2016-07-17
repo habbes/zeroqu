@@ -159,22 +159,37 @@ class Election extends DBModel
 		return true;
 	}
 	
-	
+	/**
+	 * @return array
+	 */
 	public function getPositions()
 	{
 		return Position::findByElection($this);
 	}
 	
+	/**
+	 * 
+	 * @param unknown $id
+	 * @return Position
+	 */
 	public function getPositionById($id)
 	{
 		return Position::findByElectionAndId($this, $id);
 	}
 	
+	/**
+	 * @return array
+	 */
 	public function getCandidates()
 	{
 		return Candidate::findByElection($this);
 	}
 	
+	/**
+	 * 
+	 * @param unknown $id
+	 * @return Candidate
+	 */
 	public function getCandidateById($id)
 	{
 		return Candidate::findByElectionAndId($this, $id);
