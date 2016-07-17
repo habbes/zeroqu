@@ -17,18 +17,22 @@ class Mailer
 	 * @var string
 	 */
 	private static $fromName;
+
+	private static $domain;
 	
 	private function __construct(){}
 	
 	private static function mailerFromConfig()
 	{
 		$ds = DIRECTORY_SEPARATOR;
-		require_once DIR_CONFIG.$ds."mandrill.php";
+		require_once DIR_CONFIG.$ds."mailgun.php";
 		
-		$mailer = new Mandrill($mandrill['api_key']);
+		$client = new \Http\Adapter\Guzzle6\Client();
+		$mailer = new Mailgun\Mailgun($mailgun['api_key'], $client);
 		
-		self::$fromEmail = $mandrill['from_email'];
-		self::$fromName = $mandrill['from_name'];
+		self::$fromEmail = $mailgun['from_email'];
+		self::$fromName = $mailgun['from_name'];
+		self::$domain = $mailgun['domain'];
 		return $mailer;
 	}
 	
@@ -60,27 +64,18 @@ class Mailer
 	
 	public static function sendHtml($email, $name, $subject, $htmlbody, $textbody="")
  	{
-		$mailer = self::getInstance();		
-		
-		$msg = [
-			'html'=> $htmlbody,
-			'subject' => $subject,
-			'from_email' => self::$fromEmail,
-			'from_name' => self::$fromName,
-			'to' => [
-				[
-					'email' => $email,
-					'type' => 'to'
-				]
-			]
-			
-		];
-		
+		$mailer = self::getInstance();
+
 		try {
-			$mailer->messages->send($msg, true);
+			$mailer->sendMessage(self::$domain, [
+				"from"=> self::$fromEmail,
+				"to"=> $email,
+				"subject"=> $subject,
+				"html" => $htmlbody
+			]);
 			return true;
 		}
-		catch(Mandrill_Error $e){
+		catch(Exception $e){
 			echo $e->getMessage();
 			return false;
 		}
