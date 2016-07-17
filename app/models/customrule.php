@@ -23,6 +23,19 @@ class CustomRule extends DBModel
 		return $r->save();
 	}
 	
+	public function getPosition()
+	{
+		if(!$this->_position){
+			$this->_position = Position::findById($this->position_id);
+		}
+		return $this->_position;
+	}
+	
+	public function validate(){
+		// allow modification only if position allows modification
+		return $this->getPosition()->validate();
+	}
+	
 	
 	/**
 	 * 
