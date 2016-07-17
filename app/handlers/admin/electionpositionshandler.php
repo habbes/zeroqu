@@ -121,4 +121,28 @@ class ElectionPositionsHandler extends AdminElectionHandler
 		
 		
 	}
+	
+	public function deleteRule()
+	{
+		$posId = $this->postVar('position');
+		$ruleId = $this->postvar('rule');
+		$position = $this->election->getPositionById($posId);
+		if(!$position){
+			$this->viewParams->formResult = 'Error: position not found.';
+			return $this->showPositionsPage();
+		}
+		$rule = $position->getCustomRuleById($ruleId);
+		if(!$rule){
+			$this->viewParams->formResult = 'Error: rule not found.';
+			return $this->showPositionsPage();
+		}
+		try {
+			$rule->delete();
+			$this->viewParams->formResult = 'Rule deleted successfully.';
+		}
+		catch(Exception $e){
+			$this->viewParams->formResult = 'Error: rule not delete.';
+		}
+		$this->showPositionsPage();
+	}
 }

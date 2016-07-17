@@ -82,8 +82,19 @@ class Position extends DBModel
 	 * 
 	 * @return array
 	 */
-	public function getCustomRules(){
+	public function getCustomRules()
+	{
 		return CustomRule::findByPosition($this);
+	}
+	
+	/**
+	 * 
+	 * @param int $id
+	 * @return CustomRule
+	 */
+	public function getCustomRuleById($id)
+	{
+		return CustomRule::findByPositionAndId($this, $id);
 	}
 	
 	/**

@@ -33,7 +33,8 @@ class CustomRule extends DBModel
 		return $this->_position;
 	}
 	
-	public function validate(){
+	public function validate()
+	{
 		// allow modification only if position allows modification
 		return $this->getPosition()->validate();
 	}
@@ -43,7 +44,8 @@ class CustomRule extends DBModel
 	 * 
 	 * @param BaseRuleType $rule
 	 */
-	public function setRule(BaseRuleType $rule){
+	public function setRule(BaseRuleType $rule)
+	{
 		$this->rule = $rule->toJson();
 	}
 	
@@ -71,7 +73,8 @@ class CustomRule extends DBModel
 	 * @param Voter $voter
 	 * @return boolean
 	 */
-	public function match(Voter $voter){
+	public function match(Voter $voter)
+	{
 		return $this->getRule()->match($voter);
 	}
 	
@@ -80,8 +83,21 @@ class CustomRule extends DBModel
 	 * @param Position $position
 	 * @return array
 	 */
-	public static function findByPosition(Position $position){
+	public static function findByPosition(Position $position)
+	{
 		return static::findByField('position_id', $position->getId())->fetchAll();
+	}
+	
+	/**
+	 * 
+	 * @param Position $position
+	 * @param int $id
+	 * @return CustomRule
+	 */
+	public static function findByPositionAndId(Position $position, $id)
+	{
+		return static::findOne('position_id=? AND id=?', 
+				[$position->getId(), $id]);
 	}
 	
 	

@@ -32,7 +32,13 @@
 				<?php foreach($rules as $rule) {?>
 				<div class="list-group-item">
 					<b><?= $rule->getName() ?>:</b>
-					<?= $rule->getDisplayText()?>
+					<?= $rule->getDisplayText() ?>
+					<form class="pull-right" method="post" action="<?= $data->electionUrl .'/positions/delete-rule'?>">
+						<input type="hidden" name="position" value="<?= $position->getId() ?>">
+						<input type="hidden" name="rule" value="<?= $rule->getId() ?>">
+						<button class="btn btn-sm btn-danger"><i class="fa fa-minus-circle"></i> Delete Rule</button>
+					</form>
+					<span class="clearfix"></span>
 				</div>
 				<?php } ?>
 			</div>
@@ -59,7 +65,7 @@
 						placeholder="Value that authorized voters must have for the selected property" required>
 				</div>
 				<div class="form-group">
-					<button class="btn btn-default"><i class="fa fa-plus"></i> Add Rule</button>
+					<button class="btn btn-default"><i class="fa fa-plus-circle"></i> Add Rule</button>
 				</div>
 				
 			</form>
