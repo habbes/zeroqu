@@ -12,14 +12,16 @@ class CustomRule extends DBModel
 	 * create custom rule for the given position
 	 * @param Position $position
 	 * @param BaseRuleType $rule
+	 * @param string $name
 	 * @return DBModel
 	 */
-	public static function create(Position $position, BaseRuleType $rule)
+	public static function create(Position $position, BaseRuleType $rule, $name)
 	{
 		$r = new self();
 		$r->_position = $position;
 		$r->position_id = $position->getId();
 		$r->rule = $rule->toJson();
+		$r->name = $name;
 		return $r->save();
 	}
 	
