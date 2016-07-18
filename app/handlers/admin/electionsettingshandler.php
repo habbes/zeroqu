@@ -32,7 +32,9 @@ class ElectionSettingsHandler extends AdminElectionHandler
 		$attribute_names = $_POST["attribute_names"];
 
 		foreach($attribute_names as $name){
+			if($name != ""){
 				$this->election->createCustomProperty($name, "text");
+			}
 		}
 		
 		$title = isset($_POST['title'])? trim($_POST['title']) : "";
