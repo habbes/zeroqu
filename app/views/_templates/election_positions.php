@@ -21,9 +21,64 @@
 				<button class="btnEdit btn btn-default"><i class="fa fa-pencil-square-o"></i> Edit</button>
 				<button class="btnDelete btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
 			</div>
+			<?php } ?>
+			<br>
+			<hr>
+			<?php if($data->positionFormResult && $data->positionFormId== $position->getId()){?>
+			<p class="alert alert-<?= $data->positionFormResultType ?>"><?= $data->positionFormResult ?></p>
+			<?php } ?>
+			<h4>Position Rules</h4>
+			<p><i>These rules limit which voters can cast a vote in this position</i></p>
 			<?php 
-				}
-			?>
+			$rules = $position->getCustomRules();
+			if(count($rules) == 0){ ?>
+			<p>You have not created any rule. <b>All registered voters will be able to cast a vote in this position.</b></p>
+			<?php } else { ?>
+			<div class="list-group">
+				<?php foreach($rules as $rule) {?>
+				<div class="list-group-item">
+					<b><?= $rule->getName() ?>:</b>
+					<?= $rule->getDisplayText() ?>
+					<?php if($allowEdit) { ?>
+					<form class="pull-right" method="post" action="<?= $data->electionUrl .'/positions/delete-rule'?>">
+						<input type="hidden" name="position" value="<?= $position->getId() ?>">
+						<input type="hidden" name="rule" value="<?= $rule->getId() ?>">
+						<button class="btn btn-sm btn-danger"><i class="fa fa-minus-circle"></i> Delete Rule</button>
+					</form>
+					<span class="clearfix"></span>
+					<?php } ?>
+				</div>
+				<?php } ?>
+			</div>
+			<?php } ?>
+			<?php if ($allowEdit) {?>
+			<form method="post" action="<?= $data->electionUrl.'/positions/create-rule'?>">
+				<h4>Add Rule</h4>
+				<input type="hidden" name="position" value="<?= $position->getId() ?>">
+				<div class="form-group">
+					<label>Rule Description</label>
+					<input type="text" name="name" class="form-control"
+						placeholder="Enter a name or short description for the rule">
+				</div>
+				<div class="form-group">
+					<label>Property to use to restrict voters</label>
+					<select name="property" class="form-control" required>
+						<?php foreach($data->election->getCustomProperties() as $property){?>
+						<option value="<?= $property->getId() ?>"><?= $property->getName() ?></option>
+						<?php } ?>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Value for authorized voters</label>
+					<input type="text" name="value" class="form-control" 
+						placeholder="Value that authorized voters must have for the selected property" required>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-default"><i class="fa fa-plus-circle"></i> Add Rule</button>
+				</div>
+				
+			</form>
+			<?php } ?>
 		</div>
 	</div>
 <?php 

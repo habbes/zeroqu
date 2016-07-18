@@ -4,7 +4,7 @@ class VoterCandidatesHandler extends VoterHandler
 {
 	public function get()
 	{
-		$positions = $this->election->getPositions();
+		$positions = $this->voter->getAllowedPositions();
 		
 		$this->viewParams->positions = $positions;
 		$this->renderView("VoterCandidates");

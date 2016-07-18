@@ -49,12 +49,20 @@ class Vote extends DBModel
 		return $this->_election;
 	}
 	
+	/**
+	 * 
+	 * @param Candidate $candidate
+	 */
 	public function setCandidate(Candidate $candidate)
 	{
 		$this->candidate = $candidate;
 		$this->candidate_id = $candidate->getId();
 	}
 	
+	/**
+	 * 
+	 * @return Candidate
+	 */
 	public function getCandidate()
 	{
 		if(!$this->_candidate){
@@ -63,12 +71,20 @@ class Vote extends DBModel
 		return $this->_candidate;
 	}
 	
+	/**
+	 * 
+	 * @param Position $position
+	 */
 	public function setPosition(Position $position)
 	{
 		$this->position = $position;
 		$this->position_id = $position->getId();
 	}
 	
+	/**
+	 * 
+	 * @return Positiion
+	 */
 	public function getPosition()
 	{
 		if(!$this->_position){
@@ -77,12 +93,20 @@ class Vote extends DBModel
 		return $this->_position;
 	}
 	
+	/**
+	 * 
+	 * @param Voter $voter
+	 */
 	public function setVoter(Voter $voter)
 	{
 		$this->voter = $voter;
 		$this->voter_id = $voter->getId();
 	}
 	
+	/**
+	 * 
+	 * @return Voter
+	 */
 	public function getVoter()
 	{
 		if(!$this->_voter){
@@ -98,7 +122,9 @@ class Vote extends DBModel
 	
 	protected function validate()
 	{
-		return $this->getVoter()->getElection()->is($this->getCandidate()->getElection());
+		
+		return $this->getVoter()->getElection()->is($this->getCandidate()->getElection())
+			&& $this->getPosition()->isVoterEligible($this->getVoter());
 	}
 	
 	public static function findByElection(Election $election)

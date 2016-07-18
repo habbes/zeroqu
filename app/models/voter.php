@@ -201,6 +201,28 @@ class Voter extends DBModel
 	}
 	
 	/**
+	 * check whether voter is allowed to vote in specified
+	 * position
+	 * @param Position $position
+	 * @return boolean
+	 */
+	public function canVoteInPosition(Position $position){
+		return $position->isVoterEligible($this);
+	}
+	
+	/**
+	 * get all positions where voter is allowed to vote
+	 * @return array
+	 */
+	public function getAllowedPositions(){
+		$positions = $this->getElection()->getPositions();
+		$voter = $this;
+		return array_filter($positions, function($position) use ($voter) {
+			return $voter->canVoterInPosition($position);
+		});
+	}
+	
+	/**
 	 * Find all voters in a given election that match the specified query
 	 * @param Election $election
 	 * @param string $query
@@ -224,15 +246,21 @@ class Voter extends DBModel
 	{
 		return static::findOne("id=? AND election_id=?",[$id, $election->getId()]);
 	}
-
-	/*
-		Gets custom property
-	*/
+	
+	/**
+	 * @return array
+	 */
 	public function getAllCustomValues(){
 		return CustomValue::findByField("voter_id", $this->id)->fetchAll();
 	}
-	public function getCustomValue($property){
-		return CustomValue::findByPropertyAndVoter($property, $this);
+	
+	/**
+	 * 
+	 * @param CustomProperty $property
+	 * @return CustomValue
+	 */
+	public function getCustomValue(CustomProperty $property){
+		return CustomValue::findByVoterAndProperty($this, $property);
 	}
 	/*
 		Sets custom value

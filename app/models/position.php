@@ -32,7 +32,7 @@ class Position extends DBModel
 		return true;
 	}
 	
-	public function onRemove()
+	public function onDelete()
 	{
 		if(!$this->getElection()->isPending()){
 			return false;
@@ -76,6 +76,61 @@ class Position extends DBModel
 	public function countVotes()
 	{
 		return Vote::countByPosition($this);
+	}
+	
+	/**
+	 * 
+	 * @return array
+	 */
+	public function getCustomRules()
+	{
+		return CustomRule::findByPosition($this);
+	}
+	
+	/**
+	 * 
+	 * @param int $id
+	 * @return CustomRule
+	 */
+	public function getCustomRuleById($id)
+	{
+		return CustomRule::findByPositionAndId($this, $id);
+	}
+	
+	/**
+	 * 
+	 * @param BaseRuleType $rule
+	 * @param string $name
+	 * @return CustomRule
+	 */
+	public function createCustomRule(BaseRuleType $rule, $name)
+	{
+		return CustomRule::create($this, $rule, $name);
+	}
+
+	/**
+	 * check whether voter is eligible to cast vote in
+	 * this position
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	public function isVoterEligible(Voter $voter){
+		return $this->matchRules($voter);
+	}
+	
+	/**
+	 * check whether voter matches all rules for the given position
+	 * @param Voter $voter
+	 * @return boolean
+	 */
+	public function matchRules(Voter $voter){
+		$rules = $this->getCustomRules();
+		foreach($rules as $rule){
+			if(!$rule->match($voter)){
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	public static function findByElection(Election $election)

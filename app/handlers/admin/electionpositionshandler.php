@@ -90,4 +90,69 @@ class ElectionPositionsHandler extends AdminElectionHandler
 		
 		$this->showPositionsPage();
 	}
+	
+	public function createRule(){
+		$positionId = $this->postVar('position');
+		$propertyId = $this->postVar('property');
+		$name = $this->postVar('name');
+		$value = $this->postVar('value');
+		
+		$position = $this->election->getPositionById($positionId);
+		if(!$position){
+			$this->setPositionFormResult($positionId, 'Error: position not found.', 'danger');
+			return $this->showPositionsPage();
+		}
+		$property = $this->election->getPropertyById($propertyId);
+		if(!$property){
+			$this->setPositionFormResult($positionId, 'Error: property not found.', 'danger');
+			return $this->showPositionsPage();
+		}
+		$ruleType = new PropertyEqualsRule();
+		$ruleType->property_id = $property->getId();
+		$ruleType->value = $value;
+		try{
+			$rule = $position->createCustomRule($ruleType, $name);
+			$this->setPositionFormResult($positionId, 'Rule created successfully.', 'success');
+		}
+		catch(Exception $e){
+			$this->setPositionFormResult($positionId, 'Error occured while creating rule.', 'danger');
+		}
+		$this->showPositionsPage();
+		
+		
+	}
+	
+	public function deleteRule()
+	{
+		$positionId = $this->postVar('position');
+		$ruleId = $this->postvar('rule');
+		$position = $this->election->getPositionById($positionId);
+		if(!$position){
+			$this->setPositionFormResult($positionId, 'Error: position not found.', 'danger');
+			return $this->showPositionsPage();
+		}
+		$rule = $position->getCustomRuleById($ruleId);
+		if(!$rule){
+			$this->setPositionFormResult($positionId, 'Error: rule not found', 'danger');
+			return $this->showPositionsPage();
+		}
+		try {
+			$rule->delete();
+			$this->setPositionFormResult($positionId, 'Rule deleted successfully', 'info');
+		}
+		catch(Exception $e){
+			$this->setPositionFormResult($positionId, 'Error: rule not deleted', 'danger');
+		}
+		$this->showPositionsPage();
+	}
+	
+	public function setPositionFormResult($positionId, $message, $type)
+	{
+		if(!$type){
+			$type = 'info';
+		}
+		$this->viewParams->positionFormId = $positionId;
+		$this->viewParams->positionFormResult = $message;
+		$this->viewParams->positionFormResultType = $type;
+	}
 }
