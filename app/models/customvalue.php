@@ -63,8 +63,8 @@ class CustomValue extends DBModel
      */
     public static function findByVoterAndProperty(Voter $voter, CustomProperty $property)
     {
-    	$value = static::findOne('voter_id=? AND customproperty_id=?',
-    			[$voter->getId(), $property->getId()]);
+    	$value = static::find('voter_id=? AND customproperty_id=?',
+    			[$voter->getId(), $property->getId()])->fetch();
     	$value->_voter = $voter;
     	$value->_property = $property;
     	return $value;
