@@ -14,7 +14,7 @@ else if($data->election->isPending()) {
 		<div class="alert alert-warning">The voting process has not yet begun. You can view candidates but you cannot vote.</div>
         	
             <div class="panel-group" id="accordion">
-            <?php foreach($data->election->getPositions() as $position){ ?>
+            <?php foreach($data->voter->getAllowedPositions() as $position){ ?>
                 <div class="panel panel-default">
                     <div class="panel-heading" >
                         <h4 class="panel-title">

@@ -105,15 +105,16 @@ $properties = $data->electionProperties;
 						 <?php foreach($properties as $property){ 
 						 	$custom = $voter->getCustomValue($property);
 						 	$value = "";
+						 	
 							if($custom){
 								$value = $custom->getValue();
 							}
 						 	?>
 						 	<fieldset class="form-group row">
-						    <label for="email" class="col-md-2 form-control-label"><?=$property->name?>:</label>
-						    <div class="col-md-10">
-						    	<input type="text" class="form-control" id="email" name="<?=$custom->getId()?>" value="<?=$value?>" placeholder="Enter <?=$property->name?> value" required>
-						    </div>
+							    <label for="email" class="col-md-2 form-control-label"><?=$property->name?>:</label>
+							    <div class="col-md-10">
+							    	<input type="text" class="form-control" id="email" name="<?=$custom->getId()?>" value="<?=$value?>" placeholder="Enter <?=$property->name?> value" required>
+							    </div>
 						 </fieldset>
 						 <?php } ?>
 						<div class="btn-group" role="group" aria-label="Second group">
